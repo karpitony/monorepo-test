@@ -25,7 +25,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">배포 테스트</p>
+      <p className="read-the-docs">배포배포</p>
     </>
   )
 }
