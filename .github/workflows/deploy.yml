@@ -20,8 +20,8 @@ jobs:
 
       - name: Add remote-url
         run: |
-          git remote add forked-repo https://[your-github-name]:${{ secrets.AUTO_ACTIONS }}@github.com/[your-github-name]/[your-repo-name]
-          git config user.name [your-github-name]
+          git remote add forked-repo https://dewbeeny:${{ secrets.AUTO_ACTIONS }}@github.com/dewbeeny/HomePage-FE
+          git config user.name dewbeeny
           git config user.email ${{ secrets.EMAIL }}
 
       - name: Push changes to forked-repo
