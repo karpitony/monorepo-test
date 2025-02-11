@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Pretendard-Regular', sans-serif;
+}
+
+:root {
+/* 기본 색상 팔레트 */
+--FarmSystem_White: #FCFCFC;
+--FarmSystem_Black: #191919;
+--FarmSystem_LightGrey: #E5E5E5;
+--FarmSystem_DarkGrey: #999999;
+--FarmSystem_Yellow: #FFF763;
+--FarmSystem_Orange: #FF7F1E;
+
+/* 녹색 계열 팔레트 */
+--FarmSystem_Green01: #28723F;
+--FarmSystem_Green02: #62DE88;
+--FarmSystem_Green03: #7AB784;
+--FarmSystem_Green04: #49AA59;
+--FarmSystem_Green05: #248634;
+--FarmSystem_Green06: #006811;
+--FarmSystem_Green07: #175321;
+}
