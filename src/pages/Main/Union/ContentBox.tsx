@@ -17,6 +17,13 @@ export default function ContentBox() {
             <p>각 트랙의 멘토가 제공하는 프로젝트와 스터디에</p>
             <p>멘티로서 참여하게 됩니다.</p>
           </S.ContentInfoTextBox>
+          <S.ActivityTitle>한 학기 활동</S.ActivityTitle>
+          <S.ActivityList>
+            <S.Li>월별 기술 블로그</S.Li>
+            <S.Li>Farm System 아이디어톤 참가</S.Li>
+            <S.Li>스터디 정기 모임</S.Li>
+            <S.Li>트랙 멘토-멘티 프로그램</S.Li>
+          </S.ActivityList>
         </S.Content>
       </S.ContentBoxBorder>
     </S.Container>
