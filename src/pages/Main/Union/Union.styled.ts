@@ -9,8 +9,8 @@ export const Container = styled.section`
   user-select: none;
 
   @media (max-width: 768px) {
-    padding: 20px; /* 모바일에서 여백 추가 */
-    height: auto;  /* 필요에 따라 높이를 자동으로 조정 */
+    padding: 5px; /* 모바일에서 여백 추가 */
+    height: 1000px;
   }
 `;
 
@@ -43,13 +43,14 @@ export const UnionTextContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;  /* 4분할 */
   justify-items: center;  /* 그리드 셀 내에서 중앙 정렬 */
-  align-items: center;
-  width: 280px;
+  align-items: top;
+  width: 300px;
   margin-bottom: 50px;
 
   @media (max-width: 768px) {
     margin-bottom: 30px;
-    grid-template-columns: 1fr 2fr 1fr;  /* 모바일에서는 더 간결하게 조정 가능 */
+    grid-template-columns: 1fr 2fr 1fr;  
+    width: 220px;
   }
 `;
 
@@ -60,12 +61,8 @@ export const UnionText = styled.h2`
   font-size: 48px;
   font-weight: 700;
 
-  @media (max-width: 768px) {
-    font-size: 32px;
-  }
-
   @media (max-width: 480px) {
-    font-size: 24px;
+    font-size: 40px;
   }
 `;
 
@@ -86,6 +83,8 @@ export const NewBadge = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  margin-top: 10px;
 
   @media (max-width: 768px) {
     font-size: 14px;

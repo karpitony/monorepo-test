@@ -30,6 +30,7 @@ export const ContentBoxBorder = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     position: relative;
@@ -71,6 +72,9 @@ export const ContentInfoTextBox = styled.div`
     height: auto;
     font-size: 20px;
     line-height: 30px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -94,8 +98,9 @@ export const ActivityTitle = styled.h3`
 
   @media (max-width: 768px) {
     width: auto;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 30px;
+    margin-bottom: 7px;
   }
 `;
 
@@ -107,7 +112,6 @@ export const ActivityList = styled.ul`
   flex-wrap: wrap;
   align-items: flex-end;
   align-content: flex-start;
-  padding: 0;
   gap: 10px 20px;
   list-style-type: disc;
 
@@ -115,25 +119,36 @@ export const ActivityList = styled.ul`
     width: 90%;
     height: auto;
     justify-content: center;
+    gap: 1px 10px;
   }
 `;
 
 export const Li = styled.li`
   height: 35px;
+
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 35px;
   color: var(--FarmSystem_Black);
+  
   list-style-type: disc;
   list-style-position: outside;
   margin-left: 40px;
   text-align: center;
 
   @media (max-width: 768px) {
-    margin-left: 20px;
     font-size: 20px;
     line-height: 30px;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 385px) {
+    font-size: 18px;
+    line-height: 30px;
+    margin-left: 0px;
+    list-style-type: none;
+    list-style-position: none;
   }
 `;
 
