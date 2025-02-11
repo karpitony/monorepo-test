@@ -39,9 +39,31 @@ export const Content = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+
+export const ContentInfoTextBox = styled.div`
+  width: 600px;
+  height: 210px;
+ 
+  color: var(--FarmSystem_Black);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`
+
+export const HighlightOrange = styled.span`
+  font-weight: 700;
+  color: var(--FarmSystem_Orange)
+`
 
 export const GradientContainer = styled.div`
   position: absolute;
