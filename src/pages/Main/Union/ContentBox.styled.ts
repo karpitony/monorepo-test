@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%
-  heigh: 500px;
+  width: 100%;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative
 
+  position: relative;
 `
 
 export const ContentBoxBorder = styled.div`
