@@ -9,8 +9,11 @@ interface InfoBoxProps {
 export default function InfoBox({ selectedTrack }: InfoBoxProps) {
   return (
     <S.Container>
-      <img src={RobotArm} alt="Robot Arm" />
-      <h3>{selectedTrack.name}</h3>
+      <S.TrackNameContainer>
+        <img src={RobotArm} alt="Robot Arm" style={{"width":"32px","height":"32px"}} />
+        <S.TrackName>{selectedTrack.name}</S.TrackName>
+      </S.TrackNameContainer>
+      <S.TrackDescription>{selectedTrack.description}</S.TrackDescription>
     </S.Container>
   );
 }
