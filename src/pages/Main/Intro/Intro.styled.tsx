@@ -14,13 +14,13 @@ export const Container = styled.div`
 export const Logo = styled.div`
     display: flex;
     align-items: center;
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 64px;
+    font-weight: 900;
     margin-bottom: 20px;
 `;
 
 export const Description = styled.p`
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.5;
     max-width: 600px;
     margin-bottom: 20px;
@@ -28,13 +28,10 @@ export const Description = styled.p`
 
 export const TrackList = styled.p`
     a {    
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 20px;
+        font-weight: 700;
     }
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.5;
-    max-width: 600px;
     margin-bottom: 20px;
     
 `;
@@ -49,10 +46,9 @@ export const ApplyButton = styled.button`
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 20px 80px;
+    border-radius: 10px;
+    font-size: 24px;
     margin-top: 20px;
     
     &:hover {
@@ -62,7 +58,7 @@ export const ApplyButton = styled.button`
 
 export const ApplyDescription = styled.div`
     font-size: 14px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-top: 20px;
     color: #E8F5E9;
 `;
