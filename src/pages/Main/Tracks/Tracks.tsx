@@ -30,7 +30,7 @@ export default function Tracks() {
             </S.TrackButton>
           ))}
         </S.ButtonContainer>
-        <InfoBox />
+        <InfoBox selectedTrack={selectedTrack}/>
       </S.CenterContainer>
     </S.Container>
   );
