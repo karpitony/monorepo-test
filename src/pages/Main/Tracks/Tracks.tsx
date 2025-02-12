@@ -1,7 +1,12 @@
+import * as S from './Tracks.styled';
+import { TracksData } from './TracksData';
+import InfoBox from './InfoBox';
+
 export default function Tracks() {
   return (
-    <div>
+    <S.Container>
       <h2>Tracks Section</h2>
-    </div>
+      <InfoBox />
+    </S.Container>
   );
 }
