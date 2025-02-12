@@ -1,3 +1,5 @@
+import { SongSH, KimDW, LimSS, SeokMK, SunSK } from "@/assets/Images/Professors";
+
 export interface ProfessorDataInterface {
   name: string;
   image: string;
@@ -25,7 +27,7 @@ export const TracksData: TrackDataInterface[] = [
     name: "게임/영상",
     professorData: {
       name: "송수환 교수님",
-      image: "사진 여기",
+      image: SongSH,
       phone: "02-2260-3765",
       email: "songsh@dongguk.edu",
       location: "신공학관 10108호",
@@ -56,7 +58,7 @@ export const TracksData: TrackDataInterface[] = [
     name: "보안/웹",
     professorData: {
       name: "김동우 교수님",
-      image: "사진 여기",
+      image: KimDW,
       phone: "02-2260-3711",
       email: "dongwoo.kim@dgu.ac.kr",
       location: "정보문화관(P) 608호",
@@ -91,7 +93,7 @@ export const TracksData: TrackDataInterface[] = [
     name: "인공지능",
     professorData: {
       name: "임상수 교수님",
-      image: "사진 여기",
+      image: LimSS,
       phone: "02-2260-3848",
       email: "sslim@dgu.ac.kr",
       location: "정보문화관(P) 621호",
@@ -125,7 +127,7 @@ export const TracksData: TrackDataInterface[] = [
     name: "사물인터넷/로봇",
     professorData: {
       name: "석문기 교수님",
-      image: "사진 여기",
+      image: SeokMK,
       phone: "02-2260-3710",
       email: "mgseok@dongguk.edu",
       location: "정보문화관(P) 606호",
@@ -153,7 +155,7 @@ export const TracksData: TrackDataInterface[] = [
     name: "빅데이터",
     professorData: {
       name: "선석규 교수님",
-      image: "사진 여기",
+      image: SunSK,
       phone: "02-2260-3342",
       email: "sukkyu.sun@dongguk.edu",
       location: "법학/만해관 401호",
