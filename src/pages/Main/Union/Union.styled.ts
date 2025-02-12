@@ -1,81 +1,59 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.section<{ $isMobile: boolean }>`
   display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  height: 1500px;
-  user-select: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  @media (max-width: 768px) {
-    padding: 5px; /* 모바일에서 여백 추가 */
-    height: 1000px;
-  }
+  height: ${(props) => (props.$isMobile ? "1000px" : "1500px")};
+  user-select: none;
+  padding: ${(props) => (props.$isMobile ? "5px" : "0")};
 `;
 
-export const IntroduceText = styled.p`
-  width: 500px;  
-  height: 86px;
+export const IntroduceText = styled.p<{ $isMobile: boolean }>`
+  width: ${(props) => (props.$isMobile ? "100%" : "500px")};
+  height: ${(props) => (props.$isMobile ? "auto" : "86px")};
 
-  text-align: center; 
+  text-align: center;
   color: var(--FarmSystem_Black);
   font-style: normal;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 43px;
-  
-  margin-bottom: 70px;
+  font-size: ${(props) => (props.$isMobile ? "24px" : "36px")};
+  line-height: ${(props) => (props.$isMobile ? "32px" : "43px")};
 
-  @media (max-width: 768px) {
-    width: 100%;  /* 화면에 맞게 폭 확장 */
-    font-size: 24px;
-    line-height: 32px;
-    margin-bottom: 50px;
-  }
+  margin-bottom: ${(props) => (props.$isMobile ? "50px" : "70px")};
 `;
 
-/* 
-  이걸 그리드로 해결한 건 진짜 레전드 씽크빅이다... 
-  진짜 이걸 어떻게 떠올렸지?????
-*/
-export const UnionTextContainer = styled.div`
+export const UnionTextContainer = styled.div<{ $isMobile: boolean }>`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;  /* 4분할 */
-  justify-items: center;  /* 그리드 셀 내에서 중앙 정렬 */
-  align-items: top;
-  width: 300px;
-  margin-bottom: 50px;
+  grid-template-columns: ${(props) =>
+    props.$isMobile ? "1fr 2fr 1fr" : "1fr 1fr 1fr 1fr"};
+  justify-items: center;
+  align-items: start;
 
-  @media (max-width: 768px) {
-    margin-bottom: 30px;
-    grid-template-columns: 1fr 2fr 1fr;  
-    width: 220px;
-  }
+  width: ${(props) => (props.$isMobile ? "220px" : "300px")};
+  margin-bottom: ${(props) => (props.$isMobile ? "30px" : "50px")};
 `;
 
-export const UnionText = styled.h2`
-  grid-column: 2 / 4;  /* 두 번째에서 세 번째 그리드 셀을 차지 */
+export const UnionText = styled.h2<{ $isMobile: boolean }>`
+  grid-column: 2 / 4;
   text-align: center;
   color: var(--FarmSystem_Orange);
-  font-size: 48px;
+  font-size: ${(props) => (props.$isMobile ? "40px" : "48px")};
   font-weight: 700;
-
-  @media (max-width: 480px) {
-    font-size: 40px;
-  }
 `;
 
-export const NewBadge = styled.div`
-  grid-column: 4 / 5;  /* 네 번째 그리드 셀에 배치 */
-  width: 70px;
-  height: 25px;
+export const NewBadge = styled.div<{ $isMobile: boolean }>`
+  grid-column: 4 / 5;
+  width: ${(props) => (props.$isMobile ? "60px" : "70px")};
+  height: ${(props) => (props.$isMobile ? "22px" : "25px")};
   background: var(--FarmSystem_Green02);
   border-radius: 10px;
 
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: ${(props) => (props.$isMobile ? "14px" : "16px")};
   line-height: 19px;
   color: var(--FarmSystem_White);
 
@@ -83,12 +61,5 @@ export const NewBadge = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-
   margin-top: 10px;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    width: 60px;
-    height: 22px;
-  }
 `;

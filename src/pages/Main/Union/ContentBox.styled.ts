@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $isMobile: boolean }>`
   width: 100%;
-  height: 500px;
+  height: ${(props) => (props.$isMobile ? "auto" : "500px")};
+
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 20px 0;
-  }
+  position: relative;
+  padding: ${(props) => (props.$isMobile ? "20px 0" : "0")};
 `;
 
-export const ContentBoxBorder = styled.div`
-  position: absolute;
+// 테두리에 Gradient가 안돼서 박스 두개를 겹쳐서 테두리 Gradient를 만들었습니다.
+export const ContentBoxBorder = styled.div<{ $isMobile: boolean }>`
+  position: ${(props) => (props.$isMobile ? "relative" : "absolute")};
   top: 0;
-  width: 700px;
-  height: 500px;
+  width: ${(props) => (props.$isMobile ? "90%" : "700px")};
+  height: ${(props) => (props.$isMobile ? "auto" : "500px")};
+
   background: linear-gradient(
     90deg,
     var(--FarmSystem_Orange) 0%,
@@ -26,23 +26,18 @@ export const ContentBoxBorder = styled.div`
   );
   padding: 5px;
   border-radius: 20px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
   margin: 0 auto;
-
-  @media (max-width: 768px) {
-    position: relative;
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-  }
 `;
 
 export const Content = styled.div`
   width: 100%;
   height: 100%;
+
   background-color: var(--FarmSystem_White);
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -53,29 +48,24 @@ export const Content = styled.div`
   align-items: center;
 `;
 
-export const ContentInfoTextBox = styled.div`
-  width: 600px;
-  height: 210px;
+export const ContentInfoTextBox = styled.div<{ $isMobile: boolean }>`
+  width: ${(props) => (props.$isMobile ? "90%" : "600px")};
+  height: ${(props) => (props.$isMobile ? "auto" : "210px")};
+
   color: var(--FarmSystem_Black);
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 35px;
+  font-size: ${(props) => (props.$isMobile ? "20px" : "24px")};
+  line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   margin-bottom: 35px;
-
-  @media (max-width: 768px) {
-    width: 90%;
-    height: auto;
-    font-size: 20px;
-    line-height: 30px;
-
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  padding-top: ${(props) => (props.$isMobile ? "20px" : "0")};
+  padding-bottom: ${(props) => (props.$isMobile ? "20px" : "0")};
 `;
 
 export const HighlightOrange = styled.span`
@@ -83,92 +73,83 @@ export const HighlightOrange = styled.span`
   color: var(--FarmSystem_Orange);
 `;
 
-export const ActivityTitle = styled.h3`
-  width: 149px;
-  height: 38px;
+export const ActivityTitle = styled.h3<{ $isMobile: boolean }>`
+  width: ${(props) => (props.$isMobile ? "auto" : "149px")};
+  height: ${(props) => (props.$isMobile ? "auto" : "38px")};
+
   font-weight: 700;
-  font-size: 24px;
-  line-height: 35px;
+  font-size: ${(props) => (props.$isMobile ? "22px" : "24px")};
+  line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Green01);
+
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: 17px;
 
-  @media (max-width: 768px) {
-    width: auto;
-    font-size: 22px;
-    line-height: 30px;
-    margin-bottom: 7px;
-  }
+  margin-bottom: ${(props) => (props.$isMobile ? "7px" : "17px")};
 `;
 
-export const ActivityList = styled.ul`
-  width: 577px;
-  height: 80px;
+export const ActivityList = styled.ul<{ $isMobile: boolean }>`
+  width: ${(props) => (props.$isMobile ? "90%" : "577px")};
+  height: ${(props) => (props.$isMobile ? "auto" : "80px")};
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-end;
   align-content: flex-start;
-  gap: 10px 20px;
-  list-style-type: disc;
 
-  @media (max-width: 768px) {
-    width: 90%;
-    height: auto;
-    justify-content: center;
-    gap: 1px 10px;
-  }
+  gap: ${(props) => (props.$isMobile ? "1px 10px" : "10px 20px")};
+  list-style-type: disc;
+  justify-content: ${(props) => (props.$isMobile ? "center" : "initial")};
 `;
 
-export const Li = styled.li`
+export const Li = styled.li<{
+  $isMobile: boolean;
+  $isTiny?: boolean;
+}>`
   height: 35px;
 
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 35px;
+  font-size: ${(props) =>
+    props.$isMobile
+      ? props.$isTiny
+        ? "18px"
+        : "20px"
+      : "24px"};
+  line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Black);
-  
-  list-style-type: disc;
-  list-style-position: outside;
-  margin-left: 40px;
+
+  list-style-type: ${(props) =>
+    props.$isMobile && props.$isTiny ? "none" : "disc"};
+  list-style-position: ${(props) =>
+    props.$isMobile && props.$isTiny ? "none" : "outside"};
+  margin-left: ${(props) =>
+    props.$isMobile
+      ? props.$isTiny
+        ? "0px"
+        : "20px"
+      : "40px"};
   text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-    line-height: 30px;
-    margin-left: 20px;
-  }
-
-  @media (max-width: 385px) {
-    font-size: 18px;
-    line-height: 30px;
-    margin-left: 0px;
-    list-style-type: none;
-    list-style-position: none;
-  }
 `;
 
-export const GradientContainer = styled.div`
+export const GradientContainer = styled.div<{ $isMobile: boolean }>`
   position: absolute;
   top: 0;
   height: 500px;
-  display: flex;
+  // 배경 Gradient를 모바일에서도 보이게 하려면 이 부분 고쳐주시면 됩니다!
+  display: ${(props) => (props.$isMobile ? "none" : "flex")};
   gap: 80px;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
-export const GradientLeft = styled.div`
-  width: 560px;
-  height: 400px;
+export const GradientLeft = styled.div<{ $isMobile: boolean }>`
+  width: ${(props) => (props.$isMobile ? "300px" : "560px")};
+  height: ${(props) => (props.$isMobile ? "250px" : "400px")};
+
   background: linear-gradient(
     270deg,
     var(--FarmSystem_Orange) 50%,
@@ -176,16 +157,12 @@ export const GradientLeft = styled.div`
   );
   opacity: 0.5;
   border-radius: 20px;
-
-  @media (max-width: 768px) {
-    width: 300px;
-    height: 250px;
-  }
 `;
 
-export const GradientRight = styled.div`
-  width: 560px;
-  height: 400px;
+export const GradientRight = styled.div<{ $isMobile: boolean }>`
+  width: ${(props) => (props.$isMobile ? "300px" : "560px")};
+  height: ${(props) => (props.$isMobile ? "250px" : "400px")};
+  
   background: linear-gradient(
     90deg,
     var(--FarmSystem_Green02) 50%,
@@ -193,9 +170,4 @@ export const GradientRight = styled.div`
   );
   opacity: 0.5;
   border-radius: 20px;
-
-  @media (max-width: 768px) {
-    width: 300px;
-    height: 250px;
-  }
 `;
