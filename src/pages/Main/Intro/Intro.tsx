@@ -6,7 +6,7 @@ import FarmSystemNav from '../FarmSyetemNav/FarmSystemNav.tsx';
 const Intro = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   return (
-    <S.Container>
+    <S.Container id="about">
       {/* 네비게이션을 오른쪽 정렬하기 위한 래퍼 */}
       <S.NavWrapper>
         <FarmSystemNav/>

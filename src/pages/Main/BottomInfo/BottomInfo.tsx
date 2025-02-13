@@ -12,7 +12,7 @@ const BottomInfo = () => {
   const googleFormLink = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform";
 
   return (
-    <S.BottomInfoContainer>
+    <S.BottomInfoContainer id="eligibility">
       <S.Title>
         <S.Highlight>Farm System</S.Highlight>을 더 알아가고 싶나요?
       </S.Title>

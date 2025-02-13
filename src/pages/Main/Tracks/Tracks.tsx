@@ -8,7 +8,7 @@ export default function Tracks() {
   const [selectedTrack, setSelectedTrack] = useState(TracksData[0]);
 
   return (
-    <S.Container>
+    <S.Container id="tracks">
       <S.CenterContainer>
         <S.Title>트랙 및 커리큘럼</S.Title>
         <S.GoToUnion>

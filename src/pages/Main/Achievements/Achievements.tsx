@@ -70,7 +70,7 @@ const settings = {
 
 const Achievements = () => {
   return (
-    <S.AchievementsContainer>
+    <S.AchievementsContainer id="achievements">
       <S.Title>
         2024년 <S.Highlight>Farm System 3기</S.Highlight>에서 함께 성장하고 이루어낸 성과입니다.
       </S.Title>
