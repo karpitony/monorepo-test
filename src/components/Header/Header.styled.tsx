@@ -82,3 +82,30 @@ export const TextBlock = styled.div`
   margin-left: 20px;
   `
 ;
+
+// Styled Components 중 navbar
+
+
+export const Navbar = styled.nav`
+  background-color: #216D35; /* 배경색 */
+  padding: 10px 20px;
+  border-radius: 20px; /* 모서리 둥글게 */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const NavItem = styled.a`
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  
+  &:first-child {
+    font-weight: bold; /* 첫 번째 메뉴 강조 */
+  }
+`;
+export const Content = styled.a`{
+  background-color: #f1f1f1; /* 배경색 */
+}
+`;
