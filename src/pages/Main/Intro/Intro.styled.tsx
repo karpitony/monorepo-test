@@ -18,7 +18,7 @@ export const Logo = styled.div`
     font-weight: 800;
 
     margin-bottom: 20px;
-    margin-left: 100px;
+    margin-left: 50px;
 `;
 
 export const Description = styled.p`
@@ -26,8 +26,9 @@ export const Description = styled.p`
     line-height: 1.5;
     max-width: 600px;
 
+
     margin-bottom: 20px;
-    margin-left: 100px;
+    margin-left: 50px;
 `;
 
 export const TrackList = styled.p`
@@ -39,7 +40,7 @@ export const TrackList = styled.p`
 
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 100px;
+    margin-left: 50px;
     
 `;
 
@@ -48,17 +49,19 @@ export const Apply = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    margin-left: 100px;
+    margin-left: 50px;
 `;
 
 export const ApplyButton = styled.button`
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 20px 80px;
+    padding: 15px 80px;
     border-radius: 10px;
     font-size: 24px;
     margin-top: 20px;
+
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     
     &:hover {
         background-color: #388E3C;
@@ -68,7 +71,7 @@ export const ApplyButton = styled.button`
 export const ApplyDescription = styled.div`
     font-size: 16px;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
     color: #E8F5E9;
 `;
 
@@ -76,7 +79,7 @@ export const Bud = styled.div`
     margin-left: 100px;
     font-size: 64px;
     top: 116px;
-    left: 100px;
+    margin-left: 50px;
 `;
 
 
