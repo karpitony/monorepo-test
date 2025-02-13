@@ -1,10 +1,10 @@
-import React from 'react';
 import AchievementItem from './AchievementItem';
 import Slider from 'react-slick';
 import * as S from './Achievements.styles';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+// 이미지 url은 s3에 이미지 담기면 url 받아서 넣으면 됩니다.
 const achievementsData = [
   {
     id: 1,
@@ -23,6 +23,18 @@ const achievementsData = [
     title: '2024 동국대학교 AI융합대학 해커톤',
     description: 'AI융합대학장상(대상)',
     imageUrl: 'path/to/image3.jpg',
+  },
+  {
+    id: 4,
+    title: '2024 DPG AI Challenge',
+    description: '디지털플랫폼정부위원장상(최우수상)',
+    imageUrl: 'path/to/image4.jpg',
+  },
+  {
+    id: 5,
+    title: '22024 E2GEE Lab(이지랩) 메이커톤',
+    description: '동국대학교 총장상(대상)',
+    imageUrl: 'path/to/image4.jpg',
   },
 ];
 
@@ -75,23 +87,19 @@ const Achievements = () => {
         </Slider>
       </S.SliderWrapper>
       <S.StatsContainer>
-        <S.StatBox>
-          <S.StatNumber>1,200명</S.StatNumber>
-          <S.StatLabel>활동 멤버</S.StatLabel>
-        </S.StatBox>
-        <S.StatBox>
-          <S.StatNumber>140개</S.StatNumber>
-          <S.StatLabel>프로젝트</S.StatLabel>
-        </S.StatBox>
-        <S.StatBox>
-          <S.StatNumber>80개</S.StatNumber>
-          <S.StatLabel>스터디</S.StatLabel>
-        </S.StatBox>
-        <S.StatBox>
-          <S.StatNumber>20회</S.StatNumber>
-          <S.StatLabel>수상 경험</S.StatLabel>
-        </S.StatBox>
-      </S.StatsContainer>
+  {[
+    { number: "1,200명", label: "활동 멤버" },
+    { number: "140개", label: "프로젝트" },
+    { number: "80개", label: "스터디" },
+    { number: "20회", label: "수상 경험" }
+  ].map((stat, index) => (
+    <S.StatBox key={index} index={index}>
+      <S.StatNumber>{stat.number}</S.StatNumber>
+      <S.StatLabel>{stat.label}</S.StatLabel>
+    </S.StatBox>
+  ))}
+</S.StatsContainer>
+
     </S.AchievementsContainer>
   );
 };
