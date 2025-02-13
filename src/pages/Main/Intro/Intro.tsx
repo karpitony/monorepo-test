@@ -1,6 +1,9 @@
 import * as S from './Intro.styled.tsx';
-import logo from './logo.svg';
-export default function Intro() {
+import logo from '../../../assets/FarmLogo.png';
+import { useState } from 'react';
+
+const Intro = () => {
+  const [isPopupOpen, setPopupOpen] = useState(false);
   return (
     <S.Container>
       <S.Bud>🌱</S.Bud>
@@ -19,9 +22,23 @@ export default function Intro() {
       5가지 신기술 트랙을 제공하여 학습 경험을 통해 SW/AI 역량을 배양합니다.
       </S.TrackList>
       <S.Apply>
-        <S.ApplyButton> 지원하기 </S.ApplyButton>
+        <S.ApplyButton onClick={() => setPopupOpen(true)}> 지원하기 </S.ApplyButton>
         <S.ApplyDescription>2025년 2월 공개 모집 예정</S.ApplyDescription>
       </S.Apply>
+
+
+      {/* 팝업 수빈님 것과 통일 */}
+      {isPopupOpen && (
+        <S.PopupOverlay onClick={() => setPopupOpen(false)}>
+          <S.PopupBox onClick={(e) => e.stopPropagation()}>
+            <S.PopupText>지금은 모집 기간이 아닙니다.</S.PopupText>
+            <S.PopupText>공개 모집 예정: 2025년 2월</S.PopupText>
+            <S.PopupCloseButton onClick={() => setPopupOpen(false)}>확인</S.PopupCloseButton>
+          </S.PopupBox>
+        </S.PopupOverlay>
+      )}
     </S.Container>
   );
-}
+};
+
+export default Intro;

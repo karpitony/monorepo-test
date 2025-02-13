@@ -11,6 +11,8 @@ export const HeaderContainer = styled.header`
   width: auto;
   height: 70px;
   font-style: normal;
+  padding-bottom: 0px;
+  border-bottom: 4px solid var(--FarmSystem_White);
 `;
 
 export const Nav = styled.nav`
@@ -56,10 +58,13 @@ export const Button = styled.button`
   margin-top: 5px;
 
   font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+
   text-align: center;
   border-radius: 10px;
   background-color: var(--FarmSystem_Green01);
-  color: white;
+  color: var(--FarmSystem_White);
   &:hover {
     background-color: #1f5a2f;
   }
