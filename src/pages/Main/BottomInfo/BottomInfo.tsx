@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import * as S from './BottomInfo.styles';
-import GitHubIcon from '../../../assets/githubLogo2.png';
-import InstagramIcon from '../../../assets/InstagramLogo2.png';
-import LinktreeIcon from '../../../assets/LinktreeLogo.png';
-import DGUIcon from "../../../assets/DGULogo.png"
+import GitHubIcon from '@/assets/githubLogo2.png';
+import InstagramIcon from '@/assets/InstagramLogo2.png';
+import LinktreeIcon from '@/assets/LinktreeLogo.png';
+import DGUIcon from "@/assets/DGULogo.png"
 
 const BottomInfo = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);

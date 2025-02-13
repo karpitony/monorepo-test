@@ -11,12 +11,19 @@ export const Container = styled.div`
     color: white;
 `;
 
+/* 추가된 네비게이션 정렬용 스타일 */
+export const NavWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    margin-bottom: 20px;
+`;
+
 export const Logo = styled.div`
     display: flex;
     align-items: center;
     font-size: 64px;
     font-weight: 800;
-
     margin-bottom: 20px;
     margin-left: 50px;
 `;
@@ -25,8 +32,6 @@ export const Description = styled.p`
     font-size: 24px;
     line-height: 1.5;
     max-width: 600px;
-
-
     margin-bottom: 20px;
     margin-left: 50px;
 `;
@@ -37,18 +42,15 @@ export const TrackList = styled.p`
     }
     font-size: 24px;
     line-height: 1.5;
-
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 50px;
-    
 `;
 
 export const Apply = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin-left: 50px;
 `;
 
@@ -60,7 +62,6 @@ export const ApplyButton = styled.button`
     border-radius: 10px;
     font-size: 24px;
     margin-top: 20px;
-
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     
     &:hover {
@@ -82,8 +83,7 @@ export const Bud = styled.div`
     margin-left: 50px;
 `;
 
-
-/* 팝업 -> 수빈님 것과 통일  */
+/* 팝업 스타일 */
 export const PopupOverlay = styled.div`
   position: fixed;
   inset: 0;
