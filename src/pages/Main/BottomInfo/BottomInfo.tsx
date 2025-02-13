@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import * as S from './BottomInfo.styles';
 import GitHubIcon from '../../../assets/githubLogo2.png';
 import InstagramIcon from '../../../assets/instagramLogo2.png';
