@@ -7,11 +7,23 @@ import OrangeArrow from '@/assets/Icons/OrangeArrow.svg';
 export default function Tracks() {
   const [selectedTrack, setSelectedTrack] = useState(TracksData[0]);
 
+  const handleSmoothScroll = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>, targetId: string) => {
+    event.preventDefault();
+    const offset = 80;
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.getBoundingClientRect().top + window.scrollY + offset,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <S.Container id="tracks">
       <S.CenterContainer>
         <S.Title>트랙 및 커리큘럼</S.Title>
-        <S.GoToUnion>
+        <S.GoToUnion onClick={(e) => handleSmoothScroll(e, "#union")}>
           <S.GoToUnionText>
             트랙 선택이 고민된다면 <S.OrangeHighlight>Union</S.OrangeHighlight>으로!
           </S.GoToUnionText>

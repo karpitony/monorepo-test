@@ -6,6 +6,8 @@ export const AchievementsContainer = styled.div`
   padding: 60px 0;
   text-align: center;
   overflow-x: hidden; 
+  position: relative;
+  z-index: 0;
 `;
 export const Title = styled.h2`
   font-size: 48px;
@@ -25,6 +27,7 @@ export const SliderWrapper = styled.div`
   width: 100vw;
   position: relative; /* 블러 효과 위치 */
   overflow: visible; 
+  z-index: 0;
 
   .slick-list {
     width: 100vw;
@@ -50,9 +53,9 @@ export const SliderWrapper = styled.div`
     content: "";
     position: absolute;
     top: 0;
-    width: 400px; /* 블러 영역 너비 -> 뷰 포인트에 따라 조절 필요*/
+    width: 400px; //블러 영역 너비 -> 뷰 포인트에 따라 조절 필요
     height: 100%;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
   }
 
