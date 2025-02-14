@@ -36,37 +36,44 @@ export default function InfoBox({ selectedTrack }: InfoBoxProps) {
       {/* 담당 교수 정보 */}
       <S.ProfessorNameContainer>
         <S.ProfessorText>담당 교수</S.ProfessorText>
-        <S.ProfessorName>{selectedTrack.professorData.name}</S.ProfessorName>
+        
       </S.ProfessorNameContainer>
       <S.ProfessorProfile>
-        <S.ProfessorImage src={selectedTrack.professorData.image} alt="Professor" />
-      
-        <S.ProfileList>
-          <S.ProfileListItem>
-            <S.ProfileListKey>&bull; 연락처</S.ProfileListKey>
-            <S.ProfileListValue>{selectedTrack.professorData.phone}</S.ProfileListValue>
-          </S.ProfileListItem>
-          <S.ProfileListItem>
-            <S.ProfileListKey>&bull; 최종학력</S.ProfileListKey>
-            <S.ProfileListValue>{selectedTrack.professorData.education}</S.ProfileListValue>
-          </S.ProfileListItem>
-          <S.ProfileListItem>
-            <S.ProfileListKey>&bull; 이메일</S.ProfileListKey>
-            <S.ProfileListValue>{selectedTrack.professorData.email}</S.ProfileListValue>
-          </S.ProfileListItem>
-          <S.ProfileListItem>
-            <S.ProfileListKey>&bull; 전공분야</S.ProfileListKey>
-            <S.ProfileListValue>{selectedTrack.professorData.major}</S.ProfileListValue>
-          </S.ProfileListItem>
-          <S.ProfileListItem>
-            <S.ProfileListKey>&bull; 연구실</S.ProfileListKey>
-            <S.ProfileListValue>{selectedTrack.professorData.location}</S.ProfileListValue>
-          </S.ProfileListItem>
-          <S.ProfileListItem>
-            <S.ProfileListKey>&bull; 연구분야</S.ProfileListKey>
-            <S.ProfileListValue>{selectedTrack.professorData.research}</S.ProfileListValue>
-          </S.ProfileListItem>
-        </S.ProfileList>
+        <S.ProfessorProfileContent>
+          <S.ProfessorImage src={selectedTrack.professorData.image} alt="Professor" />
+          <S.HomepageButton>홈페이지</S.HomepageButton>
+        </S.ProfessorProfileContent>
+        
+        <S.ProfessorContent>
+          <S.ProfessorName>{selectedTrack.professorData.name}</S.ProfessorName>
+
+          <S.ProfileList>
+            <S.ProfileListItem>
+              <S.ProfileInfo>&bull; 연락처</S.ProfileInfo>
+              <S.ProfileInfo>{selectedTrack.professorData.phone}</S.ProfileInfo>
+            </S.ProfileListItem>
+            <S.ProfileListItem>
+              <S.ProfileListKey>&bull; 최종학력</S.ProfileListKey>
+              <S.ProfileListValue>{selectedTrack.professorData.education}</S.ProfileListValue>
+            </S.ProfileListItem>
+            <S.ProfileListItem>
+              <S.ProfileInfo>&bull; 이메일</S.ProfileInfo>
+              <S.ProfileInfo>{selectedTrack.professorData.email}</S.ProfileInfo>
+            </S.ProfileListItem>
+            <S.ProfileListItem>
+              <S.ProfileListKey>&bull; 전공분야</S.ProfileListKey>
+              <S.ProfileListValue>{selectedTrack.professorData.major}</S.ProfileListValue>
+            </S.ProfileListItem>
+            <S.ProfileListItem>
+              <S.ProfileInfo>&bull; 연구실</S.ProfileInfo>
+              <S.ProfileInfo>{selectedTrack.professorData.location}</S.ProfileInfo>
+            </S.ProfileListItem>
+            <S.ProfileListItem>
+              <S.ProfileListKey>&bull; 연구분야</S.ProfileListKey>
+              <S.ProfileListValue>{selectedTrack.professorData.research}</S.ProfileListValue>
+            </S.ProfileListItem>
+          </S.ProfileList>
+        </S.ProfessorContent>
       </S.ProfessorProfile>
     </S.Container>
   );

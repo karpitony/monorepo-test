@@ -4,6 +4,7 @@ import GitHubIcon from '@/assets/githubLogo2.png';
 import InstagramIcon from '@/assets/InstagramLogo2.png';
 import LinktreeIcon from '@/assets/LinktreeLogo.png';
 import DGUIcon from "@/assets/DGULogo.png"
+import Popup from '@/components/Popup/Popup';
 
 const BottomInfo = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -64,16 +65,12 @@ const BottomInfo = () => {
         </S.NotificationContainer>
       </S.RequirementsBox>
 
-      {/* 팝업 -> 나중에 공용 컴포넌트로 뺄까 고민 중*/}
-      {isPopupOpen && (
-        <S.PopupOverlay onClick={() => setPopupOpen(false)}>
-          <S.PopupBox onClick={(e) => e.stopPropagation()}>
-            <S.PopupText>지금은 모집 기간이 아닙니다.</S.PopupText>
-            <S.PopupText>공개 모집 예정: 2025년 2월</S.PopupText>
-            <S.PopupCloseButton onClick={() => setPopupOpen(false)}>확인</S.PopupCloseButton>
-          </S.PopupBox>
-        </S.PopupOverlay>
-      )}
+      <Popup 
+        isOpen={isPopupOpen} 
+        onClose={() => setPopupOpen(false)} 
+        title={"지금은 모집 기간이 아닙니다."} 
+        content={"공개 모집 예정: 2025년 2월"}
+      />
     </S.BottomInfoContainer>
   );
 };

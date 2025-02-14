@@ -36,10 +36,10 @@ export const TrackDescription = styled.p`
   width: 1040px;
   height: 200px;
   color: var(--FarmSystem_Black, #191919);
-  font-size: 20px;
+  font-size: 19px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 30px; /* 150% */
+  font-weight: 300;
+  line-height: 35px; /* 150% */
 `;
 
 export const PhasesContainer = styled.div`
@@ -83,7 +83,7 @@ export const PhaseContent = styled.ul`
   justify-content: center;
 
   color: var(--FarmSystem_Black, #191919);
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 150% */
@@ -114,10 +114,11 @@ export const ProfessorText = styled.p`
 `;
 
 export const ProfessorName = styled.p`
-  color: var(--FarmSystem_Black, #191919);
+  width: 100%;
+  color: #404040;
   font-size: 24px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 29px; /* 120.833% */
 `;
 
@@ -130,21 +131,52 @@ export const ProfessorProfile = styled.div`
   gap: 38px;
 `;
 
+export const ProfessorProfileContent = styled.div`
+  width: 180px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ProfessorImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   flex-shrink: 0;
   aspect-ratio: 1/1;
+  border-radius: 10px;
+`;
+
+export const HomepageButton = styled.a`
+  background-color: #FCFCFC;
+  color: #404040;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 5px 17px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 15px;
+  display: inline-block;
+  &:hover {
+    background-color: #E1E1E1;
+  }
+`;
+
+export const ProfessorContent = styled.div`
+  width: 100%;
+  height: 160px;
 `;
 
 export const ProfileList = styled.ul`
   list-style-type: none;
   list-style-position: inside;
-
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1.5fr; 
   column-gap: 30px;
   row-gap: 15px;
+  margin-top: 20px;
 `;
 
 export const ProfileListItem = styled.li`
@@ -154,19 +186,27 @@ export const ProfileListItem = styled.li`
   align-items: center;
 `;
 
+export const ProfileInfo = styled.p`
+  color: #635C55;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px; /* 100% */
+`;
+
 export const ProfileListKey = styled.p`
   color: var(--FarmSystem_Black, #191919);
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 100% */
 `;
 
 export const ProfileListValue = styled.p`
-  width: 300px;
+  width: 70%;
   flex-shrink: 0;
   color: var(--FarmSystem_Black, #191919);
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 100% */

@@ -1,16 +1,12 @@
 import * as S from './Intro.styled.tsx';
 import logo from '../../../assets/FarmLogo.png';
 import { useState } from 'react';
-import FarmSystemNav from '../FarmSyetemNav/FarmSystemNav.tsx';
+import Popup from '@/components/Popup/Popup.tsx';
 
 const Intro = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   return (
     <S.Container id="about">
-      {/* 네비게이션을 오른쪽 정렬하기 위한 래퍼 */}
-      <S.NavWrapper>
-        <FarmSystemNav/>
-      </S.NavWrapper>
 
       <S.Bud>🌱</S.Bud>
       <S.Description>
@@ -32,16 +28,12 @@ const Intro = () => {
         <S.ApplyDescription>2025년 2월 공개 모집 예정</S.ApplyDescription>
       </S.Apply>
 
-      {/* 팝업 수빈님 것과 통일 */}
-      {isPopupOpen && (
-        <S.PopupOverlay onClick={() => setPopupOpen(false)}>
-          <S.PopupBox onClick={(e) => e.stopPropagation()}>
-            <S.PopupText>지금은 모집 기간이 아닙니다.</S.PopupText>
-            <S.PopupText>공개 모집 예정: 2025년 2월</S.PopupText>
-            <S.PopupCloseButton onClick={() => setPopupOpen(false)}>확인</S.PopupCloseButton>
-          </S.PopupBox>
-        </S.PopupOverlay>
-      )}
+      <Popup 
+        isOpen={isPopupOpen} 
+        onClose={() => setPopupOpen(false)} 
+        title={"지금은 모집 기간이 아닙니다."} 
+        content={"공개 모집 예정: 2025년 2월"}
+      />
     </S.Container>
   );
 };
