@@ -51,7 +51,7 @@ export default function Header() {
         isOpen={isPopupOpen} 
         onClose={() => setPopupOpen(false)} 
         title={"아직 오픈되지 않았습니다."} 
-        content={"오픈픈 예정: 2025년 4월"} 
+        content={"오픈 예정: 2025년 4월"} 
       />
     </S.HeaderContainer>
   );
