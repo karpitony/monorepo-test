@@ -116,9 +116,9 @@ export const Li = styled.li<{
   font-size: ${(props) =>
     props.$isMobile
       ? props.$isTiny
-        ? "18px"
-        : "20px"
-      : "24px"};
+        ? "16px"
+        : "18px"
+      : "22px"};
   line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Black);
 

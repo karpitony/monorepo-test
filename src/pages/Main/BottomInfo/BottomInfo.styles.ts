@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-export const BottomInfoContainer = styled.div`
+export const BottomInfoContainer = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: 100vw;
-  max-width: 1440px;
+  max-width: ${({ $isMobile, $isTablet }) => ($isMobile ? "100%" : $isTablet ? "90%" : "1440px")};
   margin: 80px auto;
   text-align: center;
-  padding: 60px 0;
+  padding: ${({ $isMobile }) => ($isMobile ? "40px 0" : "60px 0")};
 `;
 
-export const Title = styled.h2`
-  font-size: 36px;
+export const Title = styled.h2<{ $isMobile: boolean; $isTablet: boolean }>`
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "25px" : $isTablet ? "32px" : "36px")};
   color: #191919;
   font-weight: bold;
   margin-bottom: 30px;
@@ -19,10 +19,10 @@ export const Highlight = styled.span`
   color: #28723f;
 `;
 
-export const IconsContainer = styled.div`
+export const IconsContainer = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: ${({ $isMobile }) => ($isMobile ? "20px" : "50px")};
   margin-bottom: 40px;
 `;
 
@@ -35,78 +35,77 @@ export const IconLink = styled.a`
   }
 `;
 
-export const Icon = styled.img`
-  width: 75px;
-  height: 75px;
+export const Icon = styled.img<{ $isMobile: boolean}>`
+  width: ${({ $isMobile }) => ($isMobile ? "50px" : "70px")};
+  height: ${({ $isMobile }) => ($isMobile ? "50px" : "70px")};
   object-fit: cover;
 `;
 
-export const RequirementsBox = styled.div`
-  width: 900px;
+export const RequirementsBox = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "90%" : $isTablet ? "80%" : "900px")};
   background-color: #e5e5e5;
   border-radius: 10px;
-  padding: 50px;
+  padding: ${({ $isMobile }) => ($isMobile ? "30px" : "50px")};
   margin: 0 auto;
   text-align: left;
-`;
-
-export const RequirementsTitle = styled.h3`
-  font-size: 32px;
-  color: #175321;
-  margin-bottom: 40px;
 `;
 
 export const RequirementItem = styled.div`
   margin-bottom: 20px;
 `;
 
-export const RequirementTitle = styled.h4`
-  font-size: 24px;
+export const RequirementsTitle = styled.h3<{ $isMobile: boolean; $isTablet: boolean }>`
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "24px" : $isTablet ? "28px" : "32px")};
+  color: #175321;
+  margin-bottom: 40px;
+`;
+
+export const RequirementTitle = styled.h4<{ $isMobile: boolean }>`
+  font-size: ${({ $isMobile }) => ($isMobile ? "20px" : "24px")};
   font-weight: bold;
 `;
 
-export const RequirementText = styled.p`
-  font-size: 20px;
+export const RequirementText = styled.p<{ $isMobile: boolean }>`
+  font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "20px")};
   font-weight: 500;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
-  justify-content: flex-end; /* 오른쪽 정렬 */
+  justify-content: flex-end;
   margin-top: 40px;
 `;
 
-export const ApplyButton = styled.button`
-width: 240px;
+export const ApplyButton = styled.button<{ $isMobile: boolean }>`
+  width: ${({ $isMobile }) => ($isMobile ? "180px" : "240px")};
   background-color: #49aa59;
   color: #ffffff;
-  font-size: 20px;
+  font-size: ${({ $isMobile }) => ($isMobile ? "18px" : "20px")};
   padding: 12px 24px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0px 2px 10px rgba(25, 25, 25, 0.2);
-
   &:hover {
     background-color: #3b8a48;
   }
 `;
 
+
 export const NotificationContainer = styled.div`
   display: flex;
-  justify-content: flex-end; /* 오른쪽 정렬 */
+  justify-content: flex-end;
   margin-top: 10px;
   padding-right: 20px;
 `;
 
-export const NotificationLink = styled.a`
-  font-size: 18px;
+export const NotificationLink = styled.a<{ $isMobile: boolean }>`
+  font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "18px")};
   color: #333;
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
   display: inline-block;
-
   &:hover {
     text-decoration: underline;
     color: #28723f;
