@@ -6,7 +6,10 @@ export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     align-items: flex-start;
     justify-content: center;
     height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "110vh")};
-    background: linear-gradient(90deg, #28723F, #A2E9B8);
+    background: ${({ $isMobile }) => (
+        $isMobile ? "linear-gradient(90deg, #28723F, #75e298)" 
+        : "linear-gradient(90deg, #28723F, #A2E9B8)"
+    )};
     padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
     color: white;
 `;
