@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   z-index: 2;
+  overflow-x: hidden;
 
   &::before, &::after {
     content: "";
