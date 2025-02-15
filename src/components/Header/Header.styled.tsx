@@ -23,34 +23,22 @@ export const Nav = styled.nav`
   align-items: flex-end;
   justify-content: flex-start;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const NavItem = styled.a`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
   color: #49aa59;
   cursor: pointer;
-  margin-left: 30px;
+  margin: 10px 0;
   &:hover {
     color: #28723f;
   }
-`;
-
-export const NavLineActive = styled.img`
-  position: absolute;
-  top: 30px;
-  width: 120px;
-`;
-
-export const NavLineInactive = styled.img`
-  position: absolute;
-  top: 30px;
-  width: 120px;
 `;
 
 export const FarmingLogButton = styled.button`
@@ -68,4 +56,40 @@ export const FarmingLogButton = styled.button`
   &:hover {
     background-color: #1f5a2f;
   }
+`;
+
+export const HamburgerIcon = styled.img`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+export const MobileNavWrapper = styled.div<{ $isMenuOpen: boolean }>`
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  height: ${({ $isMenuOpen }) => ($isMenuOpen ? "auto" : "0")};
+  opacity: ${({ $isMenuOpen }) => ($isMenuOpen ? "1" : "0")};
+  transform: ${({ $isMenuOpen }) => ($isMenuOpen ? "translateY(0)" : "translateY(-10px)")};
+  transition: height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+`;
+
+export const MobileNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
