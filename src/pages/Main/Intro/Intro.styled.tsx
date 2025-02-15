@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: 110vh;
+    height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "110vh")};
     background: linear-gradient(90deg, #28723F, #A2E9B8);
-    padding: 50px;
+    padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
     color: white;
 `;
 
@@ -19,28 +19,32 @@ export const NavWrapper = styled.div`
     margin-bottom: 20px;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     display: flex;
     align-items: center;
-    font-size: 64px;
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "40px" : $isTablet ? "50px" : "64px")};
     font-weight: 800;
     margin-bottom: 20px;
     margin-left: 50px;
+    img {
+        width: ${({ $isMobile, $isTablet }) => ($isMobile ? "100px" : $isTablet ? "140px" : "180px")};
+        height: auto;
+    }
 `;
 
-export const Description = styled.p`
-    font-size: 24px;
+export const Description = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "16px" : $isTablet ? "20px" : "24px")};
     line-height: 1.5;
     max-width: 600px;
     margin-bottom: 20px;
     margin-left: 50px;
 `;
 
-export const TrackList = styled.p`
+export const TrackList = styled.p<{ $isMobile: boolean; $isTablet: boolean, $isTiny: boolean}>`
     a {    
         font-weight: 600;
     }
-    font-size: 24px;
+    font-size: ${({ $isTiny, $isMobile, $isTablet }) => ($isTiny ? "12px" : $isMobile ? "15px" : $isTablet ? "20px" : "24px")};
     line-height: 1.5;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -54,13 +58,13 @@ export const Apply = styled.div`
     margin-left: 50px;
 `;
 
-export const ApplyButton = styled.button`
+export const ApplyButton = styled.button<{ $isMobile: boolean; $isTablet: boolean }>`
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 15px 80px;
+    padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px 50px" : $isTablet ? "12px 65px" : "15px 80px")};
     border-radius: 10px;
-    font-size: 24px;
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "18px" : $isTablet ? "22px" : "24px")};
     margin-top: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     
@@ -69,6 +73,7 @@ export const ApplyButton = styled.button`
     }
 `;
 
+
 export const ApplyDescription = styled.div`
     font-size: 16px;
     margin-left: 20px;
@@ -76,11 +81,10 @@ export const ApplyDescription = styled.div`
     color: #E8F5E9;
 `;
 
-export const Bud = styled.div`
-    margin-left: 100px;
-    font-size: 64px;
+export const Bud = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "40px" : $isTablet ? "50px" : "64px")};
+    margin-left: ${({ $isMobile, $isTablet }) => ($isMobile ? "30px" : $isTablet ? "40px" : "50px")};
     top: 116px;
-    margin-left: 50px;
 `;
 
 /* 팝업 스타일 */
