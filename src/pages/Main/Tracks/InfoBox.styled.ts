@@ -101,7 +101,7 @@ export const ProfessorNameContainer = styled.div<{ $isMobile: boolean }>`
   margin-bottom: ${({ $isMobile }) => ($isMobile ? "10px" : "15px")};
 `;
 
-export const ProfessorText = styled.p<{ $isMobile: boolean }>`
+export const ProfessorText = styled.p < { $isMobile: boolean}>`
   color: var(--FarmSystem_Green07, #175321);
   font-size: ${({ $isMobile }) => ($isMobile ? "20px" : "24px")};
   font-weight: 700;
@@ -110,7 +110,7 @@ export const ProfessorText = styled.p<{ $isMobile: boolean }>`
 `;
 
 /** 교수 정보 전체 레이아웃 (좌: 사진/이름/연락처, 우: 최종학력 등) */
-export const ProfessorProfile = styled.div<{ $isDesktop: boolean }>`
+export const ProfessorProfile = styled.div<{ $isDesktop: boolean; $isMobile: boolean  }>`
   display: flex;
   flex-direction: ${({ $isDesktop }) => ($isDesktop ? "row" : "column")};
 

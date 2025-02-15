@@ -41,7 +41,7 @@ export default function InfoBox({ selectedTrack }: InfoBoxProps) {
     <S.ProfessorText $isMobile={isMobile}>담당 교수</S.ProfessorText>
   </S.ProfessorNameContainer>
 
-  <S.ProfessorProfile $isDesktop={isDesktop}>
+  <S.ProfessorProfile $isDesktop={isDesktop} $isMobile={isMobile}>
   {/* 왼쪽 섹션: 교수 사진/이름/연락처 */}
   <S.ProfessorProfileContent $isDesktop={isDesktop}>
     <S.PhotoNameRow $isMobile={isMobile}>
