@@ -1,5 +1,4 @@
 import * as S from './InfoBox.styled';
-import RobotArm from '@/assets/Icons/robotarm.png';
 import { TrackDataInterface } from './TracksData';
 import useMediaQueries from "@/hooks/useMediaQueries";
 
