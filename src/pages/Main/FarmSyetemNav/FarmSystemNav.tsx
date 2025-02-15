@@ -1,8 +1,10 @@
 import * as S from './FarmSystemNav.styled';
 import { useState, useEffect } from 'react';
+import useMediaQueries from '@/hooks/useMediaQueries';
 
 export default function FarmSystemNav() {
   const [isVisible, setIsVisible] = useState(false);
+  const { isMobile } = useMediaQueries();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,21 +32,20 @@ export default function FarmSystemNav() {
     }
   };
 
-
   return (
-    <S.FixedNavWrapper isVisible={isVisible}>
-      <S.Navbar>
-        <S.NavItem href="#about" onClick={(e) => handleSmoothScroll(e, "#about")}>
-          <S.Circle /> Farm System이란?
+    <S.FixedNavWrapper isVisible={isVisible} $isMobile={isMobile}>
+      <S.Navbar $isMobile={isMobile}>
+        <S.NavItem $isMobile={isMobile} href="#about" onClick={(e) => handleSmoothScroll(e, "#about")}>
+          <S.Circle $isMobile={isMobile} /> Farm System이란?
         </S.NavItem>
-        <S.NavItem href="#tracks" onClick={(e) => handleSmoothScroll(e, "#tracks")}>
-          <S.Circle /> 트랙 및 커리큘럼
+        <S.NavItem $isMobile={isMobile} href="#tracks" onClick={(e) => handleSmoothScroll(e, "#tracks")}>
+          <S.Circle $isMobile={isMobile} /> 트랙 및 커리큘럼
         </S.NavItem>
-        <S.NavItem href="#achievements" onClick={(e) => handleSmoothScroll(e, "#achievements")}>
-          <S.Circle /> 활동 및 성과
+        <S.NavItem $isMobile={isMobile} href="#achievements" onClick={(e) => handleSmoothScroll(e, "#achievements")}>
+          <S.Circle $isMobile={isMobile} /> 활동 및 성과
         </S.NavItem>
-        <S.NavItem href="#eligibility" onClick={(e) => handleSmoothScroll(e, "#eligibility")}>
-          <S.Circle /> 지원 요건
+        <S.NavItem $isMobile={isMobile} href="#eligibility" onClick={(e) => handleSmoothScroll(e, "#eligibility")}>
+          <S.Circle $isMobile={isMobile} /> 지원 요건
         </S.NavItem>
       </S.Navbar>
     </S.FixedNavWrapper>
