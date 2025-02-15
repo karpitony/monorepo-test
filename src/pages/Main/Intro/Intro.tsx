@@ -84,8 +84,8 @@ const Intro = () => {
         <Popup 
           isOpen={isPopupOpen} 
           onClose={() => setPopupOpen(false)} 
-          title={"앱에서 더 많은 기능을 제공합니다."} 
-          content={"추가적인 정보는 2025년 2월 공개 예정입니다."} 
+          title={"지금은 모집 기간이 아닙니다."} 
+          content={"공개 모집 예정: 2025년 2월월"} 
         />
       </S.AppContainer>
     );
