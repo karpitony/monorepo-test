@@ -16,7 +16,6 @@ export const Container = styled.div<{ $isMobile: boolean }>`
 export const TrackNameContainer = styled.div`
   width: 100%;
   margin-bottom: 32px;
-
   display: flex;
   justify-content: start;
   align-items: center;
@@ -25,9 +24,8 @@ export const TrackNameContainer = styled.div`
 
 export const TrackName = styled.h2<{ $isMobile: boolean }>`
   width: 338px;
-
   color: var(--FarmSystem_Green07, #175321);
-  font-size: ${({ $isMobile }) => ($isMobile ? "24px" : "32px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "22px" : "32px")};
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -37,12 +35,14 @@ export const TrackName = styled.h2<{ $isMobile: boolean }>`
 export const TrackDescription = styled.p<{ $isMobile: boolean }>`
   width: 100%;
   max-width: 1040px;
-  height: 200px;
+  height: 100%;
+  margin-bottom: 30px;
+  text-align: left;
   color: var(--FarmSystem_Black, #191919);
-  font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "19px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "19px")};
   font-style: normal;
   font-weight: 300;
-  line-height: ${({ $isMobile }) => ($isMobile ? "30px" : "35px")}; /* 150% */
+  line-height: ${({ $isMobile }) => ($isMobile ? "25px" : "35px")}; /* 150% */
 `;
 
 export const PhasesContainer = styled.div<{ $isMobile: boolean }>`
@@ -54,9 +54,9 @@ export const PhasesContainer = styled.div<{ $isMobile: boolean }>`
   flex-wrap: wrap;
 `;
 
-export const PhaseCard = styled.div<{ $isMobile: boolean }>`
+export const PhaseCard = styled.div<{ $isDesktop: boolean }>`
   display: flex;
-  width: ${({ $isMobile }) => ($isMobile ? "100%" : "300px")};
+  width: ${({ $isDesktop }) => ($isDesktop ? "300px" : "100%")};
   padding: 20px;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +72,7 @@ export const PhaseTitle = styled.h3<{ $isMobile: boolean }>`
   font-size: ${({ $isMobile }) => ($isMobile ? "18px" : "24px")};
   font-weight: 700;
   line-height: normal;
+  margin-top: 15px;
   margin-bottom: ${({ $isMobile }) => ($isMobile ? "0px" : "11px")};
   font-style: normal;
 `;
@@ -87,6 +88,7 @@ export const PhaseContent = styled.ul<{ $isMobile: boolean }>`
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 150% */
+
 `;
 
 export const Li = styled.li<{ $isMobile: boolean }>`
@@ -94,44 +96,43 @@ export const Li = styled.li<{ $isMobile: boolean }>`
   color: var(--FarmSystem_Black, #191919);
 `;
 
-
-/** 전체를 감싸는 컨테이너 (기존 S.Container가 있다고 가정) */
-// export const Container = styled.div` ... `;
-// 이미 프로젝트 내에 S.Container가 있으시면 그대로 사용하세요.
-
-/** "담당 교수" 제목 + 아래 컨텐츠를 감싸는 영역 */
 export const ProfessorNameContainer = styled.div<{ $isMobile: boolean }>`
   width: 100%;
   margin-bottom: ${({ $isMobile }) => ($isMobile ? "10px" : "15px")};
 `;
 
-/** "담당 교수" 텍스트 */
 export const ProfessorText = styled.p<{ $isMobile: boolean }>`
   color: var(--FarmSystem_Green07, #175321);
-  font-size: ${({ $isMobile }) => ($isMobile ? "18px" : "24px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "20px" : "24px")};
   font-weight: 700;
-  margin: 0;
+  margin: ${({ $isMobile }) => ($isMobile ? "10px" : "0px")};
   text-align: left;
 `;
 
-/** 전체 레이아웃을 좌우 2개 컬럼(왼쪽: 사진/이름/연락처, 오른쪽: 학력/전공/연구)으로 배치 */
-export const ProfessorProfile = styled.div<{ $isMobile: boolean }>`
+/** 교수 정보 전체 레이아웃 (좌: 사진/이름/연락처, 우: 최종학력 등) */
+export const ProfessorProfile = styled.div<{ $isDesktop: boolean }>`
   display: flex;
-  flex-direction: ${({ $isMobile }) => ($isMobile ? "column" : "row")};
-  justify-content: space-between;
+  flex-direction: ${({ $isDesktop }) => ($isDesktop ? "row" : "column")};
+
+  /* 오른쪽 정보가 너무 오른쪽으로 치우치지 않도록 flex-start */
+  justify-content: flex-start;
+
+  /* 데스크탑에서는 gap을 넉넉히 주어 좌우 공간 확보 */
+  gap: ${({ $isMobile }) => ($isMobile ? "20px" : "10px")};
   align-items: flex-start;
-  gap: ${({ $isMobile }) => ($isMobile ? "20px" : "30px")};
   width: 100%;
 `;
 
-/** 왼쪽 컬럼(사진/이름/연락처/홈페이지) */
-export const ProfessorProfileContent = styled.div<{ $isMobile: boolean }>`
+/** 왼쪽 섹션 (교수 사진/이름/연락처) */
+export const ProfessorProfileContent = styled.div<{ $isDesktop: boolean }>`
   display: flex;
   flex-direction: column;
-  width: ${({ $isMobile }) => ($isMobile ? "100%" : "60%")};
+
+  /* 예: 데스크탑에서 60% */
+  width: ${({ $isDesktop }) => ($isDesktop ? "50%" : "100%")};
 `;
 
-/** 교수 사진 + 이름을 가로로 배치하는 컨테이너 */
+/** 사진 + 이름을 가로/세로 배치하는 컨테이너 */
 export const PhotoNameRow = styled.div<{ $isMobile: boolean }>`
   display: flex;
   flex-direction: ${({ $isMobile }) => ($isMobile ? "column" : "row")};
@@ -140,34 +141,36 @@ export const PhotoNameRow = styled.div<{ $isMobile: boolean }>`
   margin-bottom: 15px;
 `;
 
-/** 교수 사진 */
 export const ProfessorImage = styled.img<{ $isMobile: boolean }>`
   width: ${({ $isMobile }) => ($isMobile ? "90px" : "120px")};
-  height: ${({ $isMobile }) => ($isMobile ? "90px" : "120px")};
+  height: ${({ $isMobile }) => ($isMobile ? "100px" : "140px")};
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid #ddd;
 `;
 
-/** 교수 이름 */
 export const ProfessorName = styled.p<{ $isMobile: boolean }>`
   font-size: ${({ $isMobile }) => ($isMobile ? "18px" : "22px")};
   font-weight: 700;
   color: #404040;
-  margin: 0;
+  margin-top: 10px;
+  text-align: ${({ $isMobile }) => ($isMobile ? "center" : "left")};
 `;
 
-/** 연락처/이메일/연구실을 나열하는 리스트 */
 export const ContactList = styled.ul<{ $isMobile: boolean }>`
   list-style: none;
   padding: 0;
-  margin: 0 0 10px;
+  margin: 10px 0 10px 10px;
   display: flex;
   flex-direction: column;
   gap: ${({ $isMobile }) => ($isMobile ? "6px" : "8px")};
+
+  /* ProfessorName의 스타일 상속을 방지하기 위해 명시적으로 재설정 */
+  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "16px")};
+  font-weight: normal;
+  color: #635c55;
 `;
 
-/** 연락처/이메일/연구실 각각의 아이템 */
 export const ContactItem = styled.li<{ $isMobile: boolean }>`
   font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "16px")};
   color: #635c55;
@@ -176,7 +179,7 @@ export const ContactItem = styled.li<{ $isMobile: boolean }>`
   gap: 6px;
 `;
 
-/** 홈페이지 버튼 */
+/** 홈페이지 버튼 (필요 시 사용) */
 export const HomepageButton = styled.a<{ $isMobile: boolean }>`
   width: fit-content;
   background-color: #fcfcfc;
@@ -194,31 +197,37 @@ export const HomepageButton = styled.a<{ $isMobile: boolean }>`
   }
 `;
 
-/** 오른쪽 컬럼(최종학력/전공분야/연구분야) */
 export const ProfessorContent = styled.div<{ $isMobile: boolean }>`
-  width: ${({ $isMobile }) => ($isMobile ? "100%" : "35%")};
+  width: 100%;
+  margin-top: ${({ $isMobile }) => ($isMobile ? "0" : "20px")};
 `;
 
-/** 오른쪽 리스트(최종학력, 전공분야, 연구분야) */
-export const ProfileList = styled.ul<{ $isMobile: boolean }>`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: ${({ $isMobile }) => ($isMobile ? "8px" : "10px")};
+export const ProfileContainer = styled.div<{  $isDesktop: boolean;
+  $isMobile: boolean; $isTablet: boolean;}>`
+  width: ${({ $isDesktop }) => ($isDesktop ? "50%" : "100%")};
+  heigt: 300px;
+  display: grid;
+  grid-template-columns: ${({ $isDesktop, $isTablet, $isMobile }) =>
+    $isDesktop ? "120px 1fr" : $isTablet ? "100px 1fr" : $isMobile ? "50px 1fr" : "50px 1fr"};  gap: ${({ $isDesktop }) => ($isDesktop ? "12px" : "8px")};
+  background-color: #fafafa;
+  padding: ${({ $isDesktop }) => ($isDesktop ? "30px" : "10px")};
+  border-radius: 8px;
+  margin-right: 40px;
 `;
 
-/** 오른쪽 리스트 아이템 */
-export const ProfileListItem = styled.li<{ $isMobile: boolean }>`
-  display: flex;
-  flex-direction: ${({ $isMobile }) => ($isMobile ? "column" : "row")};
-  gap: 6px;
-  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "16px")};
+export const ProfileLabel = styled.div<{ $isMobile: boolean}>`
+  font-weight: 600;
+  color: #404040;
+  text-align: left;
+  font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
+
+
+`;
+
+export const ProfileValue = styled.div<{ $isMobile: boolean}>`
+  font-weight: 400;
   color: #635c55;
-`;
+  line-height: 1.4;
+  font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
 
-/** 불릿/라벨( ex: &bull; 최종학력 ) */
-export const ProfileInfo = styled.p<{ $isMobile: boolean }>`
-  margin: 0;
 `;
