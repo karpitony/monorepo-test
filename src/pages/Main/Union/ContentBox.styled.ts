@@ -61,20 +61,21 @@ export const ContentInfoTextBox = styled.div<{ $isMobile: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: ${(props) => (props.$isMobile ? "start" : "center")};
 
   margin-bottom: 35px;
   padding-top: ${(props) => (props.$isMobile ? "20px" : "0")};
   padding-bottom: ${(props) => (props.$isMobile ? "20px" : "0")};
 `;
 
-export const HighlightOrange = styled.span`
+export const HighlightOrange = styled.span<{ $isMobile: boolean }>`
   font-weight: 700;
   color: var(--FarmSystem_Orange);
+  margin-left: ${(props) => (props.$isMobile ? "10px" : "0")};
 `;
 
 export const ActivityTitle = styled.h3<{ $isMobile: boolean }>`
-  width: ${(props) => (props.$isMobile ? "auto" : "149px")};
+  width: ${(props) => (props.$isMobile ? "100%" : "149px")};
   height: ${(props) => (props.$isMobile ? "auto" : "38px")};
 
   font-weight: 700;
@@ -90,12 +91,12 @@ export const ActivityTitle = styled.h3<{ $isMobile: boolean }>`
   margin-bottom: ${(props) => (props.$isMobile ? "7px" : "17px")};
 `;
 
-export const ActivityList = styled.ul<{ $isMobile: boolean }>`
+export const ActivityList = styled.ul<{ $isMobile: boolean; $isTiny: boolean; }>`
   width: ${(props) => (props.$isMobile ? "90%" : "577px")};
   height: ${(props) => (props.$isMobile ? "auto" : "80px")};
 
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.$isTiny ? "col" : "row")};
   flex-wrap: wrap;
   align-items: flex-end;
   align-content: flex-start;
@@ -122,15 +123,12 @@ export const Li = styled.li<{
   line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Black);
 
-  list-style-type: ${(props) =>
-    props.$isMobile && props.$isTiny ? "none" : "disc"};
+  list-style-type: disc;
   list-style-position: ${(props) =>
     props.$isMobile && props.$isTiny ? "none" : "outside"};
   margin-left: ${(props) =>
     props.$isMobile
-      ? props.$isTiny
-        ? "0px"
-        : "20px"
+      ? "20px"
       : "40px"};
   text-align: center;
 `;
