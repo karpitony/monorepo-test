@@ -7,11 +7,13 @@ interface FixedNavProps {
 
 export const FixedNavWrapper = styled.div<FixedNavProps>`
   position: fixed;
-  top: ${({ isVisible }) => (isVisible ? "10px" : "-50px")};
-  right: 20px;
+  top: ${({ isVisible, $isMobile }) =>
+    !$isMobile ? (isVisible ? "30px" : "-50px") :(isVisible ? "20px" : "-150px")};
+  right: ${({ $isMobile }) => ($isMobile ? "20px" : "50px")};
   transition: top 0.3s ease-in-out;
   z-index: 1000;
 `;
+
 
 export const Navbar = styled.nav<{ $isMobile: boolean }>`
   background-color: #216D35;
