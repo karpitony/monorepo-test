@@ -1,0 +1,74 @@
+import { useState } from 'react';
+import * as S from './MobileNav.styled';
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+
+interface MobileNavProps {
+  currentSection: string;
+  handleSmoothScroll: (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string
+  ) => void;
+}
+
+const navItems = [
+  { id: "about", text: "Farm System이란?" },
+  { id: "tracks", text: "트랙 및 커리큘럼" },
+  { id: "achievements", text: "활동 및 성과" },
+  { id: "eligibility", text: "지원 요건" },
+];
+
+export default function MobileNav({ currentSection, handleSmoothScroll }: MobileNavProps) {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const currentNavItem = navItems.find(item => item.id === currentSection) ?? navItems[0];
+  console.log("Im rendering MobileNav");
+  return (
+    <S.MobileNavbar>
+      {/* 
+        isNavOpen이 false면 첫 번째 메뉴만 보이게, 
+        true면 모든 메뉴가 보이게 설정 
+      */}
+      {!isNavOpen && (
+        <S.MobileNavItem
+          href={"#" + currentNavItem.id}
+          onClick={(e) => handleSmoothScroll(e, currentNavItem.id)}
+        >
+          <S.MobileNavText>{currentNavItem.text}</S.MobileNavText>
+        </S.MobileNavItem>
+      )}
+
+      {isNavOpen && (
+        <>
+          <S.MobileNavItem
+            href="#about"
+            onClick={(e) => handleSmoothScroll(e, "#about")}
+          >
+            <S.MobileNavText>Farm System이란?</S.MobileNavText>
+          </S.MobileNavItem>
+          <S.MobileNavItem
+            href="#tracks"
+            onClick={(e) => handleSmoothScroll(e, "#tracks")}
+          >
+            <S.MobileNavText>트랙 및 커리큘럼</S.MobileNavText>
+          </S.MobileNavItem>
+          <S.MobileNavItem
+            href="#achievements"
+            onClick={(e) => handleSmoothScroll(e, "#achievements")}
+          >
+            <S.MobileNavText>활동 및 성과</S.MobileNavText>
+          </S.MobileNavItem>
+          <S.MobileNavItem
+            href="#eligibility"
+            onClick={(e) => handleSmoothScroll(e, "#eligibility")}
+          >
+            <S.MobileNavText>지원 요건</S.MobileNavText>
+          </S.MobileNavItem>
+        </>
+      )}
+
+      {/* 확장/축소 버튼 */}
+      <S.ExpandButton onClick={() => setIsNavOpen((prev) => !prev)}>
+        {isNavOpen ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
+      </S.ExpandButton>
+    </S.MobileNavbar>
+  );
+}
