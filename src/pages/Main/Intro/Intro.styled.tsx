@@ -1,18 +1,86 @@
 import styled from 'styled-components';
 
-export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
+export const AppContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 160vh;
+    background: linear-gradient(90deg, #102C19, #194326);
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+`;
+
+export const TopSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-top: 5vh;
+`;
+
+export const BottomSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-bottom: 15vh;
+`;
+
+export const IntroPhrase = styled.p`
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+`;
+
+export const IntroDescription = styled.p`
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #333; // 기본적으로 어두운 회색
+`;
+
+export const AppApplyButton = styled.div`
+    width: 110px;
+    height: 35px;
+    background-color: #28723F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 20px;
+`;
+
+export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean; $isApp: boolean, $isIpadPro: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "110vh")};
-    background: ${({ $isMobile }) => (
-        $isMobile ? "linear-gradient(90deg, #28723F, #75e298)" 
-        : "linear-gradient(90deg, #28723F, #A2E9B8)"
+    height: ${({ $isMobile, $isTablet, $isApp, $isIpadPro }) => 
+        $isMobile ? "75vh" : $isTablet ? "80vh" : $isApp ? "90vh" : $isIpadPro ? "105h" : "120vh"};
+    
+    background: ${({ $isMobile, $isTablet, $isApp }) => (
+        $isApp ? "linear-gradient(90deg, #102C19, #194326)" :
+        $isMobile ? "linear-gradient(90deg, #28723F, #75e298)" :
+        $isTablet ? "linear-gradient(90deg, #28723F, #A2E9B8)" :
+        "linear-gradient(90deg, #28723F, #A2E9B8)"
     )};
+
     padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
     color: white;
 `;
+
 
 /* 추가된 네비게이션 정렬용 스타일 */
 export const NavWrapper = styled.div`
