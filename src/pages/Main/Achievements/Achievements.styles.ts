@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AchievementsContainer = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: 100vw; 
-  min-width: 100%; 
+  min-width: 100%;
   padding: ${({ $isMobile }) => ($isMobile ? "40px 0" : "60px 0")};
   text-align: center;
   overflow-x: hidden; 
@@ -17,8 +17,8 @@ export const TitleArea = styled.div<{ $isMobile: boolean}>`
 `;
 
 export const Title = styled.h2<{ $isMobile: boolean; $isTablet: boolean }>`
-  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "400px" : $isTablet ? "510px" : "670px")};
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "28px" : $isTablet ? "36px" : "48px")};
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "340px" : $isTablet ? "510px" : "670px")};
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "24px" : $isTablet ? "36px" : "48px")};
   color: #191919;
   font-weight: bold;
   margin-bottom: 40px;
@@ -64,7 +64,7 @@ export const SliderWrapper = styled.div<{ $isMobile: boolean; $isTablet: boolean
     content: "";
     position: absolute;
     top: 0;
-    width: ${({ $isMobile, $isTablet }) => ($isMobile ? "160px" : $isTablet ? "250px" : "400px")};
+    width: ${({ $isMobile, $isTablet }) => ($isMobile ? "80px" : $isTablet ? "250px" : "400px")};
     height: 100%;
     z-index: 1;
     pointer-events: none;
@@ -96,8 +96,8 @@ export const StatsContainer = styled.div<{ $isMobile: boolean }>`
 const statColors = ["#62de88", "#5ccc7e", "#50b46f", "#48a164"];
 
 export const StatBox = styled.div<{ index: number; $isMobile: boolean; $isTablet: boolean }>`
-  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "180px" : $isTablet ? "220px" : "270px")};
-  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "180px" : $isTablet ? "220px" : "250px")};
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "140px" : $isTablet ? "220px" : "270px")};
+  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "140px" : $isTablet ? "220px" : "250px")};
   border-radius: 20px;
   background-color: ${({ index }) => statColors[index]}; /* 각 박스마다 다른 색상 적용 */
   display: flex;
