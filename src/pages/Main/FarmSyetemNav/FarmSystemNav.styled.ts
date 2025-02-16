@@ -45,34 +45,3 @@ export const Circle = styled.div<{ $isMobile: boolean }>`
   border-radius: 50%;
   margin-right: 6px;
 `;
-
-export const MobileNavbar = styled.div`
-  display: inline-flex;
-  height: 145px;
-  padding: 16px 19px 15px 19px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 20px 0px 20px 20px;
-  border: 1px solid var(--FarmSystem_White, #FCFCFC);
-  background: var(--FarmSystem_Green01, #28723F);
-`;
-
-export const MobileNavItem = styled.a`
-  display: flex;
-  padding: 5px 0px;
-  align-items: center;
-  gap: 5px;
-  flex: 1 0 0;
-`;
-
-export const MobileNavText = styled.p`
-  color: var(--FarmSystem_White, #FCFCFC);
-  text-align: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px; /* 160% */
-  letter-spacing: -0.24px;
-`;
