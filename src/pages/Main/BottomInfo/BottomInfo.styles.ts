@@ -9,10 +9,13 @@ export const BottomInfoContainer = styled.div<{ $isMobile: boolean; $isTablet: b
 `;
 
 export const Title = styled.h2<{ $isMobile: boolean; $isTablet: boolean }>`
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "25px" : $isTablet ? "32px" : "36px")};
+  width: ${({ $isMobile }) => ($isMobile ? "98vw" : "none" )}; /*아래 정보 타이틀 사이즈 조절*/
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "22px" : $isTablet ? "32px" : "36px")};
   color: #191919;
   font-weight: bold;
-  margin-bottom: 30px;
+  text-align: center;
+  margin: 0 auto; /*마진을 통한 중앙 정렬*/
+  padding-bottom: 30px; /* 링크 버튼과 거리 두기*/
 `;
 
 export const Highlight = styled.span`
@@ -92,15 +95,15 @@ export const ApplyButton = styled.button<{ $isMobile: boolean }>`
 `;
 
 
-export const NotificationContainer = styled.div`
+export const NotificationContainer = styled.div<{ $isMobile: boolean }>`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
-  padding-right: 20px;
+  padding-right: ${({ $isMobile }) => ($isMobile ? "12px" : "20px")};
 `;
 
 export const NotificationLink = styled.a<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "18px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "18px")};
   color: #333;
   text-decoration: none;
   font-weight: 500;

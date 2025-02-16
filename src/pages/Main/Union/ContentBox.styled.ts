@@ -130,24 +130,26 @@ export const Li = styled.li<{
   text-align: center;
 `;
 
-export const GradientContainer = styled.div<{ $isMobile: boolean }>`
+export const GradientContainer = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
   position: absolute;
   top: 0;
-  height: 500px;
 
   //높이 문제로 정상적으로 진행 못했던 것 같아서 모바일 뷰로 처리해서 해결 했습니다.
-  height: ${(props) => (props.$isMobile ? "330px" : "500px")};
+  height: ${(props) => (props.$isMobile ? "300px" : props.$isTablet ? "470px": "500px")};
 
   // 배경 Gradient를 모바일에서도 보이게 하려면 이 부분 고쳐주시면 됩니다!
   display: flex;
-  gap: 80px;
+
+  /*gap 차이로 인해 2개의 사각형 보이기 힘듦*/
+  gap: ${(props) => (props.$isMobile ? "60vw" : props.$isTablet ? "300px": "80px")};
   justify-content: center;
   align-items: center;
 `;
 
-export const GradientLeft = styled.div<{ $isMobile: boolean }>`
+export const GradientLeft = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
   width: ${(props) => (props.$isMobile ? "240px" : "560px")};
-  height: ${(props) => (props.$isMobile ? "200px" : "400px")};
+  height: ${(props) => (props.$isMobile ? "30vh" : props.$isTablet ? "300px" : "400px")};
+  /*일단 최대한 맞추어봤습니다. QA진행때 확인 다시하면 좋을 것 같습니다.*/
 
   background: linear-gradient(
     270deg,
@@ -158,9 +160,9 @@ export const GradientLeft = styled.div<{ $isMobile: boolean }>`
   border-radius: 20px;
 `;
 
-export const GradientRight = styled.div<{ $isMobile: boolean }>`
+export const GradientRight = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
   width: ${(props) => (props.$isMobile ? "240px" : "560px")};
-  height: ${(props) => (props.$isMobile ? "200px" : "400px")};
+  height: ${(props) => (props.$isMobile ? "30vh" : props.$isTablet ? "300px" : "400px")};
   
   background: linear-gradient(
     90deg,

@@ -52,7 +52,7 @@ const BottomInfo = () => {
         <S.ButtonContainer>
           <S.ApplyButton $isMobile={isMobile} onClick={() => setPopupOpen(true)}>지원하기</S.ApplyButton>
         </S.ButtonContainer>
-        <S.NotificationContainer>
+        <S.NotificationContainer $isMobile={isMobile}>
           <S.NotificationLink $isMobile={isMobile} href={googleFormLink} target="_blank" rel="noopener noreferrer">
             4기 모집 오픈 알림 신청 ➝
           </S.NotificationLink>
