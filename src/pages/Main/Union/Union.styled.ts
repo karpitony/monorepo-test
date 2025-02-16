@@ -33,7 +33,7 @@ export const UnionTextContainer = styled.div<{ $isMobile: boolean }>`
   align-items: start;
 
   width: ${(props) => (props.$isMobile ? "220px" : "300px")};
-  margin-bottom: ${(props) => (props.$isMobile ? "30px" : "50px")};
+  margin-bottom: ${(props) => (props.$isMobile ? "0" : "50px")};
 `;
 
 export const UnionText = styled.h2<{ $isMobile: boolean }>`

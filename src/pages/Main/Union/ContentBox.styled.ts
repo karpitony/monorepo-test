@@ -34,7 +34,7 @@ export const ContentBoxBorder = styled.div<{ $isMobile: boolean }>`
   margin: 0 auto;
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<{ $isMobile: boolean }>`
   width: 100%;
   height: 100%;
 
@@ -46,6 +46,8 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  padding: ${(props) => (props.$isMobile ? "0 5px" : "0")};
 `;
 
 export const ContentInfoTextBox = styled.div<{ $isMobile: boolean }>`
@@ -55,15 +57,15 @@ export const ContentInfoTextBox = styled.div<{ $isMobile: boolean }>`
   color: var(--FarmSystem_Black);
   font-style: normal;
   font-weight: 500;
-  font-size: ${(props) => (props.$isMobile ? "20px" : "24px")};
-  line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
+  font-size: ${(props) => (props.$isMobile ? "16px" : "24px")};
+  line-height: ${(props) => (props.$isMobile ? "28px" : "35px")};
   
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: ${(props) => (props.$isMobile ? "start" : "center")};
 
-  margin-bottom: 35px;
+  margin-bottom:  ${(props) => (props.$isMobile ? "13px" : "35px")};
   padding-top: ${(props) => (props.$isMobile ? "20px" : "0")};
   padding-bottom: ${(props) => (props.$isMobile ? "20px" : "0")};
 `;
@@ -96,14 +98,13 @@ export const ActivityList = styled.ul<{ $isMobile: boolean; $isTiny: boolean; }>
   height: ${(props) => (props.$isMobile ? "auto" : "80px")};
 
   display: flex;
-  flex-direction: ${(props) => (props.$isTiny ? "col" : "row")};
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-end;
   align-content: flex-start;
 
-  gap: ${(props) => (props.$isMobile ? "1px 10px" : "10px 20px")};
+  gap: ${(props) => (props.$isMobile ? "0 10px" : "10px 20px")};
   list-style-type: disc;
-  justify-content: ${(props) => (props.$isMobile ? "center" : "initial")};
 `;
 
 export const Li = styled.li<{
@@ -115,11 +116,7 @@ export const Li = styled.li<{
   font-style: normal;
   font-weight: 500;
   font-size: ${(props) =>
-    props.$isMobile
-      ? props.$isTiny
-        ? "16px"
-        : "18px"
-      : "22px"};
+    props.$isMobile ? "13px" : "22px"};
   line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Black);
 
@@ -128,7 +125,7 @@ export const Li = styled.li<{
     props.$isMobile && props.$isTiny ? "none" : "outside"};
   margin-left: ${(props) =>
     props.$isMobile
-      ? "20px"
+      ? "15px"
       : "40px"};
   text-align: center;
 `;
