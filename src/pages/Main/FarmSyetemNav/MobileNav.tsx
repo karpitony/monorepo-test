@@ -20,9 +20,9 @@ const navItems = [
 export default function MobileNav({ currentSection, handleSmoothScroll }: MobileNavProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const currentNavItem = navItems.find(item => item.id === currentSection) ?? navItems[0];
-  console.log("Im rendering MobileNav");
+
   return (
-    <S.MobileNavbar>
+    <S.MobileNavbar isNavOpen={isNavOpen}>
       {/* 
         isNavOpen이 false면 첫 번째 메뉴만 보이게, 
         true면 모든 메뉴가 보이게 설정 

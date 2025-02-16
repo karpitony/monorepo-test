@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const MobileNavbar = styled.div`
+export const MobileNavbar = styled.div<{ isNavOpen: boolean }>`
+  max-height: ${({ isNavOpen }) => (isNavOpen ? "300px" : "80px")};
+  overflow: hidden;
+  transition: max-height 0.1s ease-in-out;
+
   display: inline-flex;
   height: auto;
   padding: 10px 10px;
@@ -36,10 +40,9 @@ export const MobileNavText = styled.p`
 /* 확장/축소 버튼 스타일 */
 export const ExpandButton = styled.button`
   color: var(--FarmSystem_White, #FCFCFC);
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   width: 80%;
-  border: 1px solid var(--FarmSystem_DarkGrey, #333333);
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px; 
 
