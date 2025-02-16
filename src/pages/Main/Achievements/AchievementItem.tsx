@@ -1,4 +1,5 @@
 import * as S from './AchievementItem.styles';
+import useMediaQueries from '@/hooks/useMediaQueries';
 
 interface AchievementItemProps {
   title: string;
@@ -7,12 +8,14 @@ interface AchievementItemProps {
 }
 
 const AchievementItem: React.FC<AchievementItemProps> = ({ title, description, imageUrl }) => {
+  const { isMobile, isTablet } = useMediaQueries();
+
   return (
-    <S.ItemContainer>
-      <S.Image src={imageUrl} alt={title} />
-      <S.Content>
-        <S.Title>{title}</S.Title>
-        <S.Description>{description}</S.Description>
+    <S.ItemContainer $isMobile={isMobile} $isTablet={isTablet}>
+      <S.Image src={imageUrl} alt={title} $isMobile={isMobile} />
+      <S.Content $isMobile={isMobile}>
+        <S.Title $isMobile={isMobile}>{title}</S.Title>
+        <S.Description $isMobile={isMobile}>{description}</S.Description>
       </S.Content>
     </S.ItemContainer>
   );

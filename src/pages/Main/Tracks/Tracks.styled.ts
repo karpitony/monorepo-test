@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: 100%;
-  height: 1244px;
-  user-select: none;
-
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: ${({ $isMobile }) => ($isMobile ? "10px" : "20px")};
+  text-align: center;
 `;
+
 
 export const CenterContainer = styled.div`
   max-width: 1170px;
@@ -17,16 +15,17 @@ export const CenterContainer = styled.div`
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
+  margin-top: 100px;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h2 <{ $isMobile: boolean }>`
   width: 100%;
   padding-left: 5px;
-  margin-bottom: 70px;
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? "24px" : "70px")};
 
   color: var(--FarmSystem_Green01, #28723F);
   text-align: left;
-  font-size: 48px;
+  font-size: ${({ $isMobile }) => ($isMobile ? "24px" : "48px")};
   font-style: normal;
   font-weight: 700;
 
@@ -36,7 +35,7 @@ export const Title = styled.h2`
   text-align: center;
 `;
 
-export const GoToUnion = styled.div`
+export const GoToUnion = styled.div<{ $isMobile: boolean }>`
   display: flex;
   justify-content: end;
   align-items: center;
@@ -45,13 +44,13 @@ export const GoToUnion = styled.div`
   height: 36px;
   cursor: pointer;
 
-  margin-bottom: 28px;
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? "0px" : "28px")};
 `;
 
-export const GoToUnionText = styled.p`
+export const GoToUnionText = styled.p<{ $isMobile: boolean }>`
   color: var(--FarmSystem_Black, #191919);
   text-align: center;
-  font-size: 20px;
+  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "20px")};
   font-style: normal;
   font-weight: 500;
   line-height: 28px;
@@ -62,31 +61,32 @@ export const OrangeHighlight = styled.span`
   color: var(--FarmSystem_Orange);
 `;
 
-export const IconDiv = styled.div`
+export const IconDiv = styled.div<{ $isMobile: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 36px;
-  height: 36px;
+  padding-left: ${({ $isMobile }) => ($isMobile ? "3px" : "0px")};
+  width: ${({ $isMobile }) => ($isMobile ? "12px" : "36px")};
+  height: ${({ $isMobile }) => ($isMobile ? "12px" : "36px")};
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div <{ $isMobile: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 100%;
   height: 60px;
-  gap: 20px;
-
+  gap: ${({ $isMobile }) => ($isMobile ? "7px" : "20px")}; /* 모바일에서는 간격 축소 */
   margin-bottom: 30px;
 `;
 
-export const TrackButton = styled.button<{ $isSelected: boolean }>`
+export const TrackButton = styled.button<{ $isSelected: boolean; $isMobile: boolean }>`
   display: flex;
-  width: 220px;
-  padding: 18px 0;
+  width: ${({ $isMobile, $isSelected }) => 
+    $isMobile ? ($isSelected ? "200px" : "160px") : ($isSelected ? "260px" : "260px")};
+  height: ${({ $isMobile }) => ($isMobile ? "40px" : "75px")};
+  padding: 10px 0;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -105,10 +105,10 @@ export const TrackButton = styled.button<{ $isSelected: boolean }>`
 `;
 
 
-export const TrackButtonText = styled.p`
+export const TrackButtonText = styled.p<{ $isMobile: boolean }>`
   color: var(--FarmSystem_White, #FCFCFC);
-  font-size: 20px;
+  font-size: ${({ $isMobile }) => ($isMobile ? "9px" : "20px")};
   font-style: normal;
   font-weight: 400;
-  line-height: 40px; /* 200% */
+  line-height: 15px; /* 200% */
 `; 

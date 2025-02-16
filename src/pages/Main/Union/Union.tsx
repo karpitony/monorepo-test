@@ -6,7 +6,7 @@ export default function Union() {
   const { isMobile } = useMediaQueries();
 
   return (
-    <S.Container $isMobile={isMobile}>
+    <S.Container $isMobile={isMobile} id="union">
       <S.IntroduceText $isMobile={isMobile}>
         <p>신입생이라서</p>
         <p>어떤 트랙을 선택할지 고민되나요?</p>
