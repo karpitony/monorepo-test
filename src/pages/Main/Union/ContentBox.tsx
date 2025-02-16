@@ -2,13 +2,13 @@ import * as S from "./ContentBox.styled";
 import useMediaQueries from "@/hooks/useMediaQueries";
 
 export default function ContentBox() {
-  const { isTiny, isMobile } = useMediaQueries();
+  const { isTiny, isMobile, isTablet } = useMediaQueries();
 
   return (
     <S.Container $isMobile={isMobile}>
-      <S.GradientContainer $isMobile={isMobile}>
-        <S.GradientLeft $isMobile={isMobile} />
-        <S.GradientRight $isMobile={isMobile} />
+      <S.GradientContainer $isMobile={isMobile} $isTablet={isTablet}>
+        <S.GradientLeft $isMobile={isMobile} $isTablet={isTablet}/>
+        <S.GradientRight $isMobile={isMobile} $isTablet={isTablet}/>
       </S.GradientContainer>
       <S.ContentBoxBorder $isMobile={isMobile}>
         <S.Content $isMobile={isMobile}>
