@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.div<{ $isMobile: boolean }>`
   position: relative;
   width: 100vw;
   min-height: 100vh;
@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
     content: "";
     position: absolute;
     bottom: 0; 
-    width: 10px; 
+    width: ${(props) => (props.$isMobile ? "6px" : "10px")};
     height: 40%; 
     background: linear-gradient(to bottom, 
       rgba(255, 102, 0, 0) 0%, 
