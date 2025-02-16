@@ -107,14 +107,14 @@ export const StatBox = styled.div<{ index: number; $isMobile: boolean; $isTablet
 `;
 
 export const StatNumber = styled.div<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "36px" : "48px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "32px" : "48px")};
   font-weight: bold;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
 `;
 
 export const StatLabel = styled.div<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "20px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "20px")};
   font-weight: 500;
   color: #fff;
 `;
