@@ -27,6 +27,10 @@ export default function MobileNav({
     navItems.find((item) => item.id === currentSection) ?? navItems[0];
 
 
+  if(currentSection === "about") {
+    return null;
+  }
+
   return (
     <S.MobileNavbar isNavOpen={isNavOpen} isAbout={currentSection === "about"}>
       {/* 
