@@ -112,3 +112,27 @@ export const TrackButtonText = styled.p<{ $isMobile: boolean }>`
   font-weight: 400;
   line-height: 15px; /* 200% */
 `; 
+
+export const ButtonContainerMobile = styled.div`
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  gap: 4px;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+export const TrackButtonMobile = styled.button<{ $isSelected: boolean }>`
+  color: ${({ $isSelected }) =>
+    $isSelected
+      ? 'var(--FarmSystem_Green07, #175321)'
+      : 'var(--FarmSystem_Green03, #7AB784)'};
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0 3px;
+`;
