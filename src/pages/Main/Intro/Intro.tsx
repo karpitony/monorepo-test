@@ -20,7 +20,7 @@ const Intro = () => {
 
   if (isApp) {
     return (
-      <S.AppContainer>
+      <S.AppContainer id="about">
         <S.TopSection>
           <motion.img 
             src={logo} 
