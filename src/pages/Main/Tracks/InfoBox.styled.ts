@@ -208,7 +208,7 @@ export const ProfileContainer = styled.div<{
   $isTablet: boolean;
 }>`
   width: ${({ $isDesktop }) => ($isDesktop ? "50%" : "100%")};
-  height: 300px;
+  /* height: 300px; */
   display: grid;
   grid-template-columns: ${({ $isDesktop, $isTablet, $isMobile }) =>
     $isDesktop ? "120px 1fr" : $isTablet ? "100px 1fr" : $isMobile ? "50px 1fr" : "50px 1fr"};  gap: ${({ $isDesktop }) => ($isDesktop ? "12px" : "8px")};
