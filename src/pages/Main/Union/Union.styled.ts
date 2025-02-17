@@ -11,7 +11,7 @@ export const Container = styled.section<{ $isMobile: boolean }>`
   padding: ${(props) => (props.$isMobile ? "5px" : "0")};
 `;
 
-export const IntroduceText = styled.p<{ $isMobile: boolean }>`
+export const IntroduceText = styled.p<{ $isApp: boolean; $isMobile: boolean }>`
   width: ${(props) => (props.$isMobile ? "100%" : "500px")};
   height: ${(props) => (props.$isMobile ? "auto" : "86px")};
 
@@ -19,10 +19,10 @@ export const IntroduceText = styled.p<{ $isMobile: boolean }>`
   color: var(--FarmSystem_Black);
   font-style: normal;
   font-weight: 500;
-  font-size: ${(props) => (props.$isMobile ? "24px" : "36px")};
+  font-size: ${(props) => (props.$isApp ? "20px" : props.$isMobile ? "24px" : "36px")};
   line-height: ${(props) => (props.$isMobile ? "32px" : "43px")};
 
-  margin-bottom: ${(props) => (props.$isMobile ? "50px" : "70px")};
+  margin-bottom: ${(props) => (props.$isApp ? "30px" : props.$isMobile ? "50px" : "70px")};
 `;
 
 export const UnionTextContainer = styled.div<{ $isMobile: boolean; $isApp: boolean }>`

@@ -114,14 +114,16 @@ export const ListBox = styled.div<{ $isApp: boolean}>`
   flex-direction: column;
   align-items: ${(props) => (props.$isApp ? "center" : "start")};
   justify-content: center;
+  padding-bottom: ${(props) => (props.$isApp ? "15px" : "0px")};
   /* background-color: orange; */
 `
 
 export const Li = styled.li<{
+  $isApp: boolean;
   $isMobile: boolean;
   $isTiny?: boolean;
 }>`
-  height: 35px;
+  height: ${(props) => (props.$isApp ? "25px" : "35px")};
 
   font-style: normal;
   font-weight: 300;

@@ -35,34 +35,34 @@ export default function ContentBox() {
           <S.ActivityList $isMobile={isMobile} $isTiny={isTiny}>
             {isApp ? (
               <S.ListBox $isApp={isApp}>
-                <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                   월별 기술 블로그
                 </S.Li>
-                <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                   스터디 정기 모임
                 </S.Li>
-                <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                   Farm System 아이디어톤 참가
                 </S.Li>
-                <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                   트랙 멘토-멘티 프로그램
                 </S.Li>
               </S.ListBox>
             ) : (
               <>
                 <S.ListBox $isApp={isApp}>
-                  <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                     월별 기술 블로그
                   </S.Li>
-                  <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                     스터디 정기 모임
                   </S.Li> 
                 </S.ListBox>
                 <S.ListBox $isApp={isApp}>
-                  <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                     Farm System 아이디어톤 참가
                   </S.Li>
-                  <S.Li $isMobile={isMobile} $isTiny={isTiny}>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
                     트랙 멘토-멘티 프로그램
                   </S.Li> 
                 </S.ListBox>  
