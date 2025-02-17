@@ -43,8 +43,9 @@ export const GoToUnion = styled.div<{ $isMobile: boolean }>`
   width: 100%;
   height: 36px;
   cursor: pointer;
+  gap: 3px;
 
-  margin-bottom: ${({ $isMobile }) => ($isMobile ? "0px" : "28px")};
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? "5px" : "28px")};
 `;
 
 export const GoToUnionText = styled.p<{ $isMobile: boolean }>`
