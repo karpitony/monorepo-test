@@ -72,13 +72,19 @@ const settings = {
 
 
 const Achievements = () => {
-  const { isMobile, isTablet } = useMediaQueries();
+  const { isApp, isMobile, isTablet } = useMediaQueries();
   return (
     <S.AchievementsContainer id="achievements" $isMobile={isMobile} $isTablet={isTablet}>
       <S.TitleArea $isMobile={isMobile}>
-        <S.Title $isMobile={isMobile} $isTablet={isTablet}>
-          2024년 <S.Highlight>Farm System 3기</S.Highlight>에서 함께 성장하고 이루어낸 성과입니다.
-        </S.Title>
+        {isApp ? (
+          <S.Title $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>
+            2024년 <S.Highlight>Farm System 3기</S.Highlight>에서 <br/> 함께 성장하고 이루어낸 성과입니다.
+          </S.Title>
+        ) : (
+          <S.Title $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>
+            2024년 <S.Highlight>Farm System 3기</S.Highlight>에서 함께 성장하고 이루어낸 성과입니다.
+          </S.Title>
+        )}
       </S.TitleArea>
       
       <S.SliderWrapper $isMobile={isMobile} $isTablet={isTablet}>
@@ -98,8 +104,8 @@ const Achievements = () => {
            { number: "140개", label: "프로젝트" },
            { number: "80개", label: "스터디" },
            { number: "20회", label: "수상 경험" } ].map((stat, index) => (
-          <S.StatBox key={index} index={index} $isMobile={isMobile} $isTablet={isTablet}>
-            <S.StatNumber $isMobile={isMobile}>{stat.number}</S.StatNumber>
+          <S.StatBox key={index} index={index} $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>
+            <S.StatNumber $isApp={isApp} $isMobile={isMobile}>{stat.number}</S.StatNumber>
             <S.StatLabel $isMobile={isMobile}>{stat.label}</S.StatLabel>
           </S.StatBox>
         ))}

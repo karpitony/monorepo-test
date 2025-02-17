@@ -16,9 +16,9 @@ export const TitleArea = styled.div<{ $isMobile: boolean}>`
   justify-content: ${({ $isMobile }) => ($isMobile ? "center" : "flex-start")};
 `;
 
-export const Title = styled.h2<{ $isMobile: boolean; $isTablet: boolean }>`
+export const Title = styled.h2<{ $isApp:boolean, $isMobile: boolean; $isTablet: boolean }>`
   width: ${({ $isMobile, $isTablet }) => ($isMobile ? "340px" : $isTablet ? "510px" : "670px")};
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "24px" : $isTablet ? "36px" : "48px")};
+  font-size: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "21px" : $isMobile ? "24px" : $isTablet ? "36px" : "48px")};
   color: #191919;
   font-weight: bold;
   margin-bottom: 40px;
@@ -95,9 +95,9 @@ export const StatsContainer = styled.div<{ $isMobile: boolean }>`
 
 const statColors = ["#62de88", "#5ccc7e", "#50b46f", "#48a164"];
 
-export const StatBox = styled.div<{ index: number; $isMobile: boolean; $isTablet: boolean }>`
-  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "140px" : $isTablet ? "220px" : "270px")};
-  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "140px" : $isTablet ? "220px" : "250px")};
+export const StatBox = styled.div<{ index: number; $isMobile: boolean; $isTablet: boolean; $isApp: boolean}>`
+  width: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "120px" : $isMobile ? "140px" : $isTablet ? "220px" : "270px")};
+  height: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "120px" : $isMobile ? "140px" : $isTablet ? "220px" : "250px")};
   border-radius: 20px;
   background-color: ${({ index }) => statColors[index]}; /* 각 박스마다 다른 색상 적용 */
   display: flex;
@@ -106,8 +106,8 @@ export const StatBox = styled.div<{ index: number; $isMobile: boolean; $isTablet
   justify-content: center;
 `;
 
-export const StatNumber = styled.div<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "32px" : "48px")};
+export const StatNumber = styled.div<{ $isApp: boolean; $isMobile: boolean }>`
+  font-size: ${({ $isApp, $isMobile }) => ($isApp ? "28px" : $isMobile ? "32px" : "48px")};
   font-weight: bold;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
