@@ -5,7 +5,7 @@ export const ItemContainer = styled.div<{ $isMobile: boolean; $isTablet: boolean
   height: ${({ $isMobile, $isTablet }) => ($isMobile ? "360px" : $isTablet ? "420px" : "480px")}; 
   margin-left: 30px;
   margin-right: 30px;
-  background-color: #175321;
+  background-color: #e5e5e5;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -25,12 +25,12 @@ margin-top: 30px;
 
 export const Title = styled.h3<{ $isMobile: boolean }>`
   font-size: ${({ $isMobile }) => ($isMobile ? "10px" : "14px")};
-  color: #fcfcfc;
+  color: #404040;
 `;
 
 export const Description = styled.p<{ $isMobile: boolean }>`
   font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "20px")};
   font-weight: bold;
-  color: #fcfcfc;
+  color: #404040;
   line-height: 1.5;
 `;

@@ -29,7 +29,7 @@ const BottomInfo = () => {
         <S.IconLink href="https://linktr.ee/dgu_farm_system" target="_blank" rel="noopener noreferrer">
           <S.Icon $isMobile={isMobile} src={LinktreeIcon} alt="Linktree" />
         </S.IconLink>
-        <S.IconLink href="https://www.dongguk.edu/main" target="_blank" rel="noopener noreferrer">
+        <S.IconLink href="https://dice.dongguk.edu/subPage.do?site=1&menu=74" target="_blank" rel="noopener noreferrer">
           <S.Icon $isMobile={isMobile} src={DGUIcon} alt="Community" />
         </S.IconLink>
       </S.IconsContainer>
