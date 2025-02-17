@@ -17,7 +17,6 @@ export const PopupBox = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: 500px;
   width: ${({ $isMobile, $isTablet }) => ($isMobile ? "260px" : $isTablet ? "420px" : "500px")};
   background-color: #fcfcfc;
-  border: 3px solid #28723f;
   border-radius: 15px;
   text-align: center;
   padding: ${({ $isMobile }) => ($isMobile ? "30px" : "40px")};

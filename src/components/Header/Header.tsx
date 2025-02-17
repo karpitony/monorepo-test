@@ -36,8 +36,8 @@ export default function Header() {
               <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>소식</S.NavItem>
               <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>FAQ</S.NavItem>
             </S.Nav>
-            <S.FarmingLogButton onClick={onContainerClick}>파밍로그</S.FarmingLogButton>
           </S.NavWrapper>
+          <S.FarmingLogButton onClick={onContainerClick}>파밍로그</S.FarmingLogButton>
         </>
       )}
 
@@ -47,10 +47,10 @@ export default function Header() {
             <S.CloseButton src={CloseIcon} alt="Close Menu" onClick={() => setMenuOpen(false)} />
             <S.MobileNav>
               <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick('/')}>홈</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick()}>블로그 / 프로젝트</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick()}>소식</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick()}>FAQ</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick()}>파밍로그</S.NavItem>
+              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>블로그 / 프로젝트</S.NavItem>
+              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>소식</S.NavItem>
+              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>FAQ</S.NavItem>
+              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={onContainerClick}>파밍로그</S.NavItem>
             </S.MobileNav>
           </>
         )}

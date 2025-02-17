@@ -37,6 +37,7 @@ export const ContentBoxBorder = styled.div<{ $isMobile: boolean }>`
 
 export const Content = styled.div<{ $isMobile: boolean }>`
   width: 100%;
+  min-height: 300px;
   height: 100%;
 
   background-color: var(--FarmSystem_White);
@@ -158,7 +159,7 @@ export const GradientContainer = styled.div<{ $isMobile: boolean, $isTablet: boo
 
 export const GradientLeft = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
   width: ${(props) => (props.$isMobile ? "280px" : props.$isTablet ? "400px" : "550px")};
-  height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "470px" : "400px")};
+  height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "400px" : "400px")};
 
   background: linear-gradient(
     270deg,
@@ -171,7 +172,7 @@ export const GradientLeft = styled.div<{ $isMobile: boolean, $isTablet: boolean 
 
 export const GradientRight = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
   width: ${(props) => (props.$isMobile ? "280px" : props.$isTablet ? "400px" : "550px")};
-  height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "470px" : "400px")};
+  height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "400px" : "400px")};
 
   background: linear-gradient(
     90deg,
