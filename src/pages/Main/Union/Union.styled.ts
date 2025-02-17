@@ -25,7 +25,7 @@ export const IntroduceText = styled.p<{ $isMobile: boolean }>`
   margin-bottom: ${(props) => (props.$isMobile ? "50px" : "70px")};
 `;
 
-export const UnionTextContainer = styled.div<{ $isMobile: boolean }>`
+export const UnionTextContainer = styled.div<{ $isMobile: boolean; $isApp: boolean }>`
   display: grid;
   grid-template-columns: ${(props) =>
     props.$isMobile ? "1fr 2fr 1fr" : "1fr 1fr 1fr 1fr"};
@@ -33,8 +33,10 @@ export const UnionTextContainer = styled.div<{ $isMobile: boolean }>`
   align-items: start;
 
   width: ${(props) => (props.$isMobile ? "220px" : "300px")};
-  margin-bottom: ${(props) => (props.$isMobile ? "0" : "50px")};
+  margin-bottom: ${(props) =>
+    props.$isApp ? "30px" : props.$isMobile ? "0px" : "50px"};
 `;
+
 
 export const UnionText = styled.h2<{ $isMobile: boolean }>`
   grid-column: 2 / 4;
