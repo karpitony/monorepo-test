@@ -34,18 +34,33 @@ export default function Tracks() {
             <img src={OrangeArrow} alt="Go to Union" />
           </S.IconDiv>
         </S.GoToUnion>
-        <S.ButtonContainer $isMobile={isMobile}>
-          {TracksData.map((track, index) => (
-            <S.TrackButton
-              key={index}
-              $isSelected={selectedTrack.name === track.name}
-              onClick={() => setSelectedTrack(track)}
-              $isMobile={isMobile}
-            >
-              <S.TrackButtonText $isMobile={isMobile}>{track.name}</S.TrackButtonText>
-            </S.TrackButton>
-          ))}
-        </S.ButtonContainer>
+        {isApp ? (
+          <S.ButtonContainerMobile>
+            {TracksData.map((track, index) => (
+              <S.TrackButtonMobile
+                key={index}
+                $isSelected={selectedTrack.name === track.name}
+                onClick={() => setSelectedTrack(track)}
+              >
+                {track.name}
+              </S.TrackButtonMobile>
+            ))}
+          </S.ButtonContainerMobile>
+        ) : (
+          <S.ButtonContainer $isMobile={isMobile}>
+            {TracksData.map((track, index) => (
+              <S.TrackButton
+                key={index}
+                $isSelected={selectedTrack.name === track.name}
+                onClick={() => setSelectedTrack(track)}
+                $isMobile={isMobile}
+              >
+                <S.TrackButtonText $isMobile={isMobile}>{track.name}</S.TrackButtonText>
+              </S.TrackButton>
+            ))}
+          </S.ButtonContainer>
+        )}
+
         <InfoBox selectedTrack={selectedTrack}/>
       </S.CenterContainer>
     </S.Container>
