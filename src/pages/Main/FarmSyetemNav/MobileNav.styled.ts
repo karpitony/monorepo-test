@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const MobileNavbar = styled.div<{ isNavOpen: boolean }>`
+export const MobileNavbar = styled.div<{ isNavOpen: boolean, isAbout: boolean }>`
   max-height: ${({ isNavOpen }) => (isNavOpen ? "300px" : "80px")};
   overflow: hidden;
   transition: max-height 0.1s ease-in-out;
 
   display: inline-flex;
 
-  height: auto;
+  height: ${({ isAbout }) => (isAbout ? "0px" : "auto")};
   padding: 10px 10px;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@ export const MobileNavbar = styled.div<{ isNavOpen: boolean }>`
   width: 150px;
 
   border-radius: 20px 0px 20px 20px;
-background: rgba(40, 114, 63, 0.7); 
+  background: rgba(230, 230, 230, 0.7)
 `;
 
 export const MobileNavItem = styled.a`
@@ -29,7 +29,7 @@ export const MobileNavItem = styled.a`
 `;
 
 export const MobileNavText = styled.p`
-  color: var(--FarmSystem_White, #FCFCFC);
+  color: #303030;
   text-align: center;
   font-size: 14px;
   font-style: normal;
@@ -43,7 +43,7 @@ export const ExpandButton = styled.button`
   font-size: 24px;
   cursor: pointer;
   width: 80%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(50, 50, 50, 0.6);
   border-radius: 15px; 
 
   display: flex;

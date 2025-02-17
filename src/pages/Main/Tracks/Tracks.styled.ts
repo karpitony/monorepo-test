@@ -9,13 +9,13 @@ export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
 `;
 
 
-export const CenterContainer = styled.div`
+export const CenterContainer = styled.div<{ $isApp: boolean; $isMobile: boolean }>`
   max-width: 1170px;
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
-  margin-top: 100px;
+  margin-top: ${({ $isMobile }) => ($isMobile ? "50px" : "100px")};
 `;
 
 export const Title = styled.h2 <{ $isMobile: boolean }>`

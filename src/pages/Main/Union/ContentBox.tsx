@@ -2,7 +2,7 @@ import * as S from "./ContentBox.styled";
 import useMediaQueries from "@/hooks/useMediaQueries";
 
 export default function ContentBox() {
-  const { isTiny, isMobile, isTablet } = useMediaQueries();
+  const { isApp, isTiny, isMobile, isTablet } = useMediaQueries();
 
   return (
     <S.Container $isMobile={isMobile}>
@@ -33,18 +33,42 @@ export default function ContentBox() {
             한 학기 활동
           </S.ActivityTitle>
           <S.ActivityList $isMobile={isMobile} $isTiny={isTiny}>
-            <S.Li $isMobile={isMobile} $isTiny={isTiny}>
-              월별 기술 블로그
-            </S.Li>
-            <S.Li $isMobile={isMobile} $isTiny={isTiny}>
-              Farm System 아이디어톤 참가
-            </S.Li>
-            <S.Li $isMobile={isMobile} $isTiny={isTiny}>
-              스터디 정기 모임
-            </S.Li>            
-            <S.Li $isMobile={isMobile} $isTiny={isTiny}>
-              트랙 멘토-멘티 프로그램
-            </S.Li>            
+            {isApp ? (
+              <S.ListBox $isApp={isApp}>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                  월별 기술 블로그
+                </S.Li>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                  스터디 정기 모임
+                </S.Li>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                  Farm System 아이디어톤 참가
+                </S.Li>
+                <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                  트랙 멘토-멘티 프로그램
+                </S.Li>
+              </S.ListBox>
+            ) : (
+              <>
+                <S.ListBox $isApp={isApp}>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                    월별 기술 블로그
+                  </S.Li>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                    스터디 정기 모임
+                  </S.Li> 
+                </S.ListBox>
+                <S.ListBox $isApp={isApp}>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                    Farm System 아이디어톤 참가
+                  </S.Li>
+                  <S.Li $isApp={isApp} $isMobile={isMobile} $isTiny={isTiny}>
+                    트랙 멘토-멘티 프로그램
+                  </S.Li> 
+                </S.ListBox>  
+              </>
+            )}
+                 
           </S.ActivityList>
         </S.Content>
       </S.ContentBoxBorder>

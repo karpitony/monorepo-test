@@ -8,9 +8,9 @@ export const BottomInfoContainer = styled.div<{ $isMobile: boolean; $isTablet: b
   padding: ${({ $isMobile }) => ($isMobile ? "40px 0" : "60px 0")};
 `;
 
-export const Title = styled.h2<{ $isMobile: boolean; $isTablet: boolean }>`
-  width: ${({ $isMobile }) => ($isMobile ? "98vw" : "none" )}; 
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "22px" : $isTablet ? "32px" : "36px")};
+export const Title = styled.h2<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`
+  width: ${({  $isMobile }) => ($isMobile ? "98vw" : "none" )}; 
+  font-size: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "19px" : $isMobile ? "22px" : $isTablet ? "32px" : "36px")};
   color: #191919;
   font-weight: bold;
   text-align: center;
@@ -57,34 +57,34 @@ export const RequirementItem = styled.div`
   margin-bottom: 20px;
 `;
 
-export const RequirementsTitle = styled.h3<{ $isMobile: boolean; $isTablet: boolean }>`
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "24px" : $isTablet ? "28px" : "32px")};
+export const RequirementsTitle = styled.h3<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`
+  font-size: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "18px" : $isMobile ? "24px" : $isTablet ? "28px" : "32px")};
   color: #175321;
-  margin-bottom: 40px;
+  margin-bottom: ${({$isApp, $isMobile }) => ($isApp ? "10px" : $isMobile ? "20px" : "40px")};
 `;
 
-export const RequirementTitle = styled.h4<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "18px" : "24px")};
+export const RequirementTitle = styled.h4<{ $isApp: boolean; $isMobile: boolean }>`
+  font-size: ${({ $isApp, $isMobile }) => ($isApp ? "14px" : $isMobile ? "18px" : "24px")};
   font-weight: bold;
 `;
 
-export const RequirementText = styled.p<{ $isMobile: boolean }>`
-margin-top: 10px;
-  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "20px")};
-  font-weight: 500;
+export const RequirementText = styled.p<{ $isApp: boolean; $isMobile: boolean }>`
+  margin-top: ${({ $isApp, $isMobile }) => ($isApp ? "5px" : $isMobile ? "7px" : "10px")};
+  font-size: ${({ $isApp, $isMobile }) => ($isApp ? "12px" : $isMobile ? "14px" : "20px")};
+  font-weight: 300;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{ $isApp: boolean; $isMobile: boolean }>`
   display: flex;
   justify-content: flex-end;
-  margin-top: 40px;
+  margin-top: ${({$isApp, $isMobile }) => ($isApp ? "10px" : $isMobile ? "20px" : "40px")};
 `;
 
-export const ApplyButton = styled.button<{ $isMobile: boolean }>`
-  width: ${({ $isMobile }) => ($isMobile ? "180px" : "240px")};
+export const ApplyButton = styled.button<{ $isApp: boolean; $isMobile: boolean }>`
+  width: ${({ $isApp, $isMobile }) => ($isApp ? "110px" : $isMobile ? "180px" : "240px")};
   background-color: #49aa59;
   color: #ffffff;
-  font-size: ${({ $isMobile }) => ($isMobile ? "18px" : "20px")};
+  font-size: ${({ $isApp, $isMobile }) => ($isApp ? "14px" : $isMobile ? "18px" : "20px")};
   padding: 12px 24px;
   border: none;
   border-radius: 10px;

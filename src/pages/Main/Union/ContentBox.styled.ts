@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ $isMobile: boolean }>`
   width: 100%;
-  height: ${(props) => (props.$isMobile ? "auto" : "500px")};
+  height: ${(props) => (props.$isMobile ? "370px" : "500px")};
 
   display: flex;
   justify-content: center;
@@ -10,6 +10,7 @@ export const Container = styled.div<{ $isMobile: boolean }>`
 
   position: relative;
   padding: ${(props) => (props.$isMobile ? "20px 0" : "0")};
+  /* background-color: yellow; */
 `;
 
 // 테두리에 Gradient가 안돼서 박스 두개를 겹쳐서 테두리 Gradient를 만들었습니다.
@@ -99,24 +100,35 @@ export const ActivityList = styled.ul<{ $isMobile: boolean; $isTiny: boolean; }>
 
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  align-content: flex-start;
+  /* flex-wrap: wrap; */
+  align-items: center; 
+  justify-content: center; 
+  align-content: center; 
 
   gap: ${(props) => (props.$isMobile ? "0 10px" : "10px 20px")};
   list-style-type: disc;
 `;
 
+export const ListBox = styled.div<{ $isApp: boolean}>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${(props) => (props.$isApp ? "center" : "start")};
+  justify-content: center;
+  padding-bottom: ${(props) => (props.$isApp ? "15px" : "0px")};
+  /* background-color: orange; */
+`
+
 export const Li = styled.li<{
+  $isApp: boolean;
   $isMobile: boolean;
   $isTiny?: boolean;
 }>`
-  height: 35px;
+  height: ${(props) => (props.$isApp ? "25px" : "35px")};
 
   font-style: normal;
-  font-weight: 500;
+  font-weight: 300;
   font-size: ${(props) =>
-    props.$isMobile ? "13px" : "22px"};
+    props.$isMobile ? "15px" : "20px"};
   line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Black);
 
@@ -135,16 +147,17 @@ export const GradientContainer = styled.div<{ $isMobile: boolean, $isTablet: boo
   position: absolute;
   top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   /* ✅ 블러 크기 조정 */
   height: ${(props) => (props.$isMobile ? "370px" : props.$isTablet ? "500px" : "500px")};
   gap: ${(props) => (props.$isMobile ? "30vw" : props.$isTablet ? "200px" : "80px")};
+  /* background-color: orange; */
 `;
 
 export const GradientLeft = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
-  width: ${(props) => (props.$isMobile ? "200px" : props.$isTablet ? "400px" : "550px")};
+  width: ${(props) => (props.$isMobile ? "280px" : props.$isTablet ? "400px" : "550px")};
   height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "470px" : "400px")};
 
   background: linear-gradient(
@@ -157,7 +170,7 @@ export const GradientLeft = styled.div<{ $isMobile: boolean, $isTablet: boolean 
 `;
 
 export const GradientRight = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
-  width: ${(props) => (props.$isMobile ? "200px" : props.$isTablet ? "400px" : "550px")};
+  width: ${(props) => (props.$isMobile ? "280px" : props.$isTablet ? "400px" : "550px")};
   height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "470px" : "400px")};
 
   background: linear-gradient(
