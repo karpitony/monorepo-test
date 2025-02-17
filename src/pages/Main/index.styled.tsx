@@ -12,7 +12,7 @@ export const MainContainer = styled.div<{ $isMobile: boolean }>`
     position: absolute;
     bottom: 0; 
     width: ${(props) => (props.$isMobile ? "6px" : "10px")};
-    height: 40%; 
+    height: ${(isMobile) => (isMobile ? "35%" : "40%")};
     background: linear-gradient(to bottom, 
       rgba(255, 102, 0, 0) 0%, 
       rgba(255, 102, 0, 0.8) 50%, 
