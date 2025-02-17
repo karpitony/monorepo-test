@@ -43,8 +43,9 @@ export const GoToUnion = styled.div<{ $isMobile: boolean }>`
   width: 100%;
   height: 36px;
   cursor: pointer;
+  gap: 3px;
 
-  margin-bottom: ${({ $isMobile }) => ($isMobile ? "0px" : "28px")};
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? "5px" : "28px")};
 `;
 
 export const GoToUnionText = styled.p<{ $isMobile: boolean }>`
@@ -78,7 +79,7 @@ export const ButtonContainer = styled.div <{ $isMobile: boolean }>`
   width: 100%;
   height: 60px;
   gap: ${({ $isMobile }) => ($isMobile ? "7px" : "20px")}; /* 모바일에서는 간격 축소 */
-  margin-bottom: 30px;
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? "10px" : "30px")};
 `;
 
 export const TrackButton = styled.button<{ $isSelected: boolean; $isMobile: boolean }>`
@@ -86,7 +87,7 @@ export const TrackButton = styled.button<{ $isSelected: boolean; $isMobile: bool
   width: ${({ $isMobile, $isSelected }) => 
     $isMobile ? ($isSelected ? "200px" : "160px") : ($isSelected ? "260px" : "260px")};
   height: ${({ $isMobile }) => ($isMobile ? "32px" : "75px")};
-  padding: 10px 0;
+  padding:  ${({ $isMobile }) => ($isMobile ? "1px 0" : "10px 0")};
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -94,7 +95,7 @@ export const TrackButton = styled.button<{ $isSelected: boolean; $isMobile: bool
     $isSelected
       ? 'var(--FarmSystem_Green05, #248634)'
       : 'var(--FarmSystem_Green04, #49AA59)'};
-  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ $isMobile }) => ($isMobile ? "none" : "4px 4px 4px 0px rgba(0, 0, 0, 0.25)")};
 
   transition: transform 0.3s ease, background 0.3s ease;
 
@@ -107,8 +108,31 @@ export const TrackButton = styled.button<{ $isSelected: boolean; $isMobile: bool
 
 export const TrackButtonText = styled.p<{ $isMobile: boolean }>`
   color: var(--FarmSystem_White, #FCFCFC);
-  font-size: ${({ $isMobile }) => ($isMobile ? "9px" : "20px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "10px" : "20px")};
   font-style: normal;
   font-weight: 400;
   line-height: 15px; /* 200% */
 `; 
+
+export const ButtonContainerMobile = styled.div`
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  gap: 4px;
+
+  margin-bottom: 10px;
+`;
+
+export const TrackButtonMobile = styled.button<{ $isSelected: boolean }>`
+  color: ${({ $isSelected }) =>
+    $isSelected
+      ? 'var(--FarmSystem_Green07, #175321)'
+      : 'var(--FarmSystem_Green03, #7AB784)'};
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0 3px;
+`;
