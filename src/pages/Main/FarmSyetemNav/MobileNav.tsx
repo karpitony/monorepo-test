@@ -28,7 +28,7 @@ export default function MobileNav({
 
 
   return (
-    <S.MobileNavbar isNavOpen={isNavOpen}>
+    <S.MobileNavbar isNavOpen={isNavOpen} isAbout={currentSection === "about"}>
       {/* 
         isNavOpen이 false면 첫 번째 메뉴만 보이게, 
         true면 모든 메뉴가 보이게 설정 

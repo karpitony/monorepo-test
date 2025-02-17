@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const MobileNavbar = styled.div<{ isNavOpen: boolean }>`
+export const MobileNavbar = styled.div<{ isNavOpen: boolean, isAbout: boolean }>`
   max-height: ${({ isNavOpen }) => (isNavOpen ? "300px" : "80px")};
   overflow: hidden;
   transition: max-height 0.1s ease-in-out;
 
   display: inline-flex;
 
-  height: auto;
+  height: ${({ isAbout }) => (isAbout ? "0px" : "auto")};
   padding: 10px 10px;
   flex-direction: column;
   justify-content: center;
