@@ -34,7 +34,7 @@ export default function Tracks() {
             <img src={OrangeArrow} alt="Go to Union" />
           </S.IconDiv>
         </S.GoToUnion>
-        {isMobile ? (
+        {isApp ? (
           <S.ButtonContainerMobile>
             {TracksData.map((track, index) => (
               <S.TrackButtonMobile
