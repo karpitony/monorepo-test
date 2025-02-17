@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import * as S from './MobileNav.styled';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface MobileNavProps {
   currentSection: string;
@@ -17,12 +18,17 @@ const navItems = [
   { id: "eligibility", text: "지원 요건" },
 ];
 
-export default function MobileNav({ currentSection, handleSmoothScroll }: MobileNavProps) {
+export default function MobileNav({
+  currentSection,
+  handleSmoothScroll,
+}: MobileNavProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const currentNavItem = navItems.find(item => item.id === currentSection) ?? navItems[0];
+  const currentNavItem =
+    navItems.find((item) => item.id === currentSection) ?? navItems[0];
+
 
   return (
-    <S.MobileNavbar isNavOpen={isNavOpen}>
+    <S.MobileNavbar isNavOpen={isNavOpen} isAbout={currentSection === "about"}>
       {/* 
         isNavOpen이 false면 첫 번째 메뉴만 보이게, 
         true면 모든 메뉴가 보이게 설정 
@@ -36,8 +42,13 @@ export default function MobileNav({ currentSection, handleSmoothScroll }: Mobile
         </S.MobileNavItem>
       )}
 
-      {isNavOpen && (
-        <>
+      <AnimatePresence>
+        {isNavOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
           <S.MobileNavItem
             href="#about"
             onClick={(e) => handleSmoothScroll(e, "#about")}
@@ -62,8 +73,9 @@ export default function MobileNav({ currentSection, handleSmoothScroll }: Mobile
           >
             <S.MobileNavText>지원 요건</S.MobileNavText>
           </S.MobileNavItem>
-        </>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 확장/축소 버튼 */}
       <S.ExpandButton onClick={() => setIsNavOpen((prev) => !prev)}>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  width: 100%;
+  width: ${({ $isMobile }) => ($isMobile ? "95%" : "100%")}; /* 모바일에서 여백 증가 */
   max-width: 1200px;
   margin: 0 auto;
   padding: ${({ $isMobile }) => ($isMobile ? "10px" : "20px")};
@@ -9,13 +9,13 @@ export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
 `;
 
 
-export const CenterContainer = styled.div`
+export const CenterContainer = styled.div<{ $isApp: boolean; $isMobile: boolean }>`
   max-width: 1170px;
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
-  margin-top: 100px;
+  margin-top: ${({ $isMobile }) => ($isMobile ? "50px" : "100px")};
 `;
 
 export const Title = styled.h2 <{ $isMobile: boolean }>`
@@ -85,7 +85,7 @@ export const TrackButton = styled.button<{ $isSelected: boolean; $isMobile: bool
   display: flex;
   width: ${({ $isMobile, $isSelected }) => 
     $isMobile ? ($isSelected ? "200px" : "160px") : ($isSelected ? "260px" : "260px")};
-  height: ${({ $isMobile }) => ($isMobile ? "40px" : "75px")};
+  height: ${({ $isMobile }) => ($isMobile ? "32px" : "75px")};
   padding: 10px 0;
   justify-content: center;
   align-items: center;

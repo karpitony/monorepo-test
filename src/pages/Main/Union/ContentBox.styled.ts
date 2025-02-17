@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ $isMobile: boolean }>`
   width: 100%;
-  height: ${(props) => (props.$isMobile ? "auto" : "500px")};
+  height: ${(props) => (props.$isMobile ? "370px" : "500px")};
 
   display: flex;
   justify-content: center;
@@ -10,6 +10,7 @@ export const Container = styled.div<{ $isMobile: boolean }>`
 
   position: relative;
   padding: ${(props) => (props.$isMobile ? "20px 0" : "0")};
+  /* background-color: yellow; */
 `;
 
 // 테두리에 Gradient가 안돼서 박스 두개를 겹쳐서 테두리 Gradient를 만들었습니다.
@@ -99,24 +100,35 @@ export const ActivityList = styled.ul<{ $isMobile: boolean; $isTiny: boolean; }>
 
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  align-content: flex-start;
+  /* flex-wrap: wrap; */
+  align-items: center; 
+  justify-content: center; 
+  align-content: center; 
 
   gap: ${(props) => (props.$isMobile ? "0 10px" : "10px 20px")};
   list-style-type: disc;
 `;
 
+export const ListBox = styled.div<{ $isApp: boolean}>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${(props) => (props.$isApp ? "center" : "start")};
+  justify-content: center;
+  padding-bottom: ${(props) => (props.$isApp ? "15px" : "0px")};
+  /* background-color: orange; */
+`
+
 export const Li = styled.li<{
+  $isApp: boolean;
   $isMobile: boolean;
   $isTiny?: boolean;
 }>`
-  height: 35px;
+  height: ${(props) => (props.$isApp ? "25px" : "35px")};
 
   font-style: normal;
-  font-weight: 500;
+  font-weight: 300;
   font-size: ${(props) =>
-    props.$isMobile ? "13px" : "22px"};
+    props.$isMobile ? "15px" : "20px"};
   line-height: ${(props) => (props.$isMobile ? "30px" : "35px")};
   color: var(--FarmSystem_Black);
 
@@ -130,43 +142,42 @@ export const Li = styled.li<{
   text-align: center;
 `;
 
-export const GradientContainer = styled.div<{ $isMobile: boolean }>`
+
+export const GradientContainer = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
   position: absolute;
   top: 0;
-  height: 500px;
-
-  //높이 문제로 정상적으로 진행 못했던 것 같아서 모바일 뷰로 처리해서 해결 했습니다.
-  height: ${(props) => (props.$isMobile ? "330px" : "500px")};
-
-  // 배경 Gradient를 모바일에서도 보이게 하려면 이 부분 고쳐주시면 됩니다!
   display: flex;
-  gap: 80px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+
+  /* ✅ 블러 크기 조정 */
+  height: ${(props) => (props.$isMobile ? "370px" : props.$isTablet ? "500px" : "500px")};
+  gap: ${(props) => (props.$isMobile ? "30vw" : props.$isTablet ? "200px" : "80px")};
+  /* background-color: orange; */
 `;
 
-export const GradientLeft = styled.div<{ $isMobile: boolean }>`
-  width: ${(props) => (props.$isMobile ? "240px" : "560px")};
-  height: ${(props) => (props.$isMobile ? "200px" : "400px")};
+export const GradientLeft = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
+  width: ${(props) => (props.$isMobile ? "280px" : props.$isTablet ? "400px" : "550px")};
+  height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "470px" : "400px")};
 
   background: linear-gradient(
     270deg,
     var(--FarmSystem_Orange) 50%,
     var(--FarmSystem_White) 100%
   );
-  opacity: 0.5;
+  opacity: 0.4;
   border-radius: 20px;
 `;
 
-export const GradientRight = styled.div<{ $isMobile: boolean }>`
-  width: ${(props) => (props.$isMobile ? "240px" : "560px")};
-  height: ${(props) => (props.$isMobile ? "200px" : "400px")};
-  
+export const GradientRight = styled.div<{ $isMobile: boolean, $isTablet: boolean }>`
+  width: ${(props) => (props.$isMobile ? "280px" : props.$isTablet ? "400px" : "550px")};
+  height: ${(props) => (props.$isMobile ? "33vh" : props.$isTablet ? "470px" : "400px")};
+
   background: linear-gradient(
     90deg,
     var(--FarmSystem_Green02) 50%,
     var(--FarmSystem_White) 100%
   );
-  opacity: 0.5;
+  opacity: 0.4;
   border-radius: 20px;
 `;

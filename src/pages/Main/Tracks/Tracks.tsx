@@ -7,7 +7,7 @@ import useMediaQueries from "@/hooks/useMediaQueries";
 
 export default function Tracks() {
   const [selectedTrack, setSelectedTrack] = useState(TracksData[0]);
-  const { isMobile, isTablet } = useMediaQueries();
+  const { isApp, isMobile, isTablet } = useMediaQueries();
 
 
   const handleSmoothScroll = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>, targetId: string) => {
@@ -24,7 +24,7 @@ export default function Tracks() {
 
   return (
     <S.Container id="tracks" $isMobile={isMobile} $isTablet={isTablet}>
-      <S.CenterContainer>
+      <S.CenterContainer $isApp={isApp} $isMobile={isMobile}>
         <S.Title $isMobile={isMobile}>트랙 및 커리큘럼</S.Title>
         <S.GoToUnion onClick={(e) => handleSmoothScroll(e, "#union")} $isMobile={isMobile}>
           <S.GoToUnionText $isMobile={isMobile}>
