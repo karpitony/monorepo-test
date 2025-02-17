@@ -5,7 +5,7 @@ export const AppContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 160vh;
+    height: 150vh;
     background: linear-gradient(90deg, #102C19, #194326);
     color: white;
     text-align: center;
@@ -18,7 +18,7 @@ export const TopSection = styled.div`
     align-items: center;
     justify-content: center;
     flex: 1;
-    margin-top: 5vh;
+    margin-top: -10vh;
 `;
 
 export const BottomSection = styled.div`
@@ -26,8 +26,8 @@ export const BottomSection = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    margin-bottom: 15vh;
+    height: 450px;
+    margin-bottom: 10vh;
 
     background-color: rgba(229, 229, 229, 0.3); 
 
@@ -112,23 +112,31 @@ export const Description = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
     line-height: 1.5;
     max-width: 600px;
     margin-bottom: 20px;
-    margin-left: 30px;
+    margin-left: ${({ $isMobile }) => ($isMobile ? "0" : "30px")};
+    margin-top: ${({ $isMobile }) => ($isMobile ? "30px" : "0px")};
     font-weight: 600;
 `;
 
-export const TrackList = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
+export const TopBox = styled.div<{ $isMobile: boolean }>`
+    position: absolute;
+    left: 30px;
+    top: ${({ $isMobile }) => ($isMobile ? "10px" : "50px")};
+    display: flex;
+    flex-direction: column;
+`
+
+export const TrackList = styled.p<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`
     font-size: ${({ $isMobile, $isTablet}) => ($isMobile ? "15px": $isTablet ? "15px" : "20px")};
-    text-align: ${({ $isMobile }) => ($isMobile ? "center":"left")};
+    text-align: ${({ $isApp }) => ($isApp ? "center":"left")};
     color: rgb(245, 245, 245); 
     max-width: 600px;
     margin-top: 15px;
     line-height: 1.8;
     margin-left: ${({ $isMobile }) => ($isMobile ? "0" : "30px")};
     margin-bottom: ${({ $isMobile }) => ($isMobile ? "20px":"0")};
-
 `;
 
-export const WebviewBox = styled.div`
+export const WebviewBox = styled.div<{ $isMobile: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
@@ -136,14 +144,15 @@ export const WebviewBox = styled.div`
 
     width: 100%;
 
-    min-height: 400px;
-    height: auto;
+    /* min-height: 400px; */
+    height: ${({ $isMobile }) => ($isMobile ? "350px":"400px")};
 
     background-color: rgba(229, 229, 229, 0.3); 
 
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
 `;
 
 export const ApplyBox = styled.div`
@@ -153,6 +162,9 @@ export const ApplyBox = styled.div`
     justify-content: flex-end; 
     width: 100%; 
     padding: 10px 20px; 
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
 `;
 
 
@@ -161,6 +173,8 @@ export const Apply = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-left: 50px;
+    /* background-color: orange; */
+    
 `;
 
 export const ApplyButton = styled.button<{ $isMobile: boolean; $isTablet: boolean }>`

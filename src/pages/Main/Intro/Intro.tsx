@@ -29,6 +29,11 @@ const Intro = () => {
             animate="visible"
             variants={fadeInUp}
             custom={0} 
+            style={{
+              width: "80%",
+              maxWidth: "200px",
+              height: "auto"
+            }}
           />
           
           {["미래를 준비하고 성장하는 여정,", "Farm System에서 함께하세요."].map((text, index) => (
@@ -54,10 +59,10 @@ const Intro = () => {
         >
           <S.BottomSectionTitle>🌱 Farm System이란?</S.BottomSectionTitle>
           <S.BottomSectionDescription>
-              SW/AI 분야에 관심 있는 학생들로 구성된 <br /> 자율 학습 동아리입니다.
+              SW/AI 분야에 관심 있는 학생들로 <br /> 구성된 자율 학습 동아리입니다.
           </S.BottomSectionDescription>
 
-          <S.TrackList $isMobile={isMobile} $isTablet={isTablet}>
+          <S.TrackList $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>
               Union · 게임/영상 · 보안/웹 ·  <br />사물인터넷/로봇 · 인공지능 · 빅데이터의 <br />
               5가지 신기술 트랙을 제공하여 학습 경험을 통해 SW/AI 역량을 배양합니다.
           </S.TrackList>
@@ -124,24 +129,27 @@ const Intro = () => {
   transition={{ duration: 0.8, delay: 2, ease: "easeOut" }}
   viewport={{ once: true }}
 >
-  <S.WebviewBox>
-    <S.Description $isMobile={isMobile} $isTablet={isTablet}>
-      🌱Farm System이란?
-    </S.Description>
+  <S.WebviewBox $isMobile={isMobile}>
+    <S.TopBox $isMobile={isMobile}>
+      <S.Description $isMobile={isMobile} $isTablet={isTablet}>
+        🌱Farm System이란?
+      </S.Description>
+      
+      <S.TrackList $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>
+        SW/AI 분야에 관심있는 학생들로 구성된 <a>자율 학습 동아리</a>로, <br />
+        <a>Union · 게임/영상 · 보안/웹 · 사물인터넷/로봇 · 인공지능 · 빅데이터</a>의 <br />
+        5가지 신기술 트랙을 제공하여 학습 경험을 통해 SW/AI 역량을 배양합니다.
+      </S.TrackList>
+    </S.TopBox>
     
-    <S.TrackList  $isMobile={isMobile} $isTablet={isTablet}>
-      SW/AI 분야에 관심있는 학생들로 구성된 <a>자율 학습 동아리</a>로, <br />
-      <a>Union · 게임/영상 · 보안/웹 · 사물인터넷/로봇 · 인공지능 · 빅데이터</a>의 <br />
-      5가지 신기술 트랙을 제공하여 학습 경험을 통해 SW/AI 역량을 배양합니다.
-    </S.TrackList>
-          <S.ApplyBox>
-            <S.Apply>
-      <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => setPopupOpen(true)}> 
-        지원하기 
-      </S.ApplyButton>
-      <S.ApplyDescription>2025년 2월 공개 모집 예정</S.ApplyDescription>
-    </S.Apply>
-</S.ApplyBox>
+    <S.ApplyBox>
+      <S.Apply>
+          <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => setPopupOpen(true)}> 
+            지원하기 
+          </S.ApplyButton>
+          <S.ApplyDescription>2025년 2월 공개 모집 예정</S.ApplyDescription>
+      </S.Apply>
+    </S.ApplyBox>
     
   </S.WebviewBox>
 </motion.div>
