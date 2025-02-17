@@ -96,15 +96,15 @@ export const ApplyButton = styled.button<{ $isApp: boolean; $isMobile: boolean }
 `;
 
 
-export const NotificationContainer = styled.div<{ $isMobile: boolean }>`
+export const NotificationContainer = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
-  padding-right: ${({ $isMobile }) => ($isMobile ? "12px" : "20px")};
+  padding-right: ${({ $isMobile, $isTablet }) => ($isMobile ? "0px" : $isTablet ? "12px" : "20px")};
 `;
 
-export const NotificationLink = styled.a<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "18px")};
+export const NotificationLink = styled.a<{ $isMobile: boolean; $isTablet: boolean }>`
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "14px" : "18px")};
   color: #333;
   text-decoration: none;
   font-weight: 500;
