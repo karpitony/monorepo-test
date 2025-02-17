@@ -36,8 +36,8 @@ export default function Header() {
               <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>소식</S.NavItem>
               <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>FAQ</S.NavItem>
             </S.Nav>
-            <S.FarmingLogButton onClick={onContainerClick}>파밍로그</S.FarmingLogButton>
           </S.NavWrapper>
+          <S.FarmingLogButton onClick={onContainerClick}>파밍로그</S.FarmingLogButton>
         </>
       )}
 
