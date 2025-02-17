@@ -1,4 +1,5 @@
 import AchievementItem from './AchievementItem';
+import AchievementBox from './AchievementBox';
 import Slider from 'react-slick';
 import * as S from './Achievements.styles';
 import 'slick-carousel/slick/slick.css';
@@ -99,17 +100,8 @@ const Achievements = () => {
           ))}
         </Slider>
       </S.SliderWrapper>
-      <S.StatsContainer $isMobile={isMobile}>
-        {[ { number: "1,200명", label: "활동 멤버" },
-           { number: "140개", label: "프로젝트" },
-           { number: "80개", label: "스터디" },
-           { number: "20회", label: "수상 경험" } ].map((stat, index) => (
-          <S.StatBox key={index} index={index} $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>
-            <S.StatNumber $isApp={isApp} $isMobile={isMobile}>{stat.number}</S.StatNumber>
-            <S.StatLabel $isMobile={isMobile}>{stat.label}</S.StatLabel>
-          </S.StatBox>
-        ))}
-      </S.StatsContainer>
+        
+      <AchievementBox />
     </S.AchievementsContainer>
   );
 };
