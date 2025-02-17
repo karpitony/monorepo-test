@@ -30,7 +30,6 @@ export const BottomSection = styled.div`
     margin-bottom: 10vh;
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 export const BottomSectionTitle = styled.h2`
