@@ -28,19 +28,22 @@ export const Logo = styled.div`
 export const NavWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 35px;
+  flex-grow: 1;
 `;
 
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 40px;
 `;
 
 export const NavItem = styled.a<{ $isMobile: boolean; $isTablet: boolean }>`
   text-decoration: none;
-  font-size: ${({$isTablet}) => ($isTablet ? "15px": "18px")}
-  font - weight: 500;
+  font-size: ${({$isTablet}) => ($isTablet ? "15px": "18px")};
+  font-weight: 500;
   color: #102C19;
   cursor: pointer;
   &:hover {

@@ -28,12 +28,8 @@ export const BottomSection = styled.div`
     justify-content: center;
     height: 450px;
     margin-bottom: 10vh;
-
-    background-color: rgba(229, 229, 229, 0.3); 
-
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 export const BottomSectionTitle = styled.h2`
@@ -77,44 +73,48 @@ export const AppApplyButton = styled.div`
     margin-top: 20px;
 `;
 
-export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean; $isApp: boolean, $isIpadPro: boolean }>`
+export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: ${({ $isMobile, $isTablet}) => 
-        $isMobile ? "80vh" : $isTablet ? "120vh" : "130vh"};
-
-    background: ${({ $isMobile, $isTablet, $isApp }) => (
-        $isApp ? "linear-gradient(90deg, #102C19, #194326)" :
-        $isMobile ? "linear-gradient(90deg, #102C19, #28723F)" :
-        $isTablet ? "linear-gradient(90deg, #102C19, #28723F)" :
-        "linear-gradient(90deg, #102C19, #28723F)"
+    height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "110vh")};
+    background: ${({ $isMobile }) => (
+        $isMobile ? "linear-gradient(90deg, #28723F, #75e298)" 
+        : "linear-gradient(90deg, #28723F, #A2E9B8)"
     )};
-
     padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
     color: white;
 `;
 
-
 export const Logo = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     display: flex;
     align-items: center;
-    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "19px" : $isTablet ? "27px" : "35px")};
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "40px" : $isTablet ? "50px" : "64px")};
+    font-weight: 800;
+    margin-bottom: 20px;
+    margin-left: 50px;
     img {
-        width: ${({ $isMobile, $isTablet }) => ($isMobile ? "100px" : $isTablet ? "200px" : "250px")};
+        width: ${({ $isMobile, $isTablet }) => ($isMobile ? "100px" : $isTablet ? "140px" : "180px")};
         height: auto;
     }
 `;
 
+export const IntroDescription = styled.p`
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #333;
+`;
+
 export const Description = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
-    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "16px" : $isTablet ? "20px" : "30px")};
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "16px" : $isTablet ? "20px" : "24px")};
     line-height: 1.5;
     max-width: 600px;
     margin-bottom: 20px;
-    margin-left: ${({ $isMobile }) => ($isMobile ? "0" : "30px")};
-    margin-top: ${({ $isMobile }) => ($isMobile ? "30px" : "0px")};
-    font-weight: 600;
+    margin-left: 50px;
 `;
 
 export const TopBox = styled.div<{ $isMobile: boolean }>`
@@ -125,15 +125,16 @@ export const TopBox = styled.div<{ $isMobile: boolean }>`
     flex-direction: column;
 `
 
-export const TrackList = styled.p<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`
-    font-size: ${({ $isMobile, $isTablet}) => ($isMobile ? "15px": $isTablet ? "15px" : "20px")};
-    text-align: ${({ $isApp }) => ($isApp ? "center":"left")};
-    color: rgb(245, 245, 245); 
-    max-width: 600px;
-    margin-top: 15px;
-    line-height: 1.8;
-    margin-left: ${({ $isMobile }) => ($isMobile ? "0" : "30px")};
-    margin-bottom: ${({ $isMobile }) => ($isMobile ? "20px":"0")};
+export const TrackList = styled.p<{ $isMobile: boolean; $isTablet: boolean}>`
+    a {    
+        font-weight: 600;
+    }
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "15px" : $isTablet ? "20px" : "24px")};
+    line-height: 1.5;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    
 `;
 
 export const WebviewBox = styled.div<{ $isMobile: boolean }>`
@@ -181,10 +182,10 @@ export const ApplyButton = styled.button<{ $isMobile: boolean; $isTablet: boolea
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px 50px" : $isTablet ? "12px 65px" : "15px 65px")};
+    padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px 50px" : $isTablet ? "12px 65px" : "15px 80px")};
     border-radius: 10px;
     font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "18px" : $isTablet ? "22px" : "24px")};
-    margin-top: ${({ $isMobile }) => ($isMobile ? "50px":"20px")};
+    margin-top: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     
     &:hover {
@@ -192,12 +193,16 @@ export const ApplyButton = styled.button<{ $isMobile: boolean; $isTablet: boolea
     }
 `;
 
-export const ApplyDescription = styled.div`
-    font-size: 16px;
+export const ApplyDescription = styled.div<{ $isMobile: boolean }>`
+    font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
     margin-top: 15px;
     color: #E8F5E9;
     text-align: center;
 
 `;
 
-
+export const Bud = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
+    font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "40px" : $isTablet ? "50px" : "64px")};
+    margin-left: ${({ $isMobile, $isTablet }) => ($isMobile ? "30px" : $isTablet ? "40px" : "50px")};
+    top: 116px;
+    `;
