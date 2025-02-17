@@ -107,7 +107,7 @@ export const StatBox = styled.div<{ index: number; $isMobile: boolean; $isTablet
 `;
 
 export const StatNumber = styled.div<{ $isApp: boolean; $isMobile: boolean }>`
-  font-size: ${({ $isApp, $isMobile }) => ($isApp ? "28px" : $isMobile ? "32px" : "48px")};
+  font-size: ${({ $isApp, $isMobile }) => ($isApp ? "22px" : $isMobile ? "32px" : "48px")};
   font-weight: bold;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
