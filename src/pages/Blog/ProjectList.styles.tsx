@@ -58,7 +58,7 @@ export const DropdownMenu = styled.div`
   text-align: center;
   
   background-color: #fff;
-  border: 2px solid var(--FarmSystem_Green04);
+  border: 3px solid var(--FarmSystem_Green04);
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   

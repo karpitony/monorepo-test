@@ -6,21 +6,18 @@ import ProjectItem, { ProjectItemProps } from './ProjectItem';
 const projectData: ProjectItemProps[] = [
   {
     title: '임시직 프로젝트 1',
-    description: '백동민 최강 백동민 힘내 백동민 파이팅 1.',
+    description: '팜시스템에 필요한 모든 정보를 담은 앱! W-300 H-40 고정사이즈로써 2줄까지 소개가 가능하다.',
     imageUrl: 'https://via.placeholder.com/300',
-    blogUrl: '#',
   },
   {
     title: '임시직 프로젝트 2',
     description: '백동민 최강 백동민 힘내 백동민 파이팅 2.',
     imageUrl: 'https://via.placeholder.com/300',
-    blogUrl: '#',
   },
   {
     title: '임시직 프로젝트 3',
     description: '백동민 최강 백동민 힘내 백동민 파이팅 3.',
     imageUrl: 'https://via.placeholder.com/300',
-    blogUrl: '#',
   },
 ];
 
