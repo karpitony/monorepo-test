@@ -16,8 +16,6 @@ export const TableContainer = styled.div`
   
   height: 10vh;
   min-height: 60px;
-
-  border: 2px solid #2db400;
 `;
 
 /** 실제로 '기수' 버튼이나 '트랙' 버튼을 감쌀 컨테이너 예시 */
