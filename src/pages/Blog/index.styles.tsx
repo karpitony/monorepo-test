@@ -3,7 +3,7 @@ import styled from 'styled-components';
 //전체 컨테이너
 export const Container = styled.div`
   position: relative; /*위치 지정에 필요*/
-  max-width: 1440px;
+  width: 1440px;
   display: flex;
   margin: 0 auto; //중앙정렬
   padding: 0 220px; //좌우 여백
@@ -31,7 +31,6 @@ export const ButtonContainer = styled.div`
 
 // 토글 버튼 스타일
 export const ToggleButton = styled.button<{ active: boolean }>`
-  margin: 0 5px;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -46,6 +45,7 @@ export const ToggleButton = styled.button<{ active: boolean }>`
 
 export const Divider = styled.div`
     padding: none;
+    margin: 0 5px;
     font-size: 64px;
     font-weight: 100;
     color: var(--FarmSystem_DarkGrey);
