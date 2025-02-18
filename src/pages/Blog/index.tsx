@@ -1,59 +1,39 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import * as S from './index.styles';
+
 import BlogList from './BlogList';
 import ProjectList from './ProjectList';
 
-// 버튼 컨테이너 스타일
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-
-// 토글 버튼 스타일
-const ToggleButton = styled.button<{ active: boolean }>`
-  padding: 10px 20px;
-  margin: 0 5px;
-  border: none;
-  border-bottom: ${(props) => (props.active ? '2px solid #0077cc' : 'none')};
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 1rem;
-  color: ${(props) => (props.active ? '#0077cc' : '#333')};
-
-  &:hover {
-    color: #0077cc;
-  }
-`;
-
 const Blog: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'blog' | 'project'>('blog');
+  const [activeTab, setActiveTab] = useState<'blog' | 'project'>('project');
 
   return (
-    <>
-      <ButtonContainer>
-        <ToggleButton active={activeTab === 'blog'} onClick={() => setActiveTab('blog')}>
-          Blog
-        </ToggleButton>
-        <ToggleButton active={activeTab === 'project'} onClick={() => setActiveTab('project')}>
-          Project
-        </ToggleButton>
-      </ButtonContainer>
+    <S.Container>
+      <S.ButtonContainer>
+        <S.ToggleButton active={activeTab === 'project'} onClick={() => setActiveTab('project')}>
+          <div>프로젝트</div>
+        </S.ToggleButton>
+        <S.Divider>|</S.Divider>
+        <S.ToggleButton active={activeTab === 'blog'} onClick={() => setActiveTab('blog')}>
+          <div>블로그</div>
+        </S.ToggleButton>
+      </S.ButtonContainer>
+        {activeTab === 'project' && (
+          <S.ActiveTabIndicator>
+            <h2>Project</h2>
+            <ProjectList />
+          </S.ActiveTabIndicator>
+        )}
+        {activeTab === 'blog' && (
+          <S.ActiveTabIndicator>
+            <h2>Blog</h2>
+            <BlogList />
+          </S.ActiveTabIndicator>
+        )}
+      
 
-      {activeTab === 'blog' && (
-        <div>
-          <h2>Blog</h2>
-          <BlogList />
-        </div>
-      )}
 
-      {activeTab === 'project' && (
-        <div>
-          <h2>Project</h2>
-          <ProjectList />
-        </div>
-      )}
-    </>
+    </S.Container>
   );
 };
 
