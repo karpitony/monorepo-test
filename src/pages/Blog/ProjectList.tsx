@@ -1,14 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import * as S from './ProjectList.styles';
 import ProjectItem, { ProjectItemProps } from './ProjectItem';
 
-const ListContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-`;
-
-// 더미미
+/** 샘플용 더미 데이터 */
 const projectData: ProjectItemProps[] = [
   {
     title: '임시직 프로젝트 1',
@@ -30,13 +24,80 @@ const projectData: ProjectItemProps[] = [
   },
 ];
 
+/**
+ * 드롭다운을 구분하기 위한 타입
+ * - "grade" = 기수, "track" = 트랙
+ */
+type DropdownType = 'grade' | 'track' | '';
+
 const ProjectList: React.FC = () => {
+  // 하나만 열리도록, 어떤 드롭다운이 열려 있는지 state로 관리
+  const [openDropdown, setOpenDropdown] = useState<DropdownType>('');
+
+  // 드롭다운 열림/닫힘 토글 함수
+  const handleToggleDropdown = (type: DropdownType) => {
+    // 이미 열려 있는 상태면 닫고, 아니면 해당 타입으로 연다
+    setOpenDropdown(prev => (prev === type ? '' : type));
+  };
+
+  // 드롭다운에서 선택 시 동작 (필요 시 구현)
+  const handleSelectOption = (option: string) => {
+    console.log('선택한 옵션:', option);
+    // 선택 후 바로 닫고 싶다면:
+    setOpenDropdown('');
+  };
+
   return (
-    <ListContainer>
-      {projectData.map((item, index) => (
-        <ProjectItem key={index} {...item} />
-      ))}
-    </ListContainer>
+    <S.Container>
+      <S.TableContainer>
+        {/* 기수 */}
+        <S.FilterWrapper>
+          <S.FilterButton onClick={() => handleToggleDropdown('grade')}>
+            기수 ▾
+          </S.FilterButton>
+          {openDropdown === 'grade' && (
+            <S.DropdownMenu>
+              {['4기', '3기', '2기', '1기'].map((grade) => (
+                <S.DropdownItem
+                  key={grade}
+                  onClick={() => handleSelectOption(grade)}
+                >
+                  {grade}
+                </S.DropdownItem>
+              ))}
+            </S.DropdownMenu>
+          )}
+        </S.FilterWrapper>
+
+        {/* 트랙 */}
+        <S.FilterWrapper>
+          <S.FilterButton onClick={() => handleToggleDropdown('track')}>
+            트랙 ▾
+          </S.FilterButton>
+          {openDropdown === 'track' && (
+            <S.DropdownMenu>
+              {['Union', '빅데이터', '사물인터넷/로봇', '인공지능', '보안/웹', '게임/영상'].map(
+                (track) => (
+                  <S.DropdownItem
+                    key={track}
+                    onClick={() => handleSelectOption(track)}
+                  >
+                    {track}
+                  </S.DropdownItem>
+                )
+              )}
+            </S.DropdownMenu>
+          )}
+        </S.FilterWrapper>
+      </S.TableContainer>
+
+      {/* 프로젝트 카드 리스트 */}
+      <S.ListContainer>
+        {projectData.map((item, index) => (
+          <ProjectItem key={index} {...item} />
+        ))}
+      </S.ListContainer>
+    </S.Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './index.styles';
 
 import BlogList from './BlogList';
@@ -8,6 +8,7 @@ const Blog: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'blog' | 'project'>('project');
 
   return (
+    <>
     <S.Container>
       <S.ButtonContainer>
         <S.ToggleButton active={activeTab === 'project'} onClick={() => setActiveTab('project')}>
@@ -20,20 +21,16 @@ const Blog: React.FC = () => {
       </S.ButtonContainer>
         {activeTab === 'project' && (
           <S.ActiveTabIndicator>
-            <h2>Project</h2>
             <ProjectList />
           </S.ActiveTabIndicator>
         )}
         {activeTab === 'blog' && (
           <S.ActiveTabIndicator>
-            <h2>Blog</h2>
             <BlogList />
           </S.ActiveTabIndicator>
         )}
-      
-
-
     </S.Container>
+    </>
   );
 };
 
