@@ -50,7 +50,7 @@ export const FilterButton = styled.button`
 /** 드롭다운 목록 컨테이너 */
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: 100px;     /* 버튼 아래로 살짝 떨어뜨림 */
+  top: 110px;     /* 버튼 아래로 살짝 떨어뜨림 */
   left: 0;
   min-width: 120px;
   text-align: center;
@@ -80,7 +80,7 @@ export const DropdownItem = styled.div`
 /** 프로젝트 리스트(카드)들을 감싸는 컨테이너 */
 export const ListContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   
   /* 예시로 카드 3개씩 보여주는 레이아웃 */
   display: grid;

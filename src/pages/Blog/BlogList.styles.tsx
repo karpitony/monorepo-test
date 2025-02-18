@@ -29,7 +29,7 @@ export const SubDescription = styled.div`
 /** 프로젝트 리스트(카드)들을 감싸는 컨테이너 */
 export const ListContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   
   /* 예시로 카드 3개씩 보여주는 레이아웃 */
   display: grid;
