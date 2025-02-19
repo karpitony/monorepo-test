@@ -9,10 +9,6 @@ interface QuestionType {
   answer: string;
 }
 
-interface Questions {
-  [key: string]: QuestionType[];
-}
-
 const FAQ: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('공통');
 
