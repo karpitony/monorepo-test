@@ -4,6 +4,15 @@ import Question from './Question';
 import * as S from './index.styled';
 import { questions } from './questions';
 
+interface QuestionType {
+  question: string;
+  answer: string;
+}
+
+interface Questions {
+  [key: string]: QuestionType[];
+}
+
 const FAQ: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('공통');
 
@@ -13,7 +22,7 @@ const FAQ: React.FC = () => {
       <S.ContentWrapper>
         <Frame onSelectCategory={setSelectedCategory} />
         <S.QuestionWrapper>
-          {questions[selectedCategory].map((q, index) => (
+          {questions[selectedCategory].map((q: QuestionType, index: number) => (
             <Question key={index} question={q.question} answer={q.answer} />
           ))}
         </S.QuestionWrapper>

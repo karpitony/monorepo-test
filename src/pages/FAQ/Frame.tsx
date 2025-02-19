@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import * as S from './Frame.styled';
 
-const Frame = ({ onSelectCategory }) => {
+interface FrameProps {
+  onSelectCategory: (category: string) => void;
+}
+
+const Frame: React.FC<FrameProps> = ({ onSelectCategory }) => {
   const [selectedCategory, setSelectedCategory] = useState('공통');
   const categories = ['공통', '게임/영상', '보안/웹', '인공지능', '사물인터넷/로봇', '빅데이터'];
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
     onSelectCategory(category);
   };

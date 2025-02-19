@@ -1,5 +1,13 @@
+interface QuestionType {
+  question: string;
+  answer: string;
+}
 
-export const questions = {
+interface Questions {
+  [key: string]: QuestionType[];
+}
+
+export const questions: Questions = {
   '공통': [
     {
       question: '신입생/휴학생/대학원생도 활동할 수 있나요?',
