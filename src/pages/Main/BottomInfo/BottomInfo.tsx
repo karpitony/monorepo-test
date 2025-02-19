@@ -7,11 +7,11 @@ import DGUIcon from "@/assets/DGULogo.png";
 import Popup from '@/components/Popup/Popup';
 import useMediaQueries from '@/hooks/useMediaQueries';
 
+const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSd1p3w5T1c1XFxM4lrqGxwCrW-L1f9Wm4bLmOmcAWcqSILpPw/viewform";
+
 const BottomInfo = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const { isApp, isMobile, isTablet } = useMediaQueries();
-
-  const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSdaELf6PNpRSD18nPPcgH_934Wsm9Gju54P62vWlczusmRg3w/viewform";
 
   return (
     <S.BottomInfoContainer id="eligibility" $isMobile={isMobile} $isTablet={isTablet}>
