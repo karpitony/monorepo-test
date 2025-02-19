@@ -25,17 +25,15 @@ export const FilterWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  width: 120px; /* 필요에 따라 조절 */
   min-height: 80px; /* 필요에 따라 조절 */
 
 `;
 
-/** 버튼 스타일 (기수/트랙 공통) */
-export const FilterButton = styled.button`
+/** 기수 버튼 스타일 */
+export const FilterGradeButton = styled.button`
   background-color: var(--FarmSystem_Green06);
   color: #fff;
-  padding: 8px 16px;
+  padding: 8px 0px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -44,16 +42,37 @@ export const FilterButton = styled.button`
   font-weight: 500;
 
   margin-top: auto;
+  flex: space-between;
+  
+  /* 필요에 따라 hover, focus 스타일 추가 */
+  min-width: 100px;
+`;
+/* 트랙 버튼 스타일*/
+export const FilterTrackButton = styled.button`
+  background-color: var(--FarmSystem_Green06);
+  color: #fff;
+  padding: 8px 0px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  
+  font-size: 18px;
+  font-weight: 500;
+
+  margin-top: auto;
+  min-width: 150px;
+  flex: space-between;
   
   /* 필요에 따라 hover, focus 스타일 추가 */
 `;
+
 
 /** 드롭다운 목록 컨테이너 */
 export const DropdownMenu = styled.div`
   position: absolute;
   top: 110px;     /* 버튼 아래로 살짝 떨어뜨림 */
   left: 0;
-  min-width: 120px;
+  width: 100%;
   text-align: center;
   
   background-color: #fff;

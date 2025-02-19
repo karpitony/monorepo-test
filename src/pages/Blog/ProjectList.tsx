@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './ProjectList.styles';
 import BlankImg from '../../assets/Images/Blog_Project/blank_img.svg';
 import ProjectItem, { ProjectItemProps } from './ProjectItem';
@@ -65,9 +65,9 @@ const ProjectList: React.FC = () => {
       <S.TableContainer>
         {/* 기수 */}
         <S.FilterWrapper>
-          <S.FilterButton onClick={() => handleToggleDropdown('grade')}>
-            기수 ▾
-          </S.FilterButton>
+          <S.FilterGradeButton onClick={() => handleToggleDropdown('grade')}>
+            <a>기수</a> <a>▾</a>
+          </S.FilterGradeButton>
           {openDropdown === 'grade' && (
             <S.DropdownMenu>
               {['4기', '3기', '2기', '1기'].map((grade) => (
@@ -84,9 +84,9 @@ const ProjectList: React.FC = () => {
 
         {/* 트랙 */}
         <S.FilterWrapper>
-          <S.FilterButton onClick={() => handleToggleDropdown('track')}>
-            트랙 ▾
-          </S.FilterButton>
+          <S.FilterTrackButton onClick={() => handleToggleDropdown('track')}>
+            <a>트랙</a> <a>▾</a>
+          </S.FilterTrackButton>
           {openDropdown === 'track' && (
             <S.DropdownMenu>
               {['Union', '빅데이터', '사물인터넷/로봇', '인공지능', '보안/웹', '게임/영상'].map(
