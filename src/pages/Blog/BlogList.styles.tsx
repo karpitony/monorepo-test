@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  min-width: 1000px;
 `;
 
 // 상단 필터(기수·트랙)들을 감싸는 컨테이너
@@ -34,8 +35,37 @@ export const ListContainer = styled.div`
   /* 예시로 카드 3개씩 보여주는 레이아웃 */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 50px;
   
   /* 필요하다면 반응형 고려하여 media query 등 사용 */
+`;
+
+/* 비어 있을 떄 출력하는 레이아웃 잡는 컨테이너 */
+export const DescriptionContainer = styled.div`
+  width: 100%;
+  margin: 20px auto;
+  display: block;
+`;
+
+/* 텍스트 컨테이너*/
+export const TextContainer = styled.div`
+
+  padding-top: 150px;
+  height: 100px;
+  display: flex;
+
+  justify-content: center;
+  text-align: center;
+
+  flex-direction: column;
+  color: black;
+  font-size: 32px;
+  font-weight: 600;
+
+  a{
+    font-size: 14px;
+    font-weight: 300;
+  }
+  gap: 10px;
 `;
 

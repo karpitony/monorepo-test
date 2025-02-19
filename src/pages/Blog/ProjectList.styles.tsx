@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  min-width: 1000px;
 `;
 
 // 상단 필터(기수·트랙)들을 감싸는 컨테이너
@@ -32,7 +33,7 @@ export const FilterWrapper = styled.div`
 
 /** 버튼 스타일 (기수/트랙 공통) */
 export const FilterButton = styled.button`
-  background-color: var(--FarmSystem_Green04);
+  background-color: var(--FarmSystem_Green06);
   color: #fff;
   padding: 8px 16px;
   border: none;
@@ -85,7 +86,7 @@ export const ListContainer = styled.div`
   /* 예시로 카드 3개씩 보여주는 레이아웃 */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 50px;
   
   /* 필요하다면 반응형 고려하여 media query 등 사용 */
 `;

@@ -37,10 +37,6 @@ export const ToggleButton = styled.button<{ active: boolean }>`
   font-size: ${(props) => (props.active ? '40px' : '32px')};
   font-weight: 600;
   color: ${(props) => (props.active ? 'var(--FarmSystem_Green01)' : 'var(--FarmSystem_DarkGrey)')};
-
-  &:hover {
-    color: #0077cc;
-  }
 `;
 
 export const Divider = styled.div`
