@@ -4,7 +4,7 @@ import Main from '@/pages/Main';
 import Apply from '@/pages/Apply';
 import Blog from '@/pages/Blog';
 import NotFound from '@/pages/NotFound';
-import FAQ from './pages/FAQ';
+import FAQ from '@/pages/FAQ';
 
 export default function Router() {
   const router = createBrowserRouter([

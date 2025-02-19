@@ -1,0 +1,28 @@
+import React, { useState } from 'react';
+import * as S from './Frame.styled';
+
+const Frame = ({ onSelectCategory }) => {
+  const [selectedCategory, setSelectedCategory] = useState('공통');
+  const categories = ['공통', '게임/영상', '보안/웹', '인공지능', '사물인터넷/로봇', '빅데이터'];
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    onSelectCategory(category);
+  };
+
+  return (
+    <S.FrameParent>
+      {categories.map((category) => (
+        <S.Container
+          key={category}
+          onClick={() => handleCategoryClick(category)}
+          isSelected={selectedCategory === category}
+        >
+          {category}
+        </S.Container>
+      ))}
+    </S.FrameParent>
+  );
+};
+
+export default Frame;

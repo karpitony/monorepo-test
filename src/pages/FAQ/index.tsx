@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Frame from './Frame';
+import Question from './Question';
+import * as S from './index.styled';
+import { questions } from './questions';
 
 const FAQ: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState('공통');
+
   return (
-    <div>
-      <h1>자주 묻는 질문 (FAQ)</h1>
-      <div>
-        <h2>질문 1</h2>
-        <p>답변 1</p>
-      </div>
-      <div>
-        <h2>질문 2</h2>
-        <p>답변 2</p>
-      </div>
-      {/* 추가 질문과 답변을 여기에 추가하세요 */}
-    </div>
+    <S.FAQContainer>
+      <S.Title>자주 묻는 질문</S.Title>
+      <S.ContentWrapper>
+        <Frame onSelectCategory={setSelectedCategory} />
+        <S.QuestionWrapper>
+          {questions[selectedCategory].map((q, index) => (
+            <Question key={index} question={q.question} answer={q.answer} />
+          ))}
+        </S.QuestionWrapper>
+      </S.ContentWrapper>
+    </S.FAQContainer>
   );
 };
 
