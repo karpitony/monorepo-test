@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as S from './ProjectList.styles';
 import BlankImg from '../../assets/Images/Blog_Project/blank_img.svg';
 import ProjectItem, { ProjectItemProps } from './ProjectItem';
+import useMediaQueries from '@/hooks/useMediaQueries';
 
 /** 샘플용 더미 데이터 */
 const projectData: ProjectItemProps[] = [
@@ -60,6 +61,8 @@ const ProjectList: React.FC = () => {
     setOpenDropdown('');
   };
 
+  const { isTablet, isBig } = useMediaQueries();
+
   return (
     <S.Container>
       <S.TableContainer>
@@ -105,11 +108,19 @@ const ProjectList: React.FC = () => {
       </S.TableContainer>
 
       {/* 프로젝트 카드 리스트 */}
-      <S.ListContainer>
+      {/* 지금은 더미데이터의 갯수로 블로그가 있는지 없는지 판단합니다. 디버깅시 projectdata.length>6 이렇게 하면 아무 것도 없는 창 뜹니다.*/}
+      {(projectData.length > 6) ? (
+      <S.ListContainer $isTablet={isTablet} $isBig={isBig}>
         {projectData.map((item, index) => (
           <ProjectItem key={index} {...item} />
         ))}
-      </S.ListContainer>
+      </S.ListContainer>) : (
+          <S.TextContainer>
+            아직 등록된 글이 없어요.
+            <a>파밍로그를 통해 글을 작성해보세요!</a>
+          </S.TextContainer>
+      )
+      }
     </S.Container>
   );
 };

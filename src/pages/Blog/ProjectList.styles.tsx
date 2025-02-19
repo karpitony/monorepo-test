@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  min-width: 1000px;
+  width: 100%;
 `;
 
 // 상단 필터(기수·트랙)들을 감싸는 컨테이너
@@ -33,35 +33,37 @@ export const FilterWrapper = styled.div`
 export const FilterGradeButton = styled.button`
   background-color: var(--FarmSystem_Green06);
   color: #fff;
-  padding: 8px 0px;
+  padding: 8px 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 300;
 
   margin-top: auto;
-  flex: space-between;
+  display: inline-flex;
+  justify-content: space-between;
   
   /* 필요에 따라 hover, focus 스타일 추가 */
-  min-width: 100px;
+  width: 100px;
 `;
 /* 트랙 버튼 스타일*/
 export const FilterTrackButton = styled.button`
   background-color: var(--FarmSystem_Green06);
   color: #fff;
-  padding: 8px 0px;
+  padding: 8px 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 300;
 
   margin-top: auto;
-  min-width: 150px;
-  flex: space-between;
+  width: 150px;
+  display: inline-flex;
+  justify-content: space-between;
   
   /* 필요에 따라 hover, focus 스타일 추가 */
 `;
@@ -98,15 +100,42 @@ export const DropdownItem = styled.div`
 `;
 
 /** 프로젝트 리스트(카드)들을 감싸는 컨테이너 */
-export const ListContainer = styled.div`
+
+export const ListContainer = styled.div<{$isTablet: boolean; $isBig: boolean;}>`
   width: 100%;
   margin: 20px auto;
-  
-  /* 예시로 카드 3개씩 보여주는 레이아웃 */
+  min-width: ${(props) => (props.$isTablet ? '500px' : '800px')};
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-  
-  /* 필요하다면 반응형 고려하여 media query 등 사용 */
+  grid-template-columns: repeat(auto-fit, 300px); /*자동 너비 조정 */
+  gap: 20px ${(props) => (props.$isTablet ? "1vw": props.$isBig ? "4vw": "10vw")};
 `;
 
+/* 비어 있을 떄 출력하는 레이아웃 잡는 컨테이너 */
+export const DescriptionContainer = styled.div`
+  width: 100%;
+  margin: 20px auto;
+  display: block;
+`;
+
+/* 텍스트 컨테이너*/
+export const TextContainer = styled.div`
+
+  padding-top: 20vh;
+  height: 100px;
+  display: flex;
+
+  justify-content: center;
+  text-align: center;
+
+  flex-direction: column;
+  color: black;
+  font-size: 32px;
+  font-weight: 600;
+
+  a{
+    font-size: 14px;
+    font-weight: 300;
+  }
+  gap: 10px;
+`;
