@@ -49,7 +49,7 @@ const BlogList: React.FC = () => {
   return (
     <S.Container>
       <S.TableContainer>
-        <S.SubDescription> * 블로그 클릭 시 외부로 연결됩니다.</S.SubDescription>
+        <S.SubDescription> * 블로그 클릭 시 외부로 연결돼요.</S.SubDescription>
       </S.TableContainer>
 
       {/* 프로젝트 카드 리스트 */}
