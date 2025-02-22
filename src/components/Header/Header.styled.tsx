@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 70px;
   background-color: rgb(245, 245, 245); 
@@ -9,6 +9,8 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 25px;
+  z-index: 1000;
+
 `;
 
 export const MobileHeader = styled.div`
@@ -31,6 +33,7 @@ export const NavWrapper = styled.div`
   justify-content: center;
   gap: 35px;
   flex-grow: 1;
+
 `;
 
 export const Nav = styled.nav`
@@ -40,15 +43,27 @@ export const Nav = styled.nav`
   gap: 40px;
 `;
 
-export const NavItem = styled.a<{ $isMobile: boolean; $isTablet: boolean }>`
+export const NavItem = styled.a<{ $isMobile: boolean; $isTablet: boolean; isActive: boolean }>`
   text-decoration: none;
   font-size: ${({$isTablet}) => ($isTablet ? "15px": "18px")};
   font-weight: 500;
-  color: #102C19;
+  color: ${({ isActive }) => (isActive ? "#28723f" : "#102C19")};
   cursor: pointer;
+  position: relative;
   &:hover {
     color: #28723f;
   }
+  &:hover::after, ${({ isActive }) => isActive && `
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background-color: #28723f;
+    }
+  `}
 `;
 
 export const FarmingLogButton = styled.button`
