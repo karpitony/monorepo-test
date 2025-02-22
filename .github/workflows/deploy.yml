@@ -3,20 +3,23 @@ name: Synchronize to forked repo
 on:
   push:
     branches:
-      - main # main 브랜치에 push 발생 시 실행
-      - develop # develop 브랜치에 push 발생 시 실행
+      - main # main 브랜치 변경 시 실행
+      - develop # develop 브랜치 변경 시 실행
 
 jobs:
   sync:
     name: Sync forked repo
-    runs-on: ubuntu-latest # GitHub Actions 가상 환경
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout branch
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.AUTO_ACTIONS }}
-          fetch-depth: 0
+          fetch-depth: 0 # 전체 히스토리 가져오기
+
+      - name: Fetch all branches
+        run: git fetch --all
 
       - name: Add remote-url
         run: |
@@ -26,13 +29,19 @@ jobs:
 
       - name: Push main branch to forked-repo
         run: |
-          git push -f forked-repo main
+          if git show-ref --verify --quiet refs/heads/main; then
+            git push -f forked-repo main
+          else
+            echo "Main branch does not exist. Skipping push."
+          fi
 
       - name: Push develop branch to forked-repo
         run: |
-          git checkout develop || git checkout -b develop
-          git push -f forked-repo develop
+          if git show-ref --verify --quiet refs/heads/develop; then
+            git push -f forked-repo develop
+          else
+            echo "Develop branch does not exist. Skipping push."
+          fi
 
       - name: Clean up
-        run: |
-          git remote remove forked-repo
+        run: git remote remove forked-repo
