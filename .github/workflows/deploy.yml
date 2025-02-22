@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main # main 브랜치에 push 발생 시 실행
+      - develop # develop 브랜치에 push 발생 시 실행
 
 jobs:
   sync:
@@ -11,12 +12,11 @@ jobs:
     runs-on: ubuntu-latest # GitHub Actions 가상 환경
 
     steps:
-      - name: Checkout main
+      - name: Checkout branch
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.AUTO_ACTIONS }}
           fetch-depth: 0
-          ref: main
 
       - name: Add remote-url
         run: |
@@ -24,9 +24,14 @@ jobs:
           git config user.name dewbeeny
           git config user.email ${{ secrets.EMAIL }}
 
-      - name: Push changes to forked-repo
+      - name: Push main branch to forked-repo
         run: |
           git push -f forked-repo main
+
+      - name: Push develop branch to forked-repo
+        run: |
+          git checkout develop || git checkout -b develop
+          git push -f forked-repo develop
 
       - name: Clean up
         run: |
