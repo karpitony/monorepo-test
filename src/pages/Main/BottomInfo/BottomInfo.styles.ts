@@ -105,7 +105,7 @@ export const NotificationContainer = styled.div<{ $isMobile: boolean; $isTablet:
 `;
 
 export const NotificationLink = styled.a<{ $isMobile: boolean; $isTablet: boolean }>`
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : "18px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "10px" : "18px")};
   color: #333;
   text-decoration: none;
   font-weight: 500;

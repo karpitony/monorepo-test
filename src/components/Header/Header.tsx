@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import * as S from './Header.styled';
 import Popup from '../Popup/Popup';
