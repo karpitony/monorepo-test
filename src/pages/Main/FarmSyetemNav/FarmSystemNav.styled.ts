@@ -8,8 +8,8 @@ interface FixedNavProps {
 export const FixedNavWrapper = styled.div<FixedNavProps>`
   position: fixed;
   top: ${({ isVisible, $isMobile }) =>
-    !$isMobile ? (isVisible ? "30px" : "-50px") :(isVisible ? "20px" : "-150px")};
-  right: ${({ $isMobile }) => ($isMobile ? "20px" : "70px")};
+    !$isMobile ? (isVisible ? "100px" : "-300px") : (isVisible ? "80px" : "-400px")};
+  right: ${({ $isMobile }) => ($isMobile ? "20px" : "50px")};
   transition: top 0.3s ease-in-out;
   z-index: 1000;
 `;
