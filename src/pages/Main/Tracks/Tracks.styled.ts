@@ -130,7 +130,7 @@ export const TrackButtonMobile = styled.button<{ $isSelected: boolean }>`
       ? 'var(--FarmSystem_Green07, #175321)'
       : 'var(--FarmSystem_Green03, #7AB784)'};
   text-align: center;
-  font-size: 13px;
+  font-size: 3.3vw;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
