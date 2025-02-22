@@ -61,48 +61,46 @@ const ProjectList: React.FC = () => {
     setOpenDropdown('');
   };
 
-  const { isTablet, isBig } = useMediaQueries();
+  const { isTablet, isBig, isMobile } = useMediaQueries();
 
   return (
     <S.Container>
-      <S.TableContainer>
+      <S.TableContainer $isTablet={isTablet} $isMobile={isMobile}>
         {/* 기수 */}
         <S.FilterWrapper>
-          <S.FilterGradeButton onClick={() => handleToggleDropdown('grade')}>
+          <S.FilterGradeButton onClick={() => handleToggleDropdown('grade')} $isTablet={isTablet} $isMobile={isMobile}>
             <a>기수</a> <a>▾</a>
           </S.FilterGradeButton>
           {openDropdown === 'grade' && (
-            <S.DropdownMenu>
+            <S.DropdownGradeMenu $isTablet={isTablet} $isMobile={isMobile}>
               {['4기', '3기', '2기', '1기'].map((grade) => (
                 <S.DropdownItem
                   key={grade}
-                  onClick={() => handleSelectOption(grade)}
-                >
+                  onClick={() => handleSelectOption(grade)}$isTablet={isTablet} $isMobile={isMobile}>
                   {grade}
                 </S.DropdownItem>
               ))}
-            </S.DropdownMenu>
+            </S.DropdownGradeMenu>
           )}
         </S.FilterWrapper>
 
         {/* 트랙 */}
         <S.FilterWrapper>
-          <S.FilterTrackButton onClick={() => handleToggleDropdown('track')}>
+          <S.FilterTrackButton onClick={() => handleToggleDropdown('track')} $isTablet={isTablet} $isMobile={isMobile}>
             <a>트랙</a> <a>▾</a>
           </S.FilterTrackButton>
           {openDropdown === 'track' && (
-            <S.DropdownMenu>
+            <S.DropdownTrackMenu $isTablet={isTablet} $isMobile={isMobile}>
               {['Union', '빅데이터', '사물인터넷/로봇', '인공지능', '보안/웹', '게임/영상'].map(
                 (track) => (
                   <S.DropdownItem
                     key={track}
-                    onClick={() => handleSelectOption(track)}
-                  >
+                    onClick={() => handleSelectOption(track)}$isTablet={isTablet} $isMobile={isMobile}>
                     {track}
                   </S.DropdownItem>
                 )
               )}
-            </S.DropdownMenu>
+            </S.DropdownTrackMenu>
           )}
         </S.FilterWrapper>
       </S.TableContainer>
@@ -115,7 +113,7 @@ const ProjectList: React.FC = () => {
           <ProjectItem key={index} {...item} />
         ))}
       </S.ListContainer>) : (
-          <S.TextContainer>
+          <S.TextContainer $isMobile={isMobile}>
             아직 등록된 글이 없어요.
             <a>파밍로그를 통해 글을 작성해보세요!</a>
           </S.TextContainer>

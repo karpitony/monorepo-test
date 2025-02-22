@@ -7,24 +7,24 @@ export const Container = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
+  margin-top: 60px;
 `;
 
 // 상단들을 감싸는 컨테이너
 export const TableContainer = styled.div`
   display: flex;
   gap: 30px;
-  width: 100%;
-  justify-content: end;
-  
-  height: 10vh;
+  justify-content: flex-end; /* 왼쪽 정렬 */
   min-height: 60px;
+  width: 100%;
 `;
 
-export const SubDescription = styled.div`
-  height: 30px;
+export const SubDescription = styled.div<{$isMobile: boolean;}>`
   color: var(--FarmSystem_DarkGrey);
-  font-size: 18px;
+  font-size: ${(props) => (props.$isMobile ? "10px" : "18px")};
   font-weight: 400;
+  width: 100%;
+  text-align: right; /* 오른쪽 정렬 */
 `;
 
 /** 프로젝트 리스트(카드)들을 감싸는 컨테이너 */
@@ -46,22 +46,19 @@ export const DescriptionContainer = styled.div`
 `;
 
 /* 텍스트 컨테이너*/
-export const TextContainer = styled.div`
-
+export const TextContainer = styled.div<{$isMobile: boolean;}>`
   padding-top: 20vh;
   height: 100px;
   display: flex;
-
   justify-content: center;
   text-align: center;
-
   flex-direction: column;
   color: black;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isMobile ? "20px" : "32px")};
   font-weight: 600;
 
-  a{
-    font-size: 14px;
+  a {
+    font-size: ${(props) => (props.$isMobile ? "10px" : "14px")};
     font-weight: 300;
   }
   gap: 10px;

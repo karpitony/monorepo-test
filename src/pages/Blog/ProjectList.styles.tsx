@@ -9,94 +9,94 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-// 상단 필터(기수·트랙)들을 감싸는 컨테이너
-export const TableContainer = styled.div`
-  display: flex;
-  gap: 30px;
-  width: 100%;
-  
-  height: 10vh;
-  min-height: 60px;
-`;
 
-/** 실제로 '기수' 버튼이나 '트랙' 버튼을 감쌀 컨테이너 예시 */
+/** 필터 버튼과 드롭다운을 감싸는 컨테이너 */
 export const FilterWrapper = styled.div`
-  position: relative; /* 드롭다운 위치 계산을 위해 relative 사용 */
-
+  position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 80px; /* 필요에 따라 조절 */
-
+  align-items: flex-start; /* 왼쪽 정렬 */
+  margin-top: 30px;
 `;
 
-/** 기수 버튼 스타일 */
-export const FilterGradeButton = styled.button`
+/** 기수 버튼 */
+export const FilterGradeButton = styled.button<{$isMobile: boolean; $isTablet: boolean;}>`
   background-color: var(--FarmSystem_Green06);
   color: #fff;
   padding: 8px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: ${(props) => (props.$isMobile ? '15px' : '8px')};
   cursor: pointer;
-  
-  font-size: 18px;
-  font-weight: 300;
-
-  margin-top: auto;
-  display: inline-flex;
-  justify-content: space-between;
-  
-  /* 필요에 따라 hover, focus 스타일 추가 */
-  width: 100px;
+  text-align: left;
+  font-size: ${(props) => (props.$isMobile ? '12px' : props.$isTablet ? '14px' : '16px')};
+  font-weight: 500;
+  width: ${(props) => (props.$isMobile ? '80px' : props.$isTablet ? '90px' : '110px')}; /* 기수 버튼은 작게 */
 `;
-/* 트랙 버튼 스타일*/
-export const FilterTrackButton = styled.button`
+
+/** 트랙 버튼 */
+export const FilterTrackButton = styled.button<{$isMobile: boolean; $isTablet: boolean;}>`
   background-color: var(--FarmSystem_Green06);
   color: #fff;
   padding: 8px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: ${(props) => (props.$isMobile ? '15px' : '8px')};
   cursor: pointer;
-  
-  font-size: 18px;
-  font-weight: 300;
-
-  margin-top: auto;
-  width: 150px;
-  display: inline-flex;
-  justify-content: space-between;
-  
-  /* 필요에 따라 hover, focus 스타일 추가 */
+  text-align: left;
+  font-size: ${(props) => (props.$isMobile ? '12px' : props.$isTablet ? '14px' : '16px')};
+  font-weight: 500;
+  width: ${(props) => (props.$isMobile ? '100px' : props.$isTablet ? '120px' : '160px')}; /* 트랙 버튼은 큼 */
 `;
 
-
-/** 드롭다운 목록 컨테이너 */
-export const DropdownMenu = styled.div`
+/** 기수 드롭다운 */
+export const DropdownGradeMenu = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
   position: absolute;
-  top: 110px;     /* 버튼 아래로 살짝 떨어뜨림 */
+  top: 45px;
   left: 0;
-  width: 100%;
-  text-align: center;
-  
+  width: ${(props) => (props.$isMobile ? '80px' : props.$isTablet ? '90px' : '110px')}; /* 기수 버튼과 동일한 크기 */
+  text-align: left;
   background-color: #fff;
   border: 3px solid var(--FarmSystem_Green04);
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  
-  z-index: 999;  /* 드롭다운이 맨 위 */
+  z-index: 999;
 `;
 
-/** 드롭다운 목록의 각 아이템 */
-export const DropdownItem = styled.div`
+/** 트랙 드롭다운 */
+export const DropdownTrackMenu = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: ${(props) => (props.$isMobile ? '100px' : props.$isTablet ? '120px' : '160px')}; /* 트랙 버튼과 동일한 크기 */
+  text-align: left;
+  background-color: #fff;
+  border: 3px solid var(--FarmSystem_Green04);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+`;
+
+/** 드롭다운 아이템 */
+export const DropdownItem = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
   padding: 8px 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: ${(props) => (props.$isMobile ? '10px' : props.$isTablet ? '12px' : '14px')};
   color: #333;
   
   &:hover {
-    z-index: 990;
-    background-color: #f0fff0; /* 연한 초록 강조 */
+    background-color: #f0fff0;
     border-radius: 8px;
   }
+`;
+
+/** 필터 컨테이너 */
+export const TableContainer = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 10vh;
+  min-height: 60px;
+  justify-content: flex-start;
+  margin-top: ${(props) => (props.$isMobile ? '0px' : props.$isTablet ? '15px' : '60px')};
 `;
 
 /** 프로젝트 리스트(카드)들을 감싸는 컨테이너 */
@@ -119,22 +119,19 @@ export const DescriptionContainer = styled.div`
 `;
 
 /* 텍스트 컨테이너*/
-export const TextContainer = styled.div`
-
+export const TextContainer = styled.div<{$isMobile: boolean;}>`
   padding-top: 20vh;
   height: 100px;
   display: flex;
-
   justify-content: center;
   text-align: center;
-
   flex-direction: column;
   color: black;
-  font-size: 32px;
+  font-size: ${(props) => (props.$isMobile ? "20px" : "32px")};
   font-weight: 600;
 
-  a{
-    font-size: 14px;
+  a {
+    font-size: ${(props) => (props.$isMobile ? "10px" : "14px")};
     font-weight: 300;
   }
   gap: 10px;
