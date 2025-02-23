@@ -1,18 +1,16 @@
-import { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router';
 import * as S from './Header.styled';
 import Popup from '../Popup/Popup';
 import Hamburger from '../../assets/Icons/Hamburger.png';
-import CloseIcon from '../../assets/Icons/close.png';
 import useMediaQueries from '@/hooks/useMediaQueries';
 
 export default function Header() {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { isMobile, isTablet } = useMediaQueries();
-
-  const onContainerClick = useCallback(() => {}, []);
 
   const handleNavItemClick = (path?: string) => {
     if (path) navigate(path);
@@ -31,26 +29,88 @@ export default function Header() {
           <S.Logo onClick={() => navigate('/')}>Farm System</S.Logo>
           <S.NavWrapper>
             <S.Nav>
-              <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => navigate('/')}>홈</S.NavItem>
-              <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => navigate('/blog')}>블로그 / 프로젝트</S.NavItem>
-              <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>소식</S.NavItem>
-              <S.NavItem  $isTablet={isTablet} $isMobile={isMobile} onClick={() => navigate('/FAQ')}>FAQ</S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => navigate('/')} 
+                isActive={location.pathname === '/'}
+              >
+                홈
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => navigate('/blog')} 
+                isActive={location.pathname === '/blog'}
+              >
+                블로그 / 프로젝트
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => setPopupOpen(true)} 
+                isActive={false}
+              >
+                소식
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => navigate('/FAQ')} 
+                isActive={location.pathname === '/FAQ'}
+              >
+                FAQ
+              </S.NavItem>
             </S.Nav>
           </S.NavWrapper>
-          <S.FarmingLogButton onClick={onContainerClick}>파밍로그</S.FarmingLogButton>
+          <S.FarmingLogButton onClick={() => setPopupOpen(true)}>파밍로그</S.FarmingLogButton>
         </>
       )}
 
       <S.MobileNavWrapper $isMenuOpen={isMenuOpen}>
         {isMobile && (
           <>
-            <S.CloseButton src={CloseIcon} alt="Close Menu" onClick={() => setMenuOpen(false)} />
             <S.MobileNav>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick('/')}>홈</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => handleNavItemClick('/')}>블로그 / 프로젝트</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>소식</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>FAQ</S.NavItem>
-              <S.NavItem $isTablet={isTablet} $isMobile={isMobile} onClick={onContainerClick}>파밍로그</S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => handleNavItemClick('/')} 
+                isActive={location.pathname === '/'}
+              >
+                홈
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => handleNavItemClick('/blog')} 
+                isActive={location.pathname === '/blog'}
+              >
+                블로그 / 프로젝트
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => setPopupOpen(true)} 
+                isActive={false}
+              >
+                소식
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => handleNavItemClick('/FAQ')} 
+                isActive={location.pathname === '/FAQ'}
+              >
+                FAQ
+              </S.NavItem>
+              <S.NavItem 
+                $isTablet={isTablet} 
+                $isMobile={isMobile} 
+                onClick={() => setPopupOpen(true)} 
+                isActive={false}
+              >
+                파밍로그
+              </S.NavItem>
             </S.MobileNav>
           </>
         )}

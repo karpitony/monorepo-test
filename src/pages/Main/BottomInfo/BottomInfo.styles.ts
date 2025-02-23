@@ -14,19 +14,20 @@ export const Title = styled.h2<{ $isApp: boolean; $isMobile: boolean; $isTablet:
   color: #191919;
   font-weight: bold;
   text-align: center;
-  margin: 0 auto; /*마진을 통한 중앙 정렬*/
-  padding-bottom: 30px; /* 링크 버튼과 거리 두기*/
+  margin top: 20px;
+  padding-bottom: 50px; 
 `;
 
 export const Highlight = styled.span`
   color: #28723f;
+  font-weight: bold;
 `;
 
 export const IconsContainer = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   display: flex;
   justify-content: center;
   gap: ${({ $isMobile }) => ($isMobile ? "20px" : "50px")};
-  margin-bottom: 40px;
+  margin-top: 60px;
 `;
 
 export const IconLink = styled.a`
@@ -104,7 +105,7 @@ export const NotificationContainer = styled.div<{ $isMobile: boolean; $isTablet:
 `;
 
 export const NotificationLink = styled.a<{ $isMobile: boolean; $isTablet: boolean }>`
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "14px" : "18px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "10px" : "18px")};
   color: #333;
   text-decoration: none;
   font-weight: 500;

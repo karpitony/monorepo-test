@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-
-//${({ $isMobile, $isTablet }) => ($isMobile ? "280px" : $isTablet ? "330px" : "390px")}
-
 export const PopupOverlay = styled.div`
   position: fixed;
   inset: 0;
@@ -14,10 +11,10 @@ export const PopupOverlay = styled.div`
 `;
 
 export const PopupBox = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  width: 500px;
-  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "260px" : $isTablet ? "420px" : "500px")};
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "300px" : $isTablet ? "420px" : "500px")};
   background-color: #fcfcfc;
   border-radius: 15px;
+  border: 3px solid #28723f; 
   text-align: center;
   padding: ${({ $isMobile }) => ($isMobile ? "30px" : "40px")};
   z-index: 10000;
