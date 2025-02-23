@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './Question.styled';
+import useMediaQueries from '@/hooks/useMediaQueries';
 
 interface QuestionProps {
   question: string;
@@ -7,15 +8,17 @@ interface QuestionProps {
 }
 
 const Question: React.FC<QuestionProps> = ({ question, answer }) => {
+  const { isTablet, isMobile, isApp } = useMediaQueries();
+
   return (
-    <S.FrameGroup>
+    <S.FrameGroup $isMobile={isMobile} $isTablet={isTablet} $isApp={isApp}>
       <S.QParent>
-        <S.Q>Q</S.Q>
+        <S.Q $isApp={isApp}>Q</S.Q>
         <S.FarmSystem>{question}</S.FarmSystem>
       </S.QParent>
       <S.GradientLine />
       <S.AParent>
-        <S.Q>A</S.Q>
+        <S.A>A</S.A>
         <S.FarmContainer>
           {answer.split('\n').map((line, index) => (
             <S.P key={index}>{line}</S.P>

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const FrameGroup = styled.div`
+export const FrameGroup = styled.div<{ $isMobile: boolean; $isTablet: boolean; $isApp: boolean; }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 2vh;
-  margin: 2vh 0;
+  gap: 13px;
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? '20px 0' : '30px')};
   width: 100%;
 `;
 
@@ -15,20 +15,26 @@ export const QParent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.5vw;
+  gap: 10px;
   width: 100%;
 `;
 
-export const Q = styled.b`
-  letter-spacing: -0.24px;
-  line-height: 2vh;
-  font-size: 3.6vh;
+export const Q = styled.b<{ $isApp: boolean; }>`
+  position: relative;
+  left: 2px;
+  top: ${({ $isApp}) => ($isApp ? '-15px' : '0px')};
+  font-size: ${({ $isApp}) => ($isApp ? '28px' : '28px')};
+`;
+
+export const A = styled.b`
+  position: relative;
+  left: 2px;
+  top: -8px;
+  font-size: 28px;
 `;
 
 export const FarmSystem = styled.b`
-  font-size: 3.0vh;
-  letter-spacing: -0.24px;
-  line-height: 3vh;
+  font-size: 19px;
   color: #000;
 `;
 
@@ -50,16 +56,14 @@ export const AParent = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 1.5vw;
+  gap: 12px;
   color: #49aa59;
   width: 100%;
 `;
 
 export const FarmContainer = styled.div`
   width: 100%;
-  font-size: 2vh;
-  letter-spacing: -0.24px;
-  line-height: 3.6vh;
+  font-size: 16px;
   color: #000;
   font: prettendard-variable;
 `;
