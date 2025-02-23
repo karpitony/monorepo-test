@@ -14,7 +14,6 @@ export const FrameParent = styled.div<{ $isApp: boolean; $isMobile: boolean; $is
   gap: 20px;
   text-align: center;
   color: #757575;
-
   font-size: 40px; 
 
   ${({ $isMobile }) => $isMobile && `

@@ -4,18 +4,18 @@ export const FAQContainer = styled.div`
   width: 100%;
   position: relative;
   background-color: #fcfcfc;
-  min-height: 100vh;
   overflow-y: auto;
   text-align: center;
   color: #28723f;
   font-family: 'Pretendard Variable';
 `;
 
-export const Title = styled.b`
+export const Title = styled.b<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`
   weight: 700;
   display: block;
-  margin: 15vh auto 5vh;
-  font-size: 2.8vw;
+  margin-top: 170px;
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? '20px' : '50px')};
+  font-size: ${({ $isMobile }) => ($isMobile ? '30px' : '40px')};
   letter-spacing: -0.24px;
   line-height: 20px;
   text-align: center;
@@ -25,7 +25,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
@@ -35,7 +35,7 @@ export const ContentWrapper = styled.div`
 export const QuestionWrapper = styled.div`
   width: 100%;
   max-width: 1000px;
-  margin: 10vh auto;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

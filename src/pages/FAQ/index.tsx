@@ -3,6 +3,7 @@ import Frame from './Frame';
 import Question from './Question';
 import * as S from './index.styled';
 import { questions } from './questions';
+import useMediaQueries from '@/hooks/useMediaQueries';
 
 interface QuestionType {
   question: string;
@@ -11,10 +12,11 @@ interface QuestionType {
 
 const FAQ: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('공통');
+  const { isMobile, isTablet, isApp } = useMediaQueries();
 
   return (
     <S.FAQContainer>
-      <S.Title>자주 묻는 질문</S.Title>
+      <S.Title $isApp={isApp} $isMobile={isMobile} $isTablet={isTablet}>자주 묻는 질문</S.Title>
       <S.ContentWrapper>
         <Frame onSelectCategory={setSelectedCategory} />
         <S.QuestionWrapper>
