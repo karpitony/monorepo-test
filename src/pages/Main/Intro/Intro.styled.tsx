@@ -136,12 +136,12 @@ export const AppApplyButton = styled.div`
 `;
 
 export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "100vh" : $isTablet ? "100vh" : "90vh")};
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "90vh")};
+  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "100vh")};
   background: linear-gradient(90deg, #102C19, #194326);
   padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
   color: white;
@@ -150,10 +150,9 @@ export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
 export const Logo = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   display: flex;
   align-items: center;
-  font-size: 5vw;
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "50px" : $isTablet ? "60px" : "75px")};
   font-weight: 800;
-  margin-bottom: 20px;
-  margin-left: 50px;
+  margin-left: ${({ $isMobile, $isTablet }) => ($isMobile || $isTablet ? "20px" : "0")};
   img {
     width: ${({ $isMobile, $isTablet }) => ($isMobile ? "100px" : $isTablet ? "140px" : "180px")};
     height: auto;
@@ -230,13 +229,13 @@ export const Apply = styled.div`
 `;
 
 export const ApplyButton = styled.button<{ $isMobile: boolean; $isTablet: boolean }>`
-  background-color: #4CAF50;
+  background-color:rgb(74, 151, 76);
   color: white;
   border: none;
-  padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px 50px" : $isTablet ? "12px 65px" : "15px 80px")};
+  padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "8px 40px" : $isTablet ? "10px 55px" : "12px 70px")};
   border-radius: 10px;
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "18px" : $isTablet ? "22px" : "24px")};
-  margin-top: 20px;
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "16px" : $isTablet ? "20px" : "22px")};
+  margin-top: 100px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   
   &:hover {
@@ -244,11 +243,11 @@ export const ApplyButton = styled.button<{ $isMobile: boolean; $isTablet: boolea
   }
 `;
 
-export const ApplyDescription = styled.div<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
+export const ApplyDescription = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "13px" : $isTablet ? "17px" : "20px")};
   margin-top: 15px;
   color: #E8F5E9;
-  text-align: center;
+  text-align: left;
 `;
 
 export const Bud = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
