@@ -95,7 +95,7 @@ export const PhaseContent = styled.ul<{ $isMobile: boolean }>`
 `;
 
 export const Li = styled.li<{ $isMobile: boolean }>`
-  font-size: ${({ $isMobile }) => ($isMobile ? "20px" : "16px")};
+  font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "16px")};
   color: var(--FarmSystem_Black, #191919);
 `;
 
