@@ -1,32 +1,41 @@
-name: Synchronize to forked repo
+name: Synchronize to Forked Repo
 
 on:
   push:
     branches:
-      - main # main 브랜치에 push 발생 시 실행
+      - develop
+      - main
 
 jobs:
   sync:
-    name: Sync forked repo
-    runs-on: ubuntu-latest # GitHub Actions 가상 환경
+    name: Sync to Forked Repo
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main
+      - name: Checkout branch
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.AUTO_ACTIONS }}
           fetch-depth: 0
-          ref: main
 
-      - name: Add remote-url
+      - name: Determine target branch
+        id: vars
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "TARGET_BRANCH=develop" >> $GITHUB_ENV
+          else
+            echo "TARGET_BRANCH=main" >> $GITHUB_ENV
+          fi
+
+      - name: Add remote repository
         run: |
           git remote add forked-repo https://dewbeeny:${{ secrets.AUTO_ACTIONS }}@github.com/dewbeeny/HomePage-FE
           git config user.name dewbeeny
           git config user.email ${{ secrets.EMAIL }}
 
-      - name: Push changes to forked-repo
+      - name: Push changes to forked repo
         run: |
-          git push -f forked-repo main
+          git push -f forked-repo ${{ env.TARGET_BRANCH }}
 
       - name: Clean up
         run: |
