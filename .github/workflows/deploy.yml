@@ -35,7 +35,7 @@ jobs:
 
       - name: Push changes to forked repo
         run: |
-          git push -f forked-repo ${{ env.TARGET_BRANCH }}
+          git push -f https://$GITHUB_ACTOR:${{ secrets.AUTO_ACTIONS }}@github.com/DguFarmSystem/HomePage-FE.git ${{ env.TARGET_BRANCH }}
 
       - name: Clean up
         run: |
