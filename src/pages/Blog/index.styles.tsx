@@ -37,11 +37,12 @@ export const ToggleButton = styled.button<{ active: boolean; $isMobile: boolean 
   font-size: ${(props) => (props.active ? (props.$isMobile ? '28px' : '40px') : (props.$isMobile ? '20px' : '32px'))};
   font-weight: 600;
   color: ${(props) => (props.active ? 'var(--FarmSystem_Green01)' : 'var(--FarmSystem_DarkGrey)')};
-  width: ${(props) => (props.$isMobile ? "100px": "160px")};
+  width: ${(props) => (props.$isMobile ? "110px": "170px")};
+
+  padding-right: 5px;
 `;
 export const Divider = styled.div<{ $isMobile: boolean }>`
-  padding: none;
-  margin: 0 5px;
+  margin: 0px 0px 0px 10px;
   font-size: ${(props) => (props.$isMobile ? '30px' : '64px')};
   font-weight: 200;
   color: var(--FarmSystem_DarkGrey);
