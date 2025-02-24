@@ -48,10 +48,11 @@ const settings = {
   slidesToShow: 3,  
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 300,
-  pauseOnHover: true,
+  autoplaySpeed: 1200,
+  pauseOnHover: false,
   centerMode: true,
   variableWidth: true,
+  arrows: true,
   responsive: [
     {
       breakpoint: 1024, 
@@ -93,7 +94,7 @@ const Achievements = () => {
       </S.TitleArea>
       
       <S.SliderWrapper $isMobile={isMobile} $isTablet={isTablet}>
-        <S.LeftButton onClick={() => sliderRef.current?.slickPrev()}>
+        <S.LeftButton onClick={() => sliderRef.current?.slickPrev()} $isMobile={isMobile}>
           <img src={ArrowsLeft} alt="이전" />
         </S.LeftButton>
         <Slider {...settings} ref={sliderRef}>
@@ -106,7 +107,7 @@ const Achievements = () => {
             />
           ))}
         </Slider>
-        <S.RightButton onClick={() => sliderRef.current?.slickNext()}>
+        <S.RightButton onClick={() => sliderRef.current?.slickNext()} $isMobile={isMobile}>
           <img src={ArrowsRight} alt="다음" />
         </S.RightButton>
       </S.SliderWrapper>
