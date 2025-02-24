@@ -1,7 +1,7 @@
 export default function Apply() {
   return (
     <div>
-      <h1>Apply Page</h1>
+      <h1>Apply Page 입니다.</h1>
     </div>
   );
 }
