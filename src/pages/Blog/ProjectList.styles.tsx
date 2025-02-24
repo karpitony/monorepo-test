@@ -9,6 +9,18 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+/** 필터 영역 전체 컨테이너 */
+export const TableContainer = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 10vh;
+  justify-content: flex-start;
+  margin-top: ${(props) => (props.$isMobile ? '0px' : props.$isTablet ? '15px' : '60px')};
+
+  border: 1px solid green;
+`;
+
 
 /** 필터 버튼과 드롭다운을 감싸는 컨테이너 */
 export const FilterWrapper = styled.div`
@@ -27,10 +39,11 @@ export const FilterGradeButton = styled.button<{$isMobile: boolean; $isTablet: b
   border: none;
   border-radius: ${(props) => (props.$isMobile ? '15px' : '8px')};
   cursor: pointer;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
   font-size: ${(props) => (props.$isMobile ? '12px' : props.$isTablet ? '14px' : '16px')};
   font-weight: 500;
-  width: ${(props) => (props.$isMobile ? '80px' : props.$isTablet ? '90px' : '110px')}; /* 기수 버튼은 작게 */
+  width: ${(props) => (props.$isMobile ? '70px' : props.$isTablet ? '80px' : '90px')}; /* 기수 버튼은 작게 */
 `;
 
 /** 트랙 버튼 */
@@ -41,10 +54,11 @@ export const FilterTrackButton = styled.button<{$isMobile: boolean; $isTablet: b
   border: none;
   border-radius: ${(props) => (props.$isMobile ? '15px' : '8px')};
   cursor: pointer;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
   font-size: ${(props) => (props.$isMobile ? '12px' : props.$isTablet ? '14px' : '16px')};
   font-weight: 500;
-  width: ${(props) => (props.$isMobile ? '100px' : props.$isTablet ? '120px' : '160px')}; /* 트랙 버튼은 큼 */
+  width: ${(props) => (props.$isMobile ? '90px' : props.$isTablet ? '110px' : '130px')}; /* 트랙 버튼은 큼 */
 `;
 
 /** 기수 드롭다운 */
@@ -52,12 +66,11 @@ export const DropdownGradeMenu = styled.div<{$isMobile: boolean; $isTablet: bool
   position: absolute;
   top: 45px;
   left: 0;
-  width: ${(props) => (props.$isMobile ? '80px' : props.$isTablet ? '90px' : '110px')}; /* 기수 버튼과 동일한 크기 */
+  width: ${(props) => (props.$isMobile ? '70px' : props.$isTablet ? '80px' : '90px')}; /* 기수 버튼과 동일한 크기 */
   text-align: left;
   background-color: #fff;
-  border: 3px solid var(--FarmSystem_Green04);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 4px 4px 0px #00000040;
   z-index: 999;
 `;
 
@@ -66,12 +79,11 @@ export const DropdownTrackMenu = styled.div<{$isMobile: boolean; $isTablet: bool
   position: absolute;
   top: 45px;
   left: 0;
-  width: ${(props) => (props.$isMobile ? '100px' : props.$isTablet ? '120px' : '160px')}; /* 트랙 버튼과 동일한 크기 */
+  width: ${(props) => (props.$isMobile ? '90px' : props.$isTablet ? '110px' : '130px')}; /* 트랙 버튼과 동일한 크기 */
   text-align: left;
   background-color: #fff;
-  border: 3px solid var(--FarmSystem_Green04);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 4px 4px 0px #00000040;
   z-index: 999;
 `;
 
@@ -86,17 +98,6 @@ export const DropdownItem = styled.div<{$isMobile: boolean; $isTablet: boolean;}
     background-color: #f0fff0;
     border-radius: 8px;
   }
-`;
-
-/** 필터 컨테이너 */
-export const TableContainer = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  height: 10vh;
-  min-height: 60px;
-  justify-content: flex-start;
-  margin-top: ${(props) => (props.$isMobile ? '0px' : props.$isTablet ? '15px' : '60px')};
 `;
 
 /** 프로젝트 리스트(카드)들을 감싸는 컨테이너 */
@@ -135,4 +136,5 @@ export const TextContainer = styled.div<{$isMobile: boolean;}>`
     font-weight: 300;
   }
   gap: 10px;
+  border: 1px solid black;
 `;

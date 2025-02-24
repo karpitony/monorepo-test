@@ -33,7 +33,7 @@ export const ToggleButton = styled.button<{ active: boolean; $isMobile: boolean 
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: ${(props) => (props.active ? (props.$isMobile ? '20px' : '50px') : (props.$isMobile ? '15px' : '32px'))};
+  font-size: ${(props) => (props.active ? (props.$isMobile ? '30px' : '50px') : (props.$isMobile ? '20px' : '32px'))};
   font-weight: 600;
   color: ${(props) => (props.active ? 'var(--FarmSystem_Green01)' : 'var(--FarmSystem_DarkGrey)')};
 `;
