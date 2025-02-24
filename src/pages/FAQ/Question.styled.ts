@@ -6,7 +6,7 @@ export const FrameGroup = styled.div<{ $isMobile: boolean; $isTablet: boolean; $
   align-items: flex-start;
   justify-content: flex-start;
   gap: 13px;
-  margin-bottom: ${({ $isMobile }) => ($isMobile ? '20px 0' : '30px')};
+  margin-bottom: 30px;
   width: 100%;
 `;
 
