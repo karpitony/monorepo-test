@@ -97,10 +97,10 @@ export const LeftButton = styled.button<{ $isMobile: boolean;}>`
       left: 0;
       height: 100%;
       padding-right: 10px;
-      padding-left: 5vw;
+      padding-left: 5%;
       img{
         width: 20px;
-        height: 60px;
+        height: 20%;
       }
     `:
     `
@@ -128,10 +128,10 @@ export const RightButton = styled.button<{ $isMobile: boolean;}>`
       right: 0;
       height: 100%;
       padding-left: 10px;
-      padding-right: 5vw;
+      padding-right: 5%;
       img{
         width: 20px;
-        height: 60px;
+        height: 20%;
       }
     `:
     `

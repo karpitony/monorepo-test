@@ -2,6 +2,8 @@ import AchievementItem from './AchievementItem';
 import AchievementBox from './AchievementBox';
 import ArrowsRight from "@/assets/Images/Buttons/ArrowRight.svg";
 import ArrowsLeft from "@/assets/Images/Buttons/ArrowLeft.svg";
+import ArrowsRightMobile from "@/assets/Images/Buttons/ArrowRightMobile.svg";
+import ArrowsLeftMobile from "@/assets/Images/Buttons/ArrowLeftMobile.svg";
 import Slider from 'react-slick';
 import * as S from './Achievements.styles';
 import 'slick-carousel/slick/slick.css';
@@ -95,7 +97,7 @@ const Achievements = () => {
       
       <S.SliderWrapper $isMobile={isMobile} $isTablet={isTablet}>
         <S.LeftButton onClick={() => sliderRef.current?.slickPrev()} $isMobile={isMobile}>
-          <img src={ArrowsLeft} alt="이전" />
+            {isMobile ? (<img src={ArrowsLeftMobile} alt="이전" />) : (<img src={ArrowsLeft} alt="이전" />)}
         </S.LeftButton>
         <Slider {...settings} ref={sliderRef}>
           {achievementsData.map((achievement) => (
@@ -108,7 +110,7 @@ const Achievements = () => {
           ))}
         </Slider>
         <S.RightButton onClick={() => sliderRef.current?.slickNext()} $isMobile={isMobile}>
-          <img src={ArrowsRight} alt="다음" />
+          {isMobile ? (<img src={ArrowsRightMobile} alt="다음" />) : (<img src={ArrowsRight} alt="다음" />)}
         </S.RightButton>
       </S.SliderWrapper>
         
