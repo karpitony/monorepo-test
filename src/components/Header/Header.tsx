@@ -63,7 +63,7 @@ export default function Header() {
               </S.NavItem>
             </S.Nav>
           </S.NavWrapper>
-          <S.FarmingLogButton onClick={() => setPopupOpen(true)}>파밍로그</S.FarmingLogButton>
+          <S.FarmingLogButton onClick={() => setPopupOpen(true)}>지원하기</S.FarmingLogButton>
         </>
       )}
 
@@ -109,7 +109,7 @@ export default function Header() {
                 onClick={() => setPopupOpen(true)} 
                 isActive={false}
               >
-                파밍로그
+                지원하기
               </S.NavItem>
             </S.MobileNav>
           </>
