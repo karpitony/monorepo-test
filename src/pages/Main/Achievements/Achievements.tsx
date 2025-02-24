@@ -1,10 +1,13 @@
 import AchievementItem from './AchievementItem';
 import AchievementBox from './AchievementBox';
+import ArrowsRight from "@/assets/Images/Buttons/ArrowRight.svg";
+import ArrowsLeft from "@/assets/Images/Buttons/ArrowLeft.svg";
 import Slider from 'react-slick';
 import * as S from './Achievements.styles';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import {useRef} from 'react';
 
 const achievementsData = [
   {
@@ -74,6 +77,7 @@ const settings = {
 
 const Achievements = () => {
   const { isApp, isMobile, isTablet } = useMediaQueries();
+  const sliderRef = useRef<Slider | null>(null);
   return (
     <S.AchievementsContainer id="achievements" $isMobile={isMobile} $isTablet={isTablet}>
       <S.TitleArea $isMobile={isMobile}>
@@ -89,7 +93,10 @@ const Achievements = () => {
       </S.TitleArea>
       
       <S.SliderWrapper $isMobile={isMobile} $isTablet={isTablet}>
-        <Slider {...settings}>
+        <S.LeftButton onClick={() => sliderRef.current?.slickPrev()}>
+          <img src={ArrowsLeft} alt="이전" />
+        </S.LeftButton>
+        <Slider {...settings} ref={sliderRef}>
           {achievementsData.map((achievement) => (
             <AchievementItem
               key={achievement.id}
@@ -99,6 +106,9 @@ const Achievements = () => {
             />
           ))}
         </Slider>
+        <S.RightButton onClick={() => sliderRef.current?.slickNext()}>
+          <img src={ArrowsRight} alt="다음" />
+        </S.RightButton>
       </S.SliderWrapper>
         
       <AchievementBox />

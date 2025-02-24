@@ -81,4 +81,38 @@ export const SliderWrapper = styled.div<{ $isMobile: boolean; $isTablet: boolean
   }
 `;
 
+// 왼쪽 버튼
+export const LeftButton = styled.button`
+  position: absolute;
+  left: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  // 필요 시 원하는 스타일을 추가
+  .img{
+   width: 40px;
+   height: 70px;
+  }
+`;
+
+// 오른쪽 버튼
+export const RightButton = styled.button`
+  position: absolute;
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  
+  .img{
+   width: 40px;
+   height: 70px;
+  }
+`;
+
 
