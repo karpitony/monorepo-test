@@ -20,11 +20,12 @@ export const ActiveTabIndicator = styled.div<{$isTablet: boolean; $isMobile: boo
 
 // 버튼 컨테이너 스타일
 export const ButtonContainer = styled.div`
-  width: 300px;
+  width: 330px;
   height: 100px;
   margin: 15vh 0;
   position: absolute;
-  display: flex;
+  display: inline-flex;
+  justify-content: left;
   gap: 5px;
 `;
 
@@ -33,9 +34,10 @@ export const ToggleButton = styled.button<{ active: boolean; $isMobile: boolean 
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: ${(props) => (props.active ? (props.$isMobile ? '30px' : '50px') : (props.$isMobile ? '20px' : '32px'))};
+  font-size: ${(props) => (props.active ? (props.$isMobile ? '28px' : '40px') : (props.$isMobile ? '20px' : '32px'))};
   font-weight: 600;
   color: ${(props) => (props.active ? 'var(--FarmSystem_Green01)' : 'var(--FarmSystem_DarkGrey)')};
+  width: ${(props) => (props.$isMobile ? "100px": "160px")};
 `;
 export const Divider = styled.div<{ $isMobile: boolean }>`
   padding: none;
