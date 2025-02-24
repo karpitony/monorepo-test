@@ -7,16 +7,17 @@ export const Container = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
-  margin-top: 60px;
 `;
 
 // 상단들을 감싸는 컨테이너
-export const TableContainer = styled.div`
+export const TableContainer = styled.div<{$isTablet: boolean; $isMobile: boolean;}>`
   display: flex;
   gap: 30px;
   justify-content: flex-end; /* 왼쪽 정렬 */
-  min-height: 60px;
+  height: 10vh;
   width: 100%;
+  border: 1px solid green;
+  margin-top: ${(props) => (props.$isMobile ? '0px' : props.$isTablet ? '15px' : '60px')};
 `;
 
 export const SubDescription = styled.div<{$isMobile: boolean;}>`
@@ -62,5 +63,7 @@ export const TextContainer = styled.div<{$isMobile: boolean;}>`
     font-weight: 300;
   }
   gap: 10px;
+
+  border: 1px solid black;
 `;
 
