@@ -5,6 +5,8 @@ on:
     branches:
       - develop
       - main
+  repository_dispatch: # 원본 레포에서 이벤트 발생 시 실행되도록 설정
+    types: [sync-fork]
 
 jobs:
   sync:
@@ -12,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout branch
+      - name: Checkout forked repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.AUTO_ACTIONS }}
@@ -27,16 +29,18 @@ jobs:
             echo "TARGET_BRANCH=main" >> $GITHUB_ENV
           fi
 
-      - name: Add remote repository
+      - name: Configure Git
         run: |
-          git remote add forked-repo https://dewbeeny:${{ secrets.AUTO_ACTIONS }}@github.com/dewbeeny/HomePage-FE
-          git config user.name dewbeeny
-          git config user.email ${{ secrets.EMAIL }}
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
-      - name: Push changes to forked repo
+      - name: Add upstream repository (original repo)
         run: |
-          git push -f https://$GITHUB_ACTOR:${{ secrets.AUTO_ACTIONS }}@github.com/DguFarmSystem/HomePage-FE.git ${{ env.TARGET_BRANCH }}
+          git remote add upstream https://github.com/DguFarmSystem/HomePage-FE.git
+          git fetch upstream
 
-      - name: Clean up
+      - name: Merge upstream changes into forked repo
         run: |
-          git remote remove forked-repo
+          git checkout ${{ env.TARGET_BRANCH }}
+          git merge --no-edit upstream/${{ env.TARGET_BRANCH }}
+          git push origin ${{ env.TARGET_BRANCH }}
