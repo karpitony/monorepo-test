@@ -42,7 +42,7 @@ export const ToggleButton = styled.button<{ active: boolean; $isMobile: boolean 
   padding-right: 5px;
 `;
 export const Divider = styled.div<{ $isMobile: boolean }>`
-  margin: 0px 0px 0px 10px;
+  margin: ${(props) => (props.$isMobile ? "0px 0px 0px 0px": "0px 0px 0px 10px")};
   font-size: ${(props) => (props.$isMobile ? '30px' : '64px')};
   font-weight: 200;
   color: var(--FarmSystem_DarkGrey);
