@@ -16,7 +16,6 @@ export const TableContainer = styled.div<{$isTablet: boolean; $isMobile: boolean
   justify-content: flex-end; /* 왼쪽 정렬 */
   height: 10vh;
   width: 100%;
-  border: 1px solid green;
   margin-top: ${(props) => (props.$isMobile ? '0px' : props.$isTablet ? '15px' : '60px')};
 `;
 
@@ -64,7 +63,5 @@ export const TextContainer = styled.div<{$isMobile: boolean;}>`
     font-weight: 300;
   }
   gap: 10px;
-
-  border: 1px solid black;
 `;
 
