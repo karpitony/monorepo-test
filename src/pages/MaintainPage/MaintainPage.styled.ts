@@ -28,7 +28,7 @@ export const SubTitle = styled.div<{$isMobile:boolean;}>`
 `;
 
 export const Description = styled.div<{$isMobile:boolean;}>`
-    font-size: ${({$isMobile}) => ($isMobile ? "15px" : "24px")};
+    font-size: ${({$isMobile}) => ($isMobile ? "12px" : "24px")};
     color: var(--FarmSystem_LightGrey);
 
 `;
