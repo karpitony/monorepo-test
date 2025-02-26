@@ -8,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     height: 110vh;
-    background-color: var(--FarmSystem_Green06);
+    background-color: var(--FarmSystem_Green03);
     
 
 `;
