@@ -68,6 +68,7 @@ export const DropdownGradeMenu = styled.div<{$isMobile: boolean; $isTablet: bool
   text-align: left;
   background-color: #fff;
   border-radius: 8px;
+  border: 1px solid var(--FarmSystem_LightGrey);
   box-shadow: 4px 4px 4px 0px #00000040;
   z-index: 999;
 `;
@@ -81,13 +82,14 @@ export const DropdownTrackMenu = styled.div<{$isMobile: boolean; $isTablet: bool
   text-align: left;
   background-color: #fff;
   border-radius: 8px;
+  border: 1px solid var(--FarmSystem_LightGrey);
   box-shadow: 4px 4px 4px 0px #00000040;
   z-index: 999;
 `;
 
 /** 드롭다운 아이템 */
 export const DropdownItem = styled.div<{$isMobile: boolean; $isTablet: boolean;}>`
-  padding: 8px 12px;
+  padding: ${({$isMobile})=>($isMobile ? '8px 12px' : '8px 18px')};
   cursor: pointer;
   font-size: ${(props) => (props.$isMobile ? '10px' : props.$isTablet ? '12px' : '14px')};
   color: #333;
