@@ -156,7 +156,7 @@ SW/AI의 핵심 개념을 익히고, <S.greenHighlight>탄탄한 기초를 바�
         </S.Description>
         <S.Apply>
         <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => setPopupOpen(true)}> 지원하기 </S.ApplyButton>
-        <S.ApplyDescription $isMobile={isMobile} $isTablet={isTablet}>2025년 2월 공개 모집 예정</S.ApplyDescription>
+        <S.ApplyDescription $isMobile={isMobile} $isTablet={isTablet}>2025년 3월 4일 모집 예정</S.ApplyDescription>
       </S.Apply>
       </motion.div>
       {/* <S.TrackList $isMobile={isMobile} $isTablet={isTablet}>
@@ -170,7 +170,7 @@ SW/AI의 핵심 개념을 익히고, <S.greenHighlight>탄탄한 기초를 바�
           isOpen={isPopupOpen} 
           onClose={() => setPopupOpen(false)} 
           title={"지금은 모집 기간이 아니에요."} 
-          content={"공개 모집 예정: 2025년 2월 넷째 주"} 
+          content={"3월 4일부터 지원 가능해요."} 
         />
       )}
     </S.Container>
