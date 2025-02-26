@@ -18,7 +18,7 @@ export default function InfoBox({ selectedTrack }: InfoBoxProps) {
 
       {/* 트랙 이름 + 소개 */}
       <S.TrackNameContainer>
-        <S.TrackName $isMobile={isMobile}>🦾 {selectedTrack.name}</S.TrackName>
+        <S.TrackName $isMobile={isMobile}>{selectedTrack.name}</S.TrackName>
       </S.TrackNameContainer>
       <S.TrackDescription $isMobile={isMobile}>{selectedTrack.description}</S.TrackDescription>
       

@@ -44,12 +44,12 @@ import useMediaQueries from '@/hooks/useMediaQueries';
 // ];
 
 const BlogList: React.FC = () => {
-  const { isMobile } = useMediaQueries();
+  const { isMobile,isTablet } = useMediaQueries();
 
   return (
     <S.Container>
-      <S.TableContainer>
-        <S.SubDescription $isMobile={isMobile}> * 블로그 클릭 시 외부로 연결돼요.</S.SubDescription>
+      <S.TableContainer $isTablet={isTablet} $isMobile={isMobile}>
+        <S.SubDescription $isMobile={isMobile}> * 블로그 클릭 시 외부 링크로 연결돼요.</S.SubDescription>
       </S.TableContainer>
 
       {/* 프로젝트 카드 리스트 */}

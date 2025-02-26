@@ -63,7 +63,7 @@ export default function Header() {
               </S.NavItem>
             </S.Nav>
           </S.NavWrapper>
-          <S.FarmingLogButton onClick={() => setPopupOpen(true)}>파밍로그</S.FarmingLogButton>
+          <S.FarmingLogButton onClick={() => setPopupOpen(true)}>지원하기</S.FarmingLogButton>
         </>
       )}
 
@@ -109,7 +109,7 @@ export default function Header() {
                 onClick={() => setPopupOpen(true)} 
                 isActive={false}
               >
-                파밍로그
+                지원하기
               </S.NavItem>
             </S.MobileNav>
           </>
@@ -119,8 +119,8 @@ export default function Header() {
       <Popup 
         isOpen={isPopupOpen} 
         onClose={() => setPopupOpen(false)} 
-        title={"아직 오픈되지 않았습니다."} 
-        content={"오픈 예정: 2025년 4월"} 
+        title={"지금은 모집 기간이 아니에요."} 
+        content={"3월 4일부터 지원 가능해요."} 
       />
     </S.HeaderContainer>
   );
