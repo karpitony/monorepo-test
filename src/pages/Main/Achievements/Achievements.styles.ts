@@ -81,4 +81,66 @@ export const SliderWrapper = styled.div<{ $isMobile: boolean; $isTablet: boolean
   }
 `;
 
+// 왼쪽 버튼
+export const LeftButton = styled.button<{ $isMobile: boolean;}>`
+  position: absolute;
+  left: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  ${({ $isMobile }) => ($isMobile ? 
+    `
+      left: 0;
+      height: 100%;
+      padding-right: 10px;
+      padding-left: 5%;
+      img{
+        width: 20px;
+        height: 20%;
+      }
+    `:
+    `
+      img{
+        height: 10%;
+      }
+
+    `
+    )}
+`;
+
+// 오른쪽 버튼
+export const RightButton = styled.button<{ $isMobile: boolean;}>`
+  position: absolute;
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  ${({ $isMobile }) => ($isMobile ? 
+    `
+      right: 0;
+      height: 100%;
+      padding-left: 10px;
+      padding-right: 5%;
+      img{
+        width: 20px;
+        height: 20%;
+      }
+    `:
+    `
+      img{
+       height: 10%;
+      }
+
+    `
+    )}
+`;
+
 
