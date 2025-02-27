@@ -6,6 +6,8 @@ enum ApiErrorMessages {
   OPTION_NOT_FOUND = "선택지를 찾을 수 없습니다.",
 }
 
+// 이거 아직 다 작성 안된거임!! 
+// swagger 보고 enum 채울 예정
 enum Track {
   UNION = "UNION",
   GAMING_VIDEO = "GAMING_VIDEO",
@@ -28,15 +30,17 @@ interface ApplyQuestion {
   choices: Choice[] | null;
 }
 
+// 기본적인 Api 요청 형태
+interface ApiRequest {
+  studentNumber: string;
+  password: string;
+}
+
+// 기본적인 Api 응답 형태
 interface ApiResponse<T = unknown> {
   status: number;
   message: ApiErrorMessages | "요청이 성공했습니다." | string;
   data?: T;
-}
-
-interface ApiRequest {
-  studentNumber: string;
-  password: string;
 }
 
 // apply에 GET 응답, POST 요청, POST 응답
@@ -59,7 +63,17 @@ interface ApplyAnswer {
   answers: Answer[];
 }
 
+// load응답을 위한 타입 확장
+interface ApplyAnswerLoad extends ApplyAnswer {
+  status: string;
+  updatedAt: string;
+}
+
 // apply/save에 POST 요청, apply/load에 POST 요청, 응답
 export type ApplySavePOSTRequest = ApplyAnswer;
 export type ApplyLoadPOSTRequest = ApiRequest;
-export type ApplyLoadPOSTResponse = ApiResponse<ApplyAnswer>;
+export type ApplyLoadPOSTResponse = ApiResponse<ApplyAnswerLoad>;
+
+// apply/submit에 POST 요청, 응답
+export type ApplySubmitPOSTRequest = ApplyAnswer;
+export type ApplySubmitPOSTResponse = ApiResponse<{ applyId: number }>;
