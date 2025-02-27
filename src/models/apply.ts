@@ -44,3 +44,22 @@ export type ApplyGETResponse = ApiResponse<ApplyQuestion[]>;
 export type ApplyPOSTRequest = ApiRequest;
 export type ApplyPOSTResponse = ApiResponse<{ applyId: number }>;
 
+interface Answer {
+  questionId: number;
+  content: string | number[];
+}
+
+interface ApplyAnswer {
+  applyId: number;
+  name: string;
+  major: string;
+  phoneNumber: string;
+  email: string;
+  track: Track;
+  answers: Answer[];
+}
+
+// apply/save에 POST 요청, apply/load에 POST 요청, 응답
+export type ApplySavePOSTRequest = ApplyAnswer;
+export type ApplyLoadPOSTRequest = ApiRequest;
+export type ApplyLoadPOSTResponse = ApiResponse<ApplyAnswer>;
