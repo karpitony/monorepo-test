@@ -69,11 +69,12 @@ interface ApplyAnswerLoad extends ApplyAnswer {
   updatedAt: string;
 }
 
-// apply/save에 POST 요청, apply/load에 POST 요청, 응답
+// apply/save에 POST 요청, 응답
 export type ApplySavePOSTRequest = ApplyAnswer;
+export type ApplySavePOSTResponse = ApiResponse<{ applyId: number }>;
+// apply/load에 POST 요청, 응답
 export type ApplyLoadPOSTRequest = ApiRequest;
 export type ApplyLoadPOSTResponse = ApiResponse<ApplyAnswerLoad>;
-
 // apply/submit에 POST 요청, 응답
 export type ApplySubmitPOSTRequest = ApplyAnswer;
 export type ApplySubmitPOSTResponse = ApiResponse<{ applyId: number }>;
