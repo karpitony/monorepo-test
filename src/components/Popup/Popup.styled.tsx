@@ -13,8 +13,7 @@ export const PopupOverlay = styled.div`
 export const PopupBox = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: ${({ $isMobile, $isTablet }) => ($isMobile ? "300px" : $isTablet ? "420px" : "500px")};
   background-color: #fcfcfc;
-  border-radius: 15px;
-  border: 3px solid #28723f; 
+  border-radius: 15px; 
   text-align: center;
   padding: ${({ $isMobile }) => ($isMobile ? "30px" : "40px")};
   z-index: 10000;
@@ -37,14 +36,13 @@ export const PopupText = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
 export const PopupCloseButton = styled.button<{ $isMobile: boolean; $isTablet: boolean }>`
   background-color: #28723f;
   color: #fcfcfc;
-  font-size: 16px;
-  padding: 10px 20px;
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "12px" : $isTablet ? "16px": "16px")};
   padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "12px 24px" : $isTablet ? "12px 24px": "10px 20px")};
   border: none;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0px 2px 10px rgba(25, 25, 25, 0.2);
-  width: 100px;
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "80px" : $isTablet ? "100px": "100px")};
   margin-top: 20px;
   &:hover {
     background-color: #1f5b30;
