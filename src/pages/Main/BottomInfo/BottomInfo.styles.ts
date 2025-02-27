@@ -14,7 +14,7 @@ export const Title = styled.h2<{ $isApp: boolean; $isMobile: boolean; $isTablet:
   color: #191919;
   font-weight: bold;
   text-align: center;
-  margin top: 20px;
+  margin-top: 20px;
   padding-bottom: 50px; 
 `;
 

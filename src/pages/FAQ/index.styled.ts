@@ -7,7 +7,6 @@ export const FAQContainer = styled.div`
   overflow-y: auto;
   text-align: center;
   color: #28723f;
-  font-family: 'Pretendard Variable';
 `;
 
 export const Title = styled.b<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`

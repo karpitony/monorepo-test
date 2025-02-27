@@ -65,7 +65,6 @@ export const FarmContainer = styled.div`
   width: 100%;
   font-size: 16px;
   color: #000;
-  font: prettendard-variable;
 `;
 
 export const P = styled.p`
