@@ -1,10 +1,30 @@
 import * as S from './FarmIntroduce.styles';
+import first from '../../../assets/FarmIntroduce/1.png';
+import second from '../../../assets/FarmIntroduce/2.png';
+import third from '../../../assets/FarmIntroduce/3.png';
+import fourth from '../../../assets/FarmIntroduce/4.png';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import sungjiKim from '../../../assets/Images/Professors/sjKim.png';
+import kiyongHan from '../../../assets/Images/graybox.svg'; //이미지 추가시 링크변경
 
-export const professors = [
+
+
+export interface ProfessorDataInterface {
+    id: number;
+    name: string,
+    photo: string, // 이미지 URL (없다면 비워둔다거나 placeholder 사용)
+    position: string,
+    phone: string,
+    email: string,
+    major: string,
+    office: string,
+  }
+
+export const professors : ProfessorDataInterface[] = [
     {
+      id: 1,
       name: "한기용 교수님",
-      photo: "https://placehold.co/200x200", // 이미지 URL (없다면 비워둔다거나 placeholder 사용)
+      photo: kiyongHan, // 이미지 URL (없다면 비워둔다거나 placeholder 사용)
       position: "교수",
       phone: "02-2290-1406",
       email: "HKY87@dongguk.edu",
@@ -12,8 +32,9 @@ export const professors = [
       office: "신공학관 6109호",
     },
     {
+        id: 2,
       name: "김성지 교수님",
-      photo: "https://placehold.co/200x200",
+      photo: sungjiKim,
       position: "교수",
       phone: "02-2290-1408",
       email: "sjkim01@dongguk.edu",
@@ -22,7 +43,6 @@ export const professors = [
     },
     // 필요하다면 추가
   ];
-
   
   export default function FarmIntroduce() {
     const { isMobile,isTablet } = useMediaQueries();
@@ -32,7 +52,7 @@ export const professors = [
         <S.MainContents $isMobile = {isMobile}>
           {/* 첫 번째 박스 (왼쪽 그레이 박스 + 오른쪽 텍스트) */}
           <S.ContentBox $isMobile = {isMobile}>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} />
+            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={first} alt='1'/>
             <S.TextWrapper $isMobile = {isMobile} $isTablet = {isTablet}>
               Farm System은 <br />
               동국대학교에서 SW/AI 역량을 기르고<br />
@@ -47,12 +67,12 @@ export const professors = [
               <br />
               <strong style={{ fontWeight: 700 }}>SW/AI의 탄탄한 기초를 다지는 Union</strong>으로 구성됩니다.
             </S.TextWrapper>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet}/>
+            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={second} alt='2'/>
           </S.ContentBox>
   
           {/* 세 번째 박스 */}
           <S.ContentBox $isMobile = {isMobile}>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet}/>
+            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={third} alt='3'/>
             <S.TextWrapper $isMobile = {isMobile} $isTablet = {isTablet}>
               <strong style={{ fontWeight: 700 }}>신기술 트랙</strong>에서는
               <br />
@@ -69,7 +89,7 @@ export const professors = [
               SW/AI의 핵심 개념을 익히고,<br />
               탄탄한 기초를 바탕으로 성장할 수 있도록 돕습니다.
             </S.TextWrapper>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet}/>
+            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={fourth} alt='4'/>
           </S.ContentBox>
         </S.MainContents>
   
@@ -77,8 +97,8 @@ export const professors = [
         <S.ProfessorSection $isMobile = {isMobile} $isTablet = {isTablet}>
       <S.SectionTitle $isMobile = {isMobile}>Farm System 담당 교수진</S.SectionTitle>
       <S.ProfessorList $isMobile = {isMobile}>
-        {professors.map((prof, idx) => (
-          <S.ProfessorItem key={idx} $isMobile = {isMobile} $isTablet = {isTablet} >
+      {professors.map((prof) => (
+          <S.ProfessorItem key={prof.id} $isMobile={isMobile} $isTablet={isTablet}>
                 {!isMobile && (
                   <S.ProfessorPhoto
                     src={prof.photo}

@@ -42,10 +42,10 @@ export const ContentBox = styled.div<{$isMobile: boolean}>`
 `;
 
 /** 큰 사각형(회색) */
-export const GrayBox = styled.div<{ $isMobile: boolean; $isTablet: boolean; }>`
+export const GrayBox = styled.img<{ $isMobile: boolean; $isTablet: boolean; }>`
   position: relative;
   border-radius: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "15px" : "20px")};
-  background: #E5E5E5;
+  object-fit: cover;
   height: ${({ $isMobile, $isTablet }) => ($isMobile ? "200px" : $isTablet ? "300px" : "400px")};
   width: ${({ $isMobile, $isTablet }) => ($isMobile ? "200px" : $isTablet ? "300px" : "400px")};
 `;
@@ -57,15 +57,14 @@ export const TextWrapper = styled.div<{ textAlign?: 'left' | 'right'; $isMobile:
 
   /* 폰트 스타일 */
   color: #191919;
-  font-size: 32px;
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "15px" : $isTablet ? "20px" : "30px")};
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "20px" : "30px")};
   font-weight: 400;
   line-height: ${({ $isMobile, $isTablet }) => ($isMobile ? "20px" : $isTablet ? "45px" : "60px")};
   word-wrap: break-word;
 
   /* 오른쪽 정렬이 필요하면 props로 제어 */
   text-align: ${({ textAlign }) => textAlign || 'left'};
-  ${({ textAlign }) => ((textAlign === 'left')? "padding-right: 10px;" : "padding-left: 10px;")};
+  ${({ textAlign }) => ((textAlign === 'left')? "padding-left: 20px;" : "padding-right: 20px;")};
   padding-top: ${({ $isMobile, $isTablet }) => ($isMobile ? "0px" : $isTablet ? "10%" : "10%")};
 `;
 
@@ -94,6 +93,7 @@ export const SectionTitle = styled.div<{$isMobile: boolean;}>`
   font-size: ${({ $isMobile }) => ($isMobile ? "16px" : "32px")};
   font-weight: 700;
   word-wrap: break-word;
+  ${({ $isMobile }) => ($isMobile ? "padding-bottom: 10px;" : "none")}
 `;
 
 /** 교수 개별 리스트 래퍼 */
@@ -129,8 +129,8 @@ export const ProfessorItem = styled.div<{
   export const ProfessorPhoto = styled.img<{
     $isMobile: boolean;
   }>`
-    width: ${({ $isMobile }) => ($isMobile ? "70px" : "200px")};
-    height: ${({ $isMobile }) => ($isMobile ? "70px" : "200px")};
+    width: ${({ $isMobile }) => ($isMobile ? "75px" : "200px")};
+    height: ${({ $isMobile }) => ($isMobile ? "75px" : "200px")};
     background: #e5e5e5;
     border-radius: ${({ $isMobile }) => ($isMobile ? "2px" : "8px")};
     object-fit: cover;
