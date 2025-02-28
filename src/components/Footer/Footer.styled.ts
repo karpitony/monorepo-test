@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer<{ $isMobile: boolean}>`
     width: 100%;
-    height: ${({ $isMobile }) => ($isMobile ? "20vh" : "15vh")};
+    height: ${({ $isMobile }) => ($isMobile ? "150px" : "110px")};
     background-color: var(--FarmSystem_LightGrey);
 `;
 
@@ -47,8 +47,8 @@ export const IconsContainer = styled.div<{ $isMobile: boolean; $isTablet: boolea
   display: flex;
   align-items: center;
   gap: ${({ $isMobile }) => ($isMobile ? "20px" : "30px")};
-  width: ${({ $isMobile }) => ($isMobile ? "50%" : "240px")};
-  margin-right: 0px; 
+  width: ${({ $isMobile }) => ($isMobile ? "200px" : "250px")};
+  margin-top: 15px; 
 `;
 
 export const IconLink = styled.a<{$isMobile: boolean;}>`
@@ -58,10 +58,11 @@ export const IconLink = styled.a<{$isMobile: boolean;}>`
   ${({ $isMobile }) => ($isMobile ? "margin: 5px auto;" : "none")}
 
   transition: transform 0.2s ease-in-out;
-  border-radius: ${({ $isMobile }) => ($isMobile ? "15px" : "20px")};
+  border-radius: 50%;
   width: ${({ $isMobile }) => ($isMobile ? "30px" : "40px")};
   height: ${({ $isMobile }) => ($isMobile ? "30px" : "40px")};
   background-color: var(--FarmSystem_DarkGrey);
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.1);
