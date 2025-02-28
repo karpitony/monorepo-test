@@ -1,8 +1,8 @@
 import * as S from './Footer.styled';
-import GitHubIcon from '../../assets/Icons/Github_white.svg';
-import InstagramIcon from '../../assets/Icons/Instagram_white.svg';
-import LinktreeIcon from '../../assets/Icons/Linktree_white.svg';
-import DGUIcon from "../../assets/Icons/DguLogo_small.svg";
+import GitHubIcon from '../../assets/Github_white.png';
+import InstagramIcon from '../../assets/instagram_white.png';
+import LinktreeIcon from '../../assets/Linktree_white.png';
+import DGUIcon from "../../assets/DGU.png";
 import Logo from '@/assets/Icons/FarmLogo_green.svg';
 
 import useMediaQueries from '@/hooks/useMediaQueries';

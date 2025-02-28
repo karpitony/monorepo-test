@@ -70,6 +70,12 @@ export const ContentInfoTextBox = styled.div<{ $isMobile: boolean }>`
   margin-bottom:  ${(props) => (props.$isMobile ? "13px" : "35px")};
   padding-top: ${(props) => (props.$isMobile ? "20px" : "0")};
   padding-bottom: ${(props) => (props.$isMobile ? "20px" : "0")};
+
+  
+`;
+
+export const Bold = styled.span`
+  font-weight: 700;
 `;
 
 export const HighlightOrange = styled.span<{ $isMobile: boolean }>`
