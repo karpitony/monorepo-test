@@ -57,22 +57,24 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
   };
 
   useEffect(() => {
-    if (studentNumber && password) {
-      loadApply({ studentNumber, password })
-        .then((res) => {
-          if (res.data) {
-            setLoadedData(res.data);
-            const answerMap: AnswerMap = {};
-            res.data.answers.forEach((ans) => {
-              answerMap[ans.questionId] = ans.content;
-            });
-            setAnswers(answerMap);
-            setSelectedTrack(res.data.track);
-          }
-        })
-        .catch((err) => {
-          console.error("지원서 로드 에러:", err);
-        });
+    if (studentNumber && password) { 
+      setTimeout(() => {
+        loadApply({ studentNumber, password })
+          .then((res) => {
+            if (res.data) {
+              setLoadedData(res.data);
+              const answerMap: AnswerMap = {};
+              res.data.answers.forEach((ans) => {
+                answerMap[ans.questionId] = ans.content;
+              });
+              setAnswers(answerMap);
+              setSelectedTrack(res.data.track);
+            }
+          })
+          .catch((err) => {
+            console.error("지원서 로드 에러:", err);
+          });
+      }, 2000);
     }
   }, [studentNumber, password]);
 
