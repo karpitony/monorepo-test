@@ -16,10 +16,9 @@ import {
   ApplySavePOSTResponse,
   ApplySubmitPOSTRequest,
   ApplySubmitPOSTResponse,
-
-  ApplyAnswer,
 } from "@/models/apply";
 
+/** 질문 불러오기 */
 export const useApplyQuestions = () => {
   const [data, setData] = useState<ApplyGETResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -35,88 +34,66 @@ export const useApplyQuestions = () => {
   return { data, loading, error };
 };
 
+/** 새 지원서 생성: studentNumber와 password를 받아 applyId를 반환 */
+export const useCreateApply = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const createApply = async ({
+    studentNumber,
+    password,
+  }: ApplyPOSTRequest): Promise<number> => {
+    setLoading(true);
+    try {
+      const response: ApplyPOSTResponse = await postApply({ studentNumber, password });
+      if (response.data && response.data.applyId !== undefined) {
+        return response.data.applyId;
+      }
+      throw new Error("응답에 applyId가 없습니다.");
+    } catch (err) {
+      setError(err as Error);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { createApply, loading, error };
+};
+
+/** 지원서 임시저장: applyId와 나머지 지원서 데이터를 payload로 받음 */
+export const useSaveApply = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const saveApply = async (
+    payload: ApplySavePOSTRequest
+  ): Promise<ApplySavePOSTResponse> => {
+    setLoading(true);
+    try {
+      return await postApplySave(payload);
+    } catch (err) {
+      setError(err as Error);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { saveApply, loading, error };
+};
+
+/** 지원서 로드: 학번과 비밀번호를 받아 지원서 데이터를 반환 */
 export const useLoadApply = () => {
-  return async (
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const loadApply = async (
     data: ApplyLoadPOSTRequest
   ): Promise<ApplyLoadPOSTResponse> => {
-    return await postApplyLoad(data);
-  };
-};
-
-
-/**
- * 첫 등록 공통 로직
- * studentNumber와 password를 이용해 applyId를 받아와 반환
- */
-const createApply = async ({
-  studentNumber,
-  password,
-}: ApplyPOSTRequest): Promise<number> => {
-  const response: ApplyPOSTResponse = await postApply({ 
-    studentNumber, 
-    password 
-  } as ApplyPOSTRequest);
-  
-  if (response.data && response.data.applyId !== undefined) {
-    return response.data.applyId;
-  }
-  throw new Error("응답에 applyId가 없습니다.");
-};
-
-interface UseApplyOptionsBase {
-  isFirst: boolean;
-  studentNumber: string;
-  password: string;
-}
-
-// 조건부 타입: T가 true이면 applyData에서 applyId를 제거(Omit), 아니면 전체 타입(ApplyAnswer) 사용
-type ApplyDataConditional<T extends boolean> = T extends true
-  ? Omit<ApplyAnswer, "applyId">
-  : ApplyAnswer;
-
-// 제네릭 인터페이스를 사용하여 isFirst 값에 따라 applyData 타입이 결정됨
-export interface UseApplyOptions<T extends boolean = false> extends UseApplyOptionsBase {
-  applyData: ApplyDataConditional<T>;
-}
-
-export const useSaveApply = () => {
-  const [applyId, setApplyId] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
-
-  // 오버로드 정의: 첫 등록과 기존 등록에 대해 타입을 다르게 정의
-  async function saveApply(
-    data: Partial<ApplySavePOSTRequest> & UseApplyOptions<true>
-  ): Promise<ApplySavePOSTResponse>;
-  async function saveApply(
-    data: Partial<ApplySavePOSTRequest> & UseApplyOptions<false>
-  ): Promise<ApplySavePOSTResponse>;
-  async function saveApply(
-    data: Partial<ApplySavePOSTRequest> & UseApplyOptions<boolean>
-  ): Promise<ApplySavePOSTResponse> {
     setLoading(true);
     try {
-      if (data.isFirst === true) {
-        if (!data.studentNumber || !data.password || !data.applyData) {
-          throw new Error(
-            "isFirst가 true인 경우 studentNumber, password, applyData가 필요합니다."
-          );
-        }
-        // 공통 로직으로 applyId 받아오기
-        const newApplyId = await createApply({
-          studentNumber: data.studentNumber,
-          password: data.password,
-        } as ApplyPOSTRequest);
-        setApplyId(newApplyId);
-        const payload: ApplySavePOSTRequest = {
-          applyId: newApplyId,
-          ...data.applyData,
-        };
-        return await postApplySave(payload);
-      } else {
-        // 기존 applyId를 사용해 바로 저장
-        return await postApplySave(data as ApplySavePOSTRequest);
-      }
+      return await postApplyLoad(data);
     } catch (err) {
       setError(err as Error);
       throw err;
@@ -125,47 +102,20 @@ export const useSaveApply = () => {
     }
   };
 
-  return { saveApply, applyId, loading, error };
+  return { loadApply, loading, error };
 };
 
+/** 지원서 제출: applyId와 지원서 데이터를 payload로 받아 제출 */
 export const useSubmitApply = () => {
-  const [applyId, setApplyId] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  // 오버로드 정의
-  async function submitApply(
-    data: Partial<ApplySubmitPOSTRequest> & UseApplyOptions<true>
-  ): Promise<ApplySubmitPOSTResponse>;
-  async function submitApply(
-    data: Partial<ApplySubmitPOSTRequest> & UseApplyOptions<false>
-  ): Promise<ApplySubmitPOSTResponse>;
-  async function submitApply(
-    data: Partial<ApplySubmitPOSTRequest> & UseApplyOptions<boolean>
-  ): Promise<ApplySubmitPOSTResponse> {
+  const submitApply = async (
+    payload: ApplySubmitPOSTRequest
+  ): Promise<ApplySubmitPOSTResponse> => {
     setLoading(true);
     try {
-      if (data.isFirst) {
-        if (!data.studentNumber || !data.password || !data.applyData) {
-          throw new Error(
-            "isFirst가 true인 경우 studentNumber, password, applyData가 필요합니다."
-          );
-        }
-        // 공통 로직으로 applyId 받아오기
-        const newApplyId = await createApply({
-          studentNumber: data.studentNumber,
-          password: data.password,
-        } as ApplyPOSTRequest);
-        setApplyId(newApplyId);
-        const payload: ApplySubmitPOSTRequest = {
-          applyId: newApplyId,
-          ...data.applyData,
-        };
-        return await postApplySubmit(payload);
-      } else {
-        // 기존 applyId를 사용해 바로 제출
-        return await postApplySubmit(data as ApplySubmitPOSTRequest);
-      }
+      return await postApplySubmit(payload);
     } catch (err) {
       setError(err as Error);
       throw err;
@@ -174,5 +124,5 @@ export const useSubmitApply = () => {
     }
   };
 
-  return { submitApply, applyId, loading, error };
+  return { submitApply, loading, error };
 };

@@ -11,6 +11,7 @@ enum ApiErrorMessages {
 export enum Track {
   UNION = "UNION",
   GAMING_VIDEO = "GAMING_VIDEO",
+  AI = "AI",
 }
 
 export interface Choice {
