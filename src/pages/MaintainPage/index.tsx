@@ -2,7 +2,6 @@ import * as S from "./MaintainPage.styled"
 import useMediaQueries from "@/hooks/useMediaQueries";
 
 
-
 export default function MaintainPage() {
     const { isMobile } = useMediaQueries();
     return (
