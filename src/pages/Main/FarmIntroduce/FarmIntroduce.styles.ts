@@ -29,7 +29,7 @@ export const MainContents = styled.div<{ $isMobile: boolean; }>`
 `;
 
 /** 박스 하나에 대한 공통 스타일(왼쪽/오른쪽 구분 전에) */
-export const ContentBox = styled.div<{$isMobile: boolean}>`
+export const ContentBox = styled.div<{$isMobile: boolean, $isTablet: boolean}>`
   width: 100%;
   background: #FCFCFC;
   border-radius: 20px;
@@ -38,34 +38,37 @@ export const ContentBox = styled.div<{$isMobile: boolean}>`
   display: flex;
   justify-content: flex-start; /* 또는 flex-end */
   align-items: center;
-  gap: ${({ $isMobile }) => ($isMobile ? "10px" : "50px")};
+  gap: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "30px" : "50px")};
 `;
 
 /** 큰 사각형(회색) */
-export const GrayBox = styled.img<{ $isMobile: boolean; $isTablet: boolean; }>`
+export const GrayBox = styled.img<{ $isApp: boolean, $isMobile: boolean; $isTablet: boolean; }>`
   position: relative;
-  border-radius: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "15px" : "20px")};
+  border-radius: ${({ $isMobile, $isTablet }) => ($isMobile ? "13px" : $isTablet ? "15px" : "20px")};
   object-fit: cover;
-  height: ${({ $isMobile, $isTablet }) => ($isMobile ? "200px" : $isTablet ? "300px" : "400px")};
-  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "200px" : $isTablet ? "300px" : "400px")};
+  height: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "125px" : $isMobile ? "200px" : $isTablet ? "280px" : "340px")};
+  width: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "125px" : $isMobile ? "200px" : $isTablet ? "280px" : "340px")};
 `;
 
 /** 텍스트를 담는 래퍼 */
-export const TextWrapper = styled.div<{ textAlign?: 'left' | 'right'; $isMobile: boolean; $isTablet: boolean; }>`
-  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "200px" : $isTablet ? "600px" : "800px")};
+export const TextWrapper = styled.div<{ textAlign?: 'left' | 'right'; $isApp: boolean, $isMobile: boolean; $isTablet: boolean; }>`
+  display: flex;
+  align-items: center;
+  justify-content: ${({ textAlign }) => (textAlign === 'right' ? 'end' : 'start')};
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "250px" : $isTablet ? "600px" : "800px")};
   height: ${({ $isMobile, $isTablet }) => ($isMobile ? "100px" : $isTablet ? "300px" : "400px")};
 
   /* 폰트 스타일 */
   color: #191919;
-  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "10px" : $isTablet ? "20px" : "30px")};
+  font-size: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "12px" : $isMobile ? "17px" : $isTablet ? "20px" : "24px")};
   font-weight: 400;
-  line-height: ${({ $isMobile, $isTablet }) => ($isMobile ? "20px" : $isTablet ? "45px" : "60px")};
-  word-wrap: break-word;
+  line-height: ${({ $isApp, $isMobile, $isTablet }) => ($isApp ? "25px" : $isMobile ? "38px" : $isTablet ? "50px" : "60px")};
+  /* word-wrap: break-word; */
 
   /* 오른쪽 정렬이 필요하면 props로 제어 */
   text-align: ${({ textAlign }) => textAlign || 'left'};
-  ${({ textAlign }) => ((textAlign === 'left')? "padding-left: 20px;" : "padding-right: 20px;")};
-  padding-top: ${({ $isMobile, $isTablet }) => ($isMobile ? "0px" : $isTablet ? "10%" : "10%")};
+  ${({ textAlign }) => ((textAlign === 'left')? "padding-left: 5px;" : "padding-right: 5px;")};
+  /* background-color: orange; */
 `;
 
 /** 교수진 섹션 전체 래퍼 */
@@ -215,7 +218,7 @@ export const ProfessorItem = styled.div<{
   export const DetailLabel = styled.div<{
     $isMobile: boolean;
   }>`
-    padding-left: padding: ${({ $isMobile }) => ($isMobile ? "5px" : "10px")};
+    padding-left: ${({ $isMobile }) => ($isMobile ? "5px" : "10px")};
   `;
   export const DetailValue = styled.div<{
     $isMobile: boolean;

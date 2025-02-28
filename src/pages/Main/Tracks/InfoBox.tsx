@@ -28,9 +28,12 @@ export default function InfoBox({ selectedTrack }: InfoBoxProps) {
                 <S.PhaseCard key={phaseKey} $isDesktop={isDesktop}>
                   <S.PhaseTitle $isMobile={isMobile}>{phaseLabels[index]}</S.PhaseTitle>
                   <S.PhaseContent $isMobile={isMobile}>
-              {phaseItems.map((item, i) => (
-                <S.Li $isMobile={isMobile} key={`${phaseKey}-${i}`}>&bull; {item}</S.Li>
-              ))}
+                    <S.PhaseContentInner $isMobile={isMobile}>
+                    {phaseItems.map((item, i) => (
+                      <S.Li $isMobile={isMobile} key={`${phaseKey}-${i}`}>&bull; {item}</S.Li>
+                    ))}
+                    </S.PhaseContentInner>
+              
             </S.PhaseContent>
           </S.PhaseCard>
         ))}
