@@ -8,12 +8,12 @@ enum ApiErrorMessages {
 
 // 이거 아직 다 작성 안된거임!! 
 // swagger 보고 enum 채울 예정
-enum Track {
+export enum Track {
   UNION = "UNION",
   GAMING_VIDEO = "GAMING_VIDEO",
 }
 
-interface Choice {
+export interface Choice {
   choicedId: number;
   content: string;
 }
@@ -48,7 +48,7 @@ export type ApplyGETResponse = ApiResponse<ApplyQuestion[]>;
 export type ApplyPOSTRequest = ApiRequest;
 export type ApplyPOSTResponse = ApiResponse<{ applyId: number }>;
 
-interface Answer {
+export interface Answer {
   questionId: number;
   content: string | number[];
 }
