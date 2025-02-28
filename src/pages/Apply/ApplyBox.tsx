@@ -29,6 +29,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [loadedData, setLoadedData] = useState<ApplyAnswer | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track>(defaultTrack);
+  const [applyStatus, setApplyStatus] = useState<string>("");
 
   const handleTrackChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newTrack = e.target.value as Track;
@@ -70,6 +71,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
         .then((res) => {
           if (res.data) {
             setLoadedData(res.data);
+            setApplyStatus(res.data.status);
             const answerMap: AnswerMap = {};
             res.data.answers.forEach((ans) => {
               answerMap[ans.questionId] = {
@@ -109,14 +111,21 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
   };
 
   const handleSubmit = async () => {
+    const confirmSubmission = window.confirm(
+      "한번 제출하시면 수정이 불가합니다. 또한 동일한 학번으로 재제출도 불가합니다"
+    );
+    if (!confirmSubmission) return;
+  
+    const submissionData = buildApplyData();
     try {
-      const response = await submitApply(buildApplyData());
+      const response = await submitApply(submissionData);
       console.log("제출 성공:", response);
+      setApplyStatus("SUBMITTED");
     } catch (err) {
       console.error("제출 에러:", err);
     }
   };
-
+  
   // 로드 중 또는 에러 상태에 따른 처리
   if (loadLoading) return <div>지원서를 로딩중입니다...</div>;
   if (loadError) return <div>지원서 로드 에러: {loadError.message}</div>;
@@ -188,13 +197,20 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
         </div>
       ))}
       <div>
-        <button onClick={handleSave} disabled={saveLoading}>
-          {saveLoading ? "저장중..." : "임시저장"}
-        </button>
-        <button onClick={handleSubmit} disabled={submitLoading}>
-          {submitLoading ? "제출중..." : "제출"}
-        </button>
+        {applyStatus === "SUBMITTED" ? (
+          <div>이미 제출한 지원서입니다.</div>
+        ) : (
+          <>
+            <button onClick={handleSave} disabled={saveLoading}>
+              {saveLoading ? "저장중..." : "임시저장"}
+            </button>
+            <button onClick={handleSubmit} disabled={submitLoading}>
+              {submitLoading ? "제출중..." : "제출"}
+            </button>
+          </>
+        )}
       </div>
+
       {saveError && <div style={{ color: "red" }}>임시저장 에러: {saveError.message}</div>}
       {submitError && <div style={{ color: "red" }}>제출 에러: {submitError.message}</div>}
     </div>
