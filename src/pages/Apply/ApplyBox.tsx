@@ -5,8 +5,10 @@ import {
   useSubmitApply, 
   useLoadApply 
 } from "@/hooks/useApply";
-import { ApplyQuestion, Choice, ApplyAnswer, Answer, Track } from "@/models/apply";
+import { ApplyQuestion, ApplyAnswer, Answer, Track } from "@/models/apply";
 import { filterQuestionsByTrack, sortQuestionsByPriority } from "@/utils/apply";
+import ChoiceSelector from "./ChoiceSelector";
+import PersonalInfo from "./PersonalInfo";
 
 const defaultTrack: Track = Track.UNION;
 type AnswerMap = Record<number, string | number[]>;
@@ -20,7 +22,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
   const { data: questionsData, loading: questionsLoading, error: questionsError } = useApplyQuestions();
   const { saveApply, loading: saveLoading, error: saveError } = useSaveApply();
   const { submitApply, loading: submitLoading, error: submitError } = useSubmitApply();
-  const { loadApply } = useLoadApply();
+  const { loadApply, loading: loadLoading, error: loadError } = useLoadApply();
 
   const [studentNumber, setStudentNumber] = useState(propStudentNumber);
   const [password, setPassword] = useState(propPassword);
@@ -47,35 +49,45 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
 
   // Answer 배열로 변환 (processedQuestions에 해당하는 질문만 포함)
   const transformAnswers = (): Answer[] => {
-    const validQuestionIds = new Set(processedQuestions.map(q => q.questionId));
-    return Object.entries(answers)
-      .filter(([qid]) => validQuestionIds.has(Number(qid)))
-      .map(([qid, content]) => ({
-        questionId: Number(qid),
-        content,
-      }));
+    return processedQuestions.map((question) => {
+      const answerValue = answers[question.questionId];
+      if (question.type === "ESSAY") {
+        return {
+          questionId: question.questionId,
+          content: answerValue as string,
+        };
+      } else if (question.type === "CHOICE") {
+        return {
+          questionId: question.questionId,
+          choiceId: answerValue as number[],
+        };
+      } else {
+        throw new Error(`지원서 변환 에러: 처리되지 않은 질문 타입 (${question.type})`);
+      }
+    });
   };
 
   useEffect(() => {
     if (studentNumber && password) { 
-      setTimeout(() => {
-        loadApply({ studentNumber, password })
-          .then((res) => {
-            if (res.data) {
-              setLoadedData(res.data);
-              const answerMap: AnswerMap = {};
-              res.data.answers.forEach((ans) => {
-                answerMap[ans.questionId] = ans.content;
-              });
-              setAnswers(answerMap);
-              setSelectedTrack(res.data.track);
-            }
-          })
-          .catch((err) => {
-            console.error("지원서 로드 에러:", err);
-          });
-      }, 2000);
+      loadApply({ studentNumber, password })
+        .then((res) => {
+          if (res.data) {
+            setLoadedData(res.data);
+            const answerMap: AnswerMap = {};
+            // 답변 데이터도 타입에 맞게 보관
+            res.data.answers.forEach((ans) => {
+              answerMap[ans.questionId] =
+                "choiceId" in ans ? (ans.choiceId ?? []) : (ans.content ?? "");
+            });
+            setAnswers(answerMap);
+            setSelectedTrack(res.data.track);
+          }
+        })
+        .catch((err) => {
+          console.error("지원서 로드 에러:", err);
+        });
     }
+  // 여기에 loadApply 넣지 마세요... 무한 반복됩니다 ㅠㅠ
   }, [studentNumber, password]);
 
   const buildApplyData = (): ApplyAnswer => {
@@ -107,32 +119,37 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
     }
   };
 
-  if (questionsLoading) return <div>질문 로딩중...</div>;
-  if (questionsError) return <div>질문 로딩 에러: {questionsError.message}</div>;
+  // 로드 중 또는 에러 상태에 따른 처리
+  if (loadLoading) return <div>지원서를 로딩중입니다...</div>;
+  if (loadError) return <div>지원서 로드 에러: {loadError.message}</div>;
+  if (questionsLoading) return <div>질문 데이터를 로딩중입니다...</div>;
+  if (questionsError) return <div>질문 데이터를 로딩 에러: {questionsError.message}</div>;
 
   return (
     <div>
       <h1>지원서 작성</h1>
-      <div>
-        <label>
-          학번:
-          <input
-            type="text"
-            value={studentNumber}
-            onChange={(e) => setStudentNumber(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          비밀번호:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-      </div>
+      <PersonalInfo
+        studentNumber={studentNumber}
+        password={password}
+        name={loadedData?.name ?? ""}
+        major={loadedData?.major ?? ""}
+        email={loadedData?.email ?? ""}
+        phoneNumber={loadedData?.phoneNumber ?? ""}
+        onStudentNumberChange={setStudentNumber}
+        onPasswordChange={setPassword}
+        onNameChange={(value) => {
+          if (loadedData) setLoadedData({ ...loadedData, name: value });
+        }}
+        onMajorChange={(value) => {
+          if (loadedData) setLoadedData({ ...loadedData, major: value });
+        }}
+        onEmailChange={(value) => {
+          if (loadedData) setLoadedData({ ...loadedData, email: value });
+        }}
+        onPhoneNumberChange={(value) => {
+          if (loadedData) setLoadedData({ ...loadedData, phoneNumber: value });
+        }}
+      />
       <div>
         <label>
           트랙 선택:
@@ -160,33 +177,19 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
                   ? (answers[question.questionId] as string)
                   : ""
               }
-              onChange={(e) =>
-                handleAnswerChange(question.questionId, e.target.value)
-              }
+              onChange={(e) => handleAnswerChange(question.questionId, e.target.value)}
               style={{ width: "100%", minHeight: "80px" }}
             />
           ) : question.type === "CHOICE" && question.choices ? (
-            <select
-              multiple
+            <ChoiceSelector
+              question={question}
               value={
                 Array.isArray(answers[question.questionId])
-                  ? (answers[question.questionId] as number[]).map(String)
+                  ? (answers[question.questionId] as number[])
                   : []
               }
-              onChange={(e) => {
-                const selectedValues = Array.from(
-                  e.target.selectedOptions,
-                  (option) => Number(option.value)
-                );
-                handleAnswerChange(question.questionId, selectedValues);
-              }}
-            >
-              {question.choices.map((choice: Choice) => (
-                <option key={choice.choicedId} value={choice.choicedId}>
-                  {choice.content}
-                </option>
-              ))}
-            </select>
+              onChange={(newValue) => handleAnswerChange(question.questionId, newValue)}
+            />
           ) : null}
         </div>
       ))}

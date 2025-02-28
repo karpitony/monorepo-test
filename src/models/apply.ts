@@ -15,7 +15,7 @@ export enum Track {
 }
 
 export interface Choice {
-  choicedId: number;
+  choiceId: number;
   content: string;
 }
 
@@ -51,7 +51,8 @@ export type ApplyPOSTResponse = ApiResponse<{ applyId: number }>;
 
 export interface Answer {
   questionId: number;
-  content: string | number[];
+  content?: string;
+  choiceId?: number[];
 }
 
 export interface ApplyAnswer {
