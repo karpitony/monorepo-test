@@ -12,6 +12,9 @@ export enum Track {
   UNION = "UNION",
   GAMING_VIDEO = "GAMING_VIDEO",
   AI = "AI",
+  WEB = "WEB",
+  IOT = "IOT",
+  BIGDATA = "BIGDATA",
 }
 
 export interface Choice {

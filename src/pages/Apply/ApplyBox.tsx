@@ -18,6 +18,15 @@ interface ApplyBoxProps {
   propPassword: string;
 }
 
+const TrackKorean = {
+  UNION: "유니온",
+  GAMING_VIDEO: "게임/영상",
+  AI: "인공지능",
+  WEB: "보안/웹",
+  IOT: "사물인터넷",
+  BIGDATA: "빅데이터",
+} as const;
+
 export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxProps) {
   const { data: questionsData, loading: questionsLoading, error: questionsError } = useApplyQuestions();
   const { saveApply, loading: saveLoading, error: saveError } = useSaveApply();
@@ -125,7 +134,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
       console.error("제출 에러:", err);
     }
   };
-  
+
   // 로드 중 또는 에러 상태에 따른 처리
   if (loadLoading) return <div>지원서를 로딩중입니다...</div>;
   if (loadError) return <div>지원서 로드 에러: {loadError.message}</div>;
@@ -163,7 +172,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
           <select value={selectedTrack} onChange={handleTrackChange}>
             {Object.values(Track).map((track) => (
               <option key={track} value={track}>
-                {track}
+                {TrackKorean[track]}
               </option>
             ))}
           </select>
