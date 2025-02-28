@@ -21,8 +21,6 @@ export const QParent = styled.div`
 
 export const Q = styled.b<{ $isApp: boolean; }>`
   position: relative;
-  left: 2px;
-  top: ${({ $isApp}) => ($isApp ? '-15px' : '0px')};
   font-size: ${({ $isApp}) => ($isApp ? '28px' : '28px')};
 `;
 
@@ -34,6 +32,7 @@ export const A = styled.b`
 `;
 
 export const FarmSystem = styled.b`
+  position: relative; 
   font-size: 19px;
   color: #000;
 `;
