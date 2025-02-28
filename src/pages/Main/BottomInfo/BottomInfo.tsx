@@ -42,8 +42,8 @@ const BottomInfo = () => {
       <Popup 
         isOpen={isPopupOpen} 
         onClose={() => setPopupOpen(false)} 
-        title={"지금은 모집 기간이 아닙니다."} 
-        content={"공개 모집 예정: 2025년 2월"}
+        title={"지금은 모집 기간이 아니에요."} 
+        content={"3월 4일부터 지원 가능해요."} 
       />
     </S.BottomInfoContainer>
   );
