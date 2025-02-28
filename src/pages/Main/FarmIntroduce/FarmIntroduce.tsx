@@ -45,51 +45,91 @@ export const professors : ProfessorDataInterface[] = [
   ];
   
   export default function FarmIntroduce() {
-    const { isMobile,isTablet } = useMediaQueries();
+    const { isApp, isMobile, isTablet } = useMediaQueries();
     return (
       <S.Container $isMobile = {isMobile}>
         {/* 메인 설명 부분 */}
         <S.MainContents $isMobile = {isMobile}>
           {/* 첫 번째 박스 (왼쪽 그레이 박스 + 오른쪽 텍스트) */}
-          <S.ContentBox $isMobile = {isMobile}>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={first} alt='1'/>
-            <S.TextWrapper $isMobile = {isMobile} $isTablet = {isTablet}>
-              Farm System은 <br />
-              동국대학교에서 SW/AI 역량을 기르고<br />
-              실력을 갈고닦을 수 있는 최적의 환경을 제공합니다.
+          <S.ContentBox $isMobile = {isMobile} $isTablet={isTablet}>
+            <S.GrayBox $isApp={isApp} $isMobile = {isMobile} $isTablet = {isTablet} src={first} alt='1'/>
+            <S.TextWrapper textAlign="left" $isApp={isApp} $isMobile = {isMobile} $isTablet = {isTablet}>
+              {isMobile ? 
+                <>Farm System은 <br />
+                동국대학교에서 SW/AI 역량과<br />
+                실력을 갈고닦을 수 있는<br /> 최적의 환경을 제공합니다.</>
+                :
+                <>Farm System은 <br />
+                동국대학교에서 SW/AI 역량을 기르고<br />
+                실력을 갈고닦을 수 있는 최적의 환경을 제공합니다.</>
+              }
             </S.TextWrapper>
           </S.ContentBox>
   
           {/* 두 번째 박스 (오른쪽 텍스트 + 왼쪽 그레이 박스) */}
-          <S.ContentBox style={{ justifyContent: 'flex-end' }} $isMobile = {isMobile}>
-            <S.TextWrapper textAlign="right" $isMobile = {isMobile} $isTablet = {isTablet}>
-              <strong style={{ fontWeight: 700 }}>최신 기술을 깊이 있게 탐구하는 5가지 신기술 트랙</strong>과,
-              <br />
-              <strong style={{ fontWeight: 700 }}>SW/AI의 탄탄한 기초를 다지는 Union</strong>으로 구성됩니다.
+          <S.ContentBox style={{ justifyContent: 'flex-end' }} $isMobile = {isMobile} $isTablet={isTablet}>
+            <S.TextWrapper $isApp={isApp} textAlign="right" $isMobile = {isMobile} $isTablet = {isTablet}>
+              {isMobile ?
+                <div>
+                  최신 기술을 깊이 있게 탐구하는 <br /><strong style={{ fontWeight: 700 }}>5가지 신기술 트랙</strong>과,
+                  <br />
+                  SW/AI의 탄탄한 기초를 다지는 <br /><strong style={{ fontWeight: 700 }}>Union</strong>으로 구성됩니다.
+                </div>
+              :
+              <div>
+                최신 기술을 깊이 있게 탐구하는 <strong style={{ fontWeight: 700 }}>5가지 신기술 트랙</strong>과,
+                <br />
+                SW/AI의 탄탄한 기초를 다지는 <strong style={{ fontWeight: 700 }}>Union</strong>으로 구성됩니다.
+              </div>
+              }
+              
             </S.TextWrapper>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={second} alt='2'/>
+            <S.GrayBox $isApp={isApp} $isMobile = {isMobile} $isTablet = {isTablet} src={second} alt='2'/>
           </S.ContentBox>
   
           {/* 세 번째 박스 */}
-          <S.ContentBox $isMobile = {isMobile}>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={third} alt='3'/>
-            <S.TextWrapper $isMobile = {isMobile} $isTablet = {isTablet}>
-              <strong style={{ fontWeight: 700 }}>신기술 트랙</strong>에서는
-              <br />
-              각 분야의 최첨단 기술을 학습하고, <br />
-              이를 프로젝트에 적용하며 실전 경험을 쌓습니다.
+          <S.ContentBox $isMobile = {isMobile} $isTablet={isTablet}>
+            <S.GrayBox $isApp={isApp} $isMobile = {isMobile} $isTablet = {isTablet} src={third} alt='3'/>
+            <S.TextWrapper textAlign="left" $isApp={isApp} $isMobile = {isMobile} $isTablet = {isTablet}>
+              {isMobile ?
+                <div>
+                  <strong style={{ fontWeight: 700 }}>신기술 트랙</strong>에서는
+                  <br />
+                  각 분야의 최첨단 기술을 학습하고,<br />
+                  이를 프로젝트에 적용하며 <br />실전 경험을 쌓습니다.
+                </div>
+                :
+                <div>
+                  <strong style={{ fontWeight: 700 }}>신기술 트랙</strong>에서는
+                  <br />
+                  각 분야의 최첨단 기술을 학습하고,<br />
+                  이를 프로젝트에 적용하며 실전 경험을 쌓습니다.
+                </div>
+              }
+              
             </S.TextWrapper>
           </S.ContentBox>
   
           {/* 네 번째 박스 */ }
-          <S.ContentBox style={{ justifyContent: 'flex-end' }} $isMobile = {isMobile}>
-            <S.TextWrapper textAlign="right" $isMobile = {isMobile} $isTablet = {isTablet}>
-              <strong style={{ fontWeight: 600 }}>Union</strong>에서는
-              <br />
-              SW/AI의 핵심 개념을 익히고,<br />
-              탄탄한 기초를 바탕으로 성장할 수 있도록 돕습니다.
+          <S.ContentBox style={{ justifyContent: 'flex-end' }} $isMobile = {isMobile} $isTablet={isTablet}>
+            <S.TextWrapper $isApp={isApp} textAlign="right" $isMobile = {isMobile} $isTablet = {isTablet}>
+              {isMobile ?
+                <div>
+                  <strong style={{ fontWeight: 600 }}>Union</strong>에서는
+                  <br />
+                  SW/AI의 핵심 개념을 익히고,<br />
+                  탄탄한 기초를 바탕으로 <br />성장할 수 있도록 돕습니다.
+                </div>
+              :
+              <div>
+                <strong style={{ fontWeight: 600 }}>Union</strong>에서는
+                <br />
+                SW/AI의 핵심 개념을 익히고,<br />
+                탄탄한 기초를 바탕으로 성장할 수 있도록 돕습니다.
+              </div>
+        }
             </S.TextWrapper>
-            <S.GrayBox $isMobile = {isMobile} $isTablet = {isTablet} src={fourth} alt='4'/>
+            <S.GrayBox $isApp={isApp} $isMobile = {isMobile} $isTablet = {isTablet} src={fourth} alt='4'/>
           </S.ContentBox>
         </S.MainContents>
   
