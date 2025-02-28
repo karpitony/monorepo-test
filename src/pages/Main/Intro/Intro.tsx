@@ -10,7 +10,6 @@ const Intro = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const { isApp, isMobile, isTablet } = useMediaQueries();
 
-  {/*
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: (i = 1) => ({
@@ -19,13 +18,12 @@ const Intro = () => {
       transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" }
     }),
   };
-  */}
 
   if (isApp) {
     return (
       <S.AppContainer id="about">
         <S.TopSection>
-        <motion.img 
+        {/* <motion.img 
             src={IntroLogo} 
             alt="" 
             initial={{ opacity: 0, y: 30 }}
@@ -40,10 +38,13 @@ const Intro = () => {
             viewport={{ once: true }}
           >
             <S.IntroPhrase>
-              미래를 준비하고 성장하는 여정, "Farm System에서 함께하세요.
+              미래를 준비하고 성장하는 여정,
             </S.IntroPhrase>
-          </motion.div>
-          {/*<motion.img 
+            <S.IntroPhrase>
+              Farm System에서 함께하세요.
+            </S.IntroPhrase>
+          </motion.div> */}
+          <motion.img 
             src={IntroLogo} 
             alt="" 
             initial="hidden"
@@ -63,13 +64,13 @@ const Intro = () => {
             >
               {text}
             </S.IntroPhrase>
-          ))} */}
+          ))}
         </S.TopSection>
-        <S.BottomSection>
+        {/* <S.BottomSection>
           <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 3, ease: "easeOut" }} 
+                      transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }} 
                       viewport={{ once: true }}>
             <S.IntroDescription>
             Farm System은 SW/AI 분야에 관심있는<br/>
@@ -79,9 +80,9 @@ const Intro = () => {
             5가지 신기술 트랙을 제공하여,<br/>
             학습 경험을 통해 SW/AI 역량을 배양합니다.<br/>
             </S.IntroDescription>
-          </motion.div>
+          </motion.div> */}
 
-        {/* 2/3 지점: Description - 화면에 들어올 때 애니메이션 적용 
+        {/* 2/3 지점: Description - 화면에 들어올 때 애니메이션 적용  */}
         <S.BottomSection>
           {[
             "Farm System은 SW/AI 분야에 관심있는",
@@ -102,7 +103,7 @@ const Intro = () => {
               {text}
             </S.IntroDescription>
           ))}
-        */}
+       
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -120,8 +121,8 @@ const Intro = () => {
         <Popup 
           isOpen={isPopupOpen} 
           onClose={() => setPopupOpen(false)} 
-          title={"지금은 모집 기간이 아닙니다."} 
-          content={"공개 모집 예정: 2025년 2월"} 
+          title={"지금은 모집 기간이 아니에요."} 
+          content={"3월 4일부터 지원 가능해요."} 
         />
       </S.AppContainer>
     );

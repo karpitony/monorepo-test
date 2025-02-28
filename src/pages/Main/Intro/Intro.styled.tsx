@@ -5,7 +5,7 @@ export const AppContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 150vh;
+    height: 160vh;
     background: linear-gradient(90deg, #102C19, #194326);
     color: white;
     text-align: center;
@@ -17,8 +17,8 @@ export const TopSection = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    margin-top: -10vh;
+    height: 800px;
+    margin-top: 50px;
 `;
 
 export const BottomSection = styled.div`
@@ -78,12 +78,14 @@ export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: ${({ $isMobile, $isTablet }) => ($isMobile ? "80vh" : $isTablet ? "100vh" : "110vh")};
+    min-height: ${({ $isMobile, $isTablet }) => ($isMobile ? "600px" : $isTablet ? "700px" : "800px")};
     background: ${({ $isMobile }) => (
         $isMobile ? "linear-gradient(90deg, #28723F, #75e298)" 
         : "linear-gradient(90deg, #28723F, #A2E9B8)"
     )};
     padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
+    padding-top: 120px;
+    padding-top: 100px;
     color: white;
 `;
 
