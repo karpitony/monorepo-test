@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { validatePersonalInfo } from "@/validations/apply";
 
 interface PersonalInfoProps {
   studentNumber: string;
@@ -29,6 +30,21 @@ export default function PersonalInfo({
   onEmailChange,
   onPhoneNumberChange,
 }: PersonalInfoProps) {
+  // 현재 입력값으로 검증 수행
+  const validationResult = validatePersonalInfo({
+    studentNumber,
+    password,
+    name,
+    major,
+    email,
+    phoneNumber,
+  });
+
+  // 성공 시 빈 객체, 실패 시 fieldErrors를 가져옵니다.
+  const fieldErrors = validationResult.success
+    ? {}
+    : validationResult.error.formErrors.fieldErrors;
+
   return (
     <div>
       <div>
@@ -40,8 +56,12 @@ export default function PersonalInfo({
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               onStudentNumberChange(e.target.value)
             }
+            disabled
           />
         </label>
+        {fieldErrors.studentNumber && (
+          <div style={{ color: "red" }}>{fieldErrors.studentNumber[0]}</div>
+        )}
       </div>
       <div>
         <label>
@@ -52,8 +72,12 @@ export default function PersonalInfo({
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               onPasswordChange(e.target.value)
             }
+            disabled
           />
         </label>
+        {fieldErrors.password && (
+          <div style={{ color: "red" }}>{fieldErrors.password[0]}</div>
+        )}
       </div>
       <div>
         <label>
@@ -66,6 +90,9 @@ export default function PersonalInfo({
             }
           />
         </label>
+        {fieldErrors.name && (
+          <div style={{ color: "red" }}>{fieldErrors.name[0]}</div>
+        )}
       </div>
       <div>
         <label>
@@ -78,6 +105,9 @@ export default function PersonalInfo({
             }
           />
         </label>
+        {fieldErrors.major && (
+          <div style={{ color: "red" }}>{fieldErrors.major[0]}</div>
+        )}
       </div>
       <div>
         <label>
@@ -88,8 +118,12 @@ export default function PersonalInfo({
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               onEmailChange(e.target.value)
             }
+            placeholder="farmsystem@farm.com"
           />
         </label>
+        {fieldErrors.email && (
+          <div style={{ color: "red" }}>{fieldErrors.email[0]}</div>
+        )}
       </div>
       <div>
         <label>
@@ -100,8 +134,12 @@ export default function PersonalInfo({
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               onPhoneNumberChange(e.target.value)
             }
+            placeholder="010-1234-5678"
           />
         </label>
+        {fieldErrors.phoneNumber && (
+          <div style={{ color: "red" }}>{fieldErrors.phoneNumber[0]}</div>
+        )}
       </div>
     </div>
   );
