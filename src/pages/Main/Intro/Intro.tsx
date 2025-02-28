@@ -111,7 +111,7 @@ const Intro = () => {
       </S.TrackList>
       <S.Apply>
         <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => setPopupOpen(true)}> 지원하기 </S.ApplyButton>
-        <S.ApplyDescription $isMobile={isMobile}>2025년 2월 공개 모집 예정</S.ApplyDescription>
+        <S.ApplyDescription $isMobile={isMobile} $isTablet={isTablet}>2025년 3월 4일 모집 예정</S.ApplyDescription>
       </S.Apply>
 
 
@@ -119,9 +119,9 @@ const Intro = () => {
       {isPopupOpen && (
         <Popup 
           isOpen={isPopupOpen} 
-          onClose={() => setPopupOpen(false)} 
-          title={"지금은 모집 기간이 아닙니다."} 
-          content={"공개 모집 예정: 2025년 2월"} 
+          onClose={() => setPopupOpen(false)}  
+          title={"지금은 모집 기간이 아니에요."} 
+          content={"3월 4일부터 지원 가능해요."} 
         />
       )}
     </S.Container>
