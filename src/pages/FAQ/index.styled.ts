@@ -10,7 +10,7 @@ export const FAQContainer = styled.div`
 `;
 
 export const Title = styled.b<{ $isApp: boolean; $isMobile: boolean; $isTablet: boolean }>`
-  weight: 700;
+  font-weight: 700;
   display: block;
   margin-top: 170px;
   margin-bottom: ${({ $isMobile }) => ($isMobile ? '20px' : '50px')};
