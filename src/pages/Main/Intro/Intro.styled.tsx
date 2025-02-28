@@ -106,7 +106,7 @@ export const IntroDescription = styled.p`
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    color: #333;
+    color: white;
 `;
 
 export const Description = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`

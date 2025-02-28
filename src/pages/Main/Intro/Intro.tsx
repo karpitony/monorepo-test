@@ -10,6 +10,7 @@ const Intro = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const { isApp, isMobile, isTablet } = useMediaQueries();
 
+  {/*
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: (i = 1) => ({
@@ -18,12 +19,31 @@ const Intro = () => {
       transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" }
     }),
   };
+  */}
 
   if (isApp) {
     return (
       <S.AppContainer id="about">
         <S.TopSection>
-          <motion.img 
+        <motion.img 
+            src={IntroLogo} 
+            alt="" 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0, ease: "easeOut" }} 
+            viewport={{ once: true }}
+          />
+         <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1, ease: "easeOut" }} 
+            viewport={{ once: true }}
+          >
+            <S.IntroPhrase>
+              미래를 준비하고 성장하는 여정, "Farm System에서 함께하세요.
+            </S.IntroPhrase>
+          </motion.div>
+          {/*<motion.img 
             src={IntroLogo} 
             alt="" 
             initial="hidden"
@@ -43,10 +63,25 @@ const Intro = () => {
             >
               {text}
             </S.IntroPhrase>
-          ))}
+          ))} */}
         </S.TopSection>
+        <S.BottomSection>
+          <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }} 
+                      viewport={{ once: true }}>
+            <S.IntroDescription>
+            Farm System은 SW/AI 분야에 관심있는<br/>
+            학생들로 구성된 자율 학습 동아리로,<br/>
+            Union · 게임/영상 · 보안/웹 ·<br/>
+            사물인터넷/로봇 · 인공지능 · 빅데이터의",<br/>
+            5가지 신기술 트랙을 제공하여,<br/>
+            학습 경험을 통해 SW/AI 역량을 배양합니다.<br/>
+            </S.IntroDescription>
+          </motion.div>
 
-        {/* 2/3 지점: Description - 화면에 들어올 때 애니메이션 적용 */}
+        {/* 2/3 지점: Description - 화면에 들어올 때 애니메이션 적용 
         <S.BottomSection>
           {[
             "Farm System은 SW/AI 분야에 관심있는",
@@ -67,6 +102,7 @@ const Intro = () => {
               {text}
             </S.IntroDescription>
           ))}
+        */}
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
