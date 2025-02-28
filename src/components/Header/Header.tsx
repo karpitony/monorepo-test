@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router';
 import * as S from './Header.styled';
 import Popup from '../Popup/Popup';
 import Hamburger from '../../assets/Icons/Hamburger.png';
+import CloseIcon from '../../assets/Icons/Close2.png';
 import useMediaQueries from '@/hooks/useMediaQueries';
 
 export default function Header() {
@@ -70,6 +71,10 @@ export default function Header() {
       <S.MobileNavWrapper $isMenuOpen={isMenuOpen}>
         {isMobile && (
           <>
+            {/* 닫기 아이콘 추가 */}
+            <S.CloseButton src={CloseIcon} alt="Close" onClick={() => setMenuOpen(false)} />
+           
+
             <S.MobileNav>
               <S.NavItem 
                 $isTablet={isTablet} 

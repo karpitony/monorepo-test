@@ -53,7 +53,16 @@ export const NavItem = styled.a<{ $isMobile: boolean; $isTablet: boolean; isActi
   &:hover {
     color: #28723f;
   }
-  &:hover::after, ${({ isActive }) => isActive && `
+  &:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #28723f;
+  }
+  ${({ isActive }) => isActive && `
     &::after {
       content: '';
       position: absolute;
@@ -106,11 +115,11 @@ export const MobileNavWrapper = styled.div<{ $isMenuOpen: boolean }>`
 
 export const CloseButton = styled.img`
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 25px;
+  right: 25px;
   cursor: pointer;
-  width: 24px;  
-  height: 24px;
+  width: 26px;  
+  height: 26px;
 `;
 
 export const MobileNav = styled.nav`
@@ -121,4 +130,3 @@ export const MobileNav = styled.nav`
   gap: 25px; 
   margin-top: 20px;
 `;
-
