@@ -79,11 +79,13 @@ export const PhaseTitle = styled.h3<{ $isMobile: boolean }>`
 
 export const PhaseContentInner = styled.ul<{ $isMobile: boolean }>`
   display: inline-block; 
-  width: max-content;
   flex-direction: column;
   justify-content: left;
   align-items: left;
   /* background-color: orange; */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 `;
 
 export const PhaseContent = styled.ul<{ $isMobile: boolean }>`
