@@ -18,7 +18,7 @@ interface Choice {
   content: string;
 }
 
-interface ApplyQuestion {
+export interface ApplyQuestion {
   questionId: number;
   track: Track;
   isRequired: boolean;
@@ -53,7 +53,7 @@ interface Answer {
   content: string | number[];
 }
 
-interface ApplyAnswer {
+export interface ApplyAnswer {
   applyId: number;
   name: string;
   major: string;
