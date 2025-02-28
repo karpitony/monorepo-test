@@ -1,9 +1,5 @@
 import { useState } from 'react';
 import * as S from './BottomInfo.styles';
-import GitHubIcon from '@/assets/githubLogo2.png';
-import InstagramIcon from '@/assets/InstagramLogo2.png';
-import LinktreeIcon from '@/assets/LinktreeLogo.png';
-import DGUIcon from "@/assets/DGULogo.png";
 import Popup from '@/components/Popup/Popup';
 import useMediaQueries from '@/hooks/useMediaQueries';
 
@@ -49,21 +45,6 @@ const BottomInfo = () => {
         title={"지금은 모집 기간이 아닙니다."} 
         content={"공개 모집 예정: 2025년 2월"}
       />
-      <S.IconsContainer $isMobile={isMobile} $isTablet={isTablet}>
-         <S.IconLink href="https://github.com/DguFarmSystem" target="_blank" rel="noopener noreferrer">
-          <S.Icon $isMobile={isMobile} src={GitHubIcon} alt="GitHub" />
-        </S.IconLink>
-        <S.IconLink href="https://www.instagram.com/dgu_farm_system/" target="_blank" rel="noopener noreferrer">
-          <S.Icon $isMobile={isMobile} src={InstagramIcon} alt="Instagram" />
-        </S.IconLink>
-        <S.IconLink href="https://linktr.ee/dgu_farm_system" target="_blank" rel="noopener noreferrer">
-          <S.Icon $isMobile={isMobile} src={LinktreeIcon} alt="Linktree" />
-        </S.IconLink>
-        <S.IconLink href="https://dice.dongguk.edu/mainPage.do" target="_blank" rel="noopener noreferrer">
-          <S.Icon $isMobile={isMobile} src={DGUIcon} alt="Community" />
-        </S.IconLink>
-      </S.IconsContainer>
-
     </S.BottomInfoContainer>
   );
 };
