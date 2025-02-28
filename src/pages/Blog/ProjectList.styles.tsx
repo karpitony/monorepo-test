@@ -14,7 +14,6 @@ export const TableContainer = styled.div<{$isMobile: boolean; $isTablet: boolean
   display: flex;
   gap: 30px;
   width: 100%;
-  height: 10vh;
   justify-content: flex-start;
   margin-top: ${(props) => (props.$isMobile ? '0px' : props.$isTablet ? '15px' : '60px')};
 `;
@@ -41,7 +40,7 @@ export const FilterGradeButton = styled.button<{$isMobile: boolean; $isTablet: b
   justify-content: space-between;
   font-size: ${(props) => (props.$isMobile ? '12px' : props.$isTablet ? '14px' : '16px')};
   font-weight: 500;
-  width: ${(props) => (props.$isMobile ? '60px' : props.$isTablet ? '70px' : '80px')}; /* 기수 버튼은 작게 */
+  width: ${(props) => (props.$isMobile ? '80px' : props.$isTablet ? '70px' : '80px')}; /* 기수 버튼은 작게 */
 `;
 
 /** 트랙 버튼 */
@@ -64,7 +63,7 @@ export const DropdownGradeMenu = styled.div<{$isMobile: boolean; $isTablet: bool
   position: absolute;
   top: 45px;
   left: 0;
-  width: ${(props) => (props.$isMobile ? '60px' : props.$isTablet ? '70px' : '80px')}; /* 기수 버튼과 동일한 크기 */
+  width: ${(props) => (props.$isMobile ? '80px' : props.$isTablet ? '70px' : '80px')}; /* 기수 버튼과 동일한 크기 */
   text-align: left;
   background-color: #fff;
   border-radius: 8px;
@@ -115,7 +114,7 @@ export const ListContainer = styled.div<{$isTablet: boolean; $isBig: boolean;}>`
 /* 비어 있을 떄 출력하는 레이아웃 잡는 컨테이너 */
 export const DescriptionContainer = styled.div`
   width: 100%;
-  margin: 20px auto;
+  margin: 20px;
   display: block;
 `;
 
@@ -130,10 +129,15 @@ export const TextContainer = styled.div<{$isMobile: boolean;}>`
   color: black;
   font-size: ${(props) => (props.$isMobile ? "20px" : "32px")};
   font-weight: 600;
+  margin-bottom: 200px;
 
   a {
     font-size: ${(props) => (props.$isMobile ? "10px" : "14px")};
     font-weight: 300;
   }
   gap: 10px;
+`;
+
+export const Wrapper = styled.div`
+  margin-top: 100px;
 `;

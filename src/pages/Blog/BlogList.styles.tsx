@@ -57,6 +57,8 @@ export const TextContainer = styled.div<{$isMobile: boolean;}>`
   color: black;
   font-size: ${(props) => (props.$isMobile ? "20px" : "32px")};
   font-weight: 600;
+  margin-bottom: 200px;
+
 
   a {
     font-size: ${(props) => (props.$isMobile ? "10px" : "14px")};
