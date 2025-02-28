@@ -107,9 +107,9 @@ const AchievementBox = () => {
 
   // 기존 데이터 (쉼표가 포함되어 있어도 parse해서 숫자만 추출합니다)
   const stats = [
-    { number: '1,200명', label: '활동 멤버' },
-    { number: '140개', label: '프로젝트' },
-    { number: '80개', label: '스터디' },
+    { number: '259명', label: '활동 멤버' },
+    { number: '25개', label: '프로젝트' },
+    { number: '58개', label: '스터디' },
     { number: '20회', label: '수상 경험' },
   ];
 
@@ -132,7 +132,7 @@ const AchievementBox = () => {
               <CountUp
                 to={num}       // 최종 도달 숫자
                 from={0}       // 시작 숫자 (필요에 따라 조정)
-                duration={2}   // 애니메이션 시간 (초)
+                duration={1}   // 애니메이션 시간 (초)
               />
               {suffix}
             </S.StatNumber>
