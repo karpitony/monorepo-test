@@ -48,8 +48,8 @@ export default function Header() {
               <S.NavItem 
                 $isTablet={isTablet} 
                 $isMobile={isMobile} 
-                onClick={() => setPopupOpen(true)} 
-                isActive={false}
+                onClick={() => navigate('/news')} 
+                isActive={location.pathname === '/news'}
               >
                 소식
               </S.NavItem>
@@ -90,8 +90,8 @@ export default function Header() {
               <S.NavItem 
                 $isTablet={isTablet} 
                 $isMobile={isMobile} 
-                onClick={() => setPopupOpen(true)} 
-                isActive={false}
+                onClick={() => handleNavItemClick('/news')} 
+                isActive={location.pathname === '/news'}
               >
                 소식
               </S.NavItem>
