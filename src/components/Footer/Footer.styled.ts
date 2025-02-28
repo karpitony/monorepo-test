@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
     width: 100%;
-    height: 15vh;
+    height: 13vh;
     background-color: var(--FarmSystem_LightGrey);
 `;
 
