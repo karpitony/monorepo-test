@@ -14,7 +14,7 @@ const getApiBaseUrl = () => {
 const API_BASE_URL = getApiBaseUrl();
 
 const apiConfig = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}api/`,
   timeout: 5000, // 요청 타임아웃 5초
   headers: {
     'Content-Type': 'application/json',
