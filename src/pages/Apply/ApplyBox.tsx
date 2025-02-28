@@ -11,7 +11,7 @@ import ChoiceSelector from "./ChoiceSelector";
 import PersonalInfo from "./PersonalInfo";
 
 const defaultTrack: Track = Track.UNION;
-type AnswerMap = Record<number, string | number[]>;
+type AnswerMap = Record<number, { content: string; choiceId: number[] }>;
 
 interface ApplyBoxProps {
   propStudentNumber: string;
@@ -30,54 +30,52 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
   const [loadedData, setLoadedData] = useState<ApplyAnswer | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track>(defaultTrack);
 
-  // 트랙 선택 핸들러
   const handleTrackChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newTrack = e.target.value as Track;
     setSelectedTrack(newTrack);
-    setAnswers({});
   };
 
-  // 답변 변경 핸들러
-  const handleAnswerChange = (questionId: number, value: string | number[]) => {
-    setAnswers(prev => ({ ...prev, [questionId]: value }));
-  };
-
-  // 질문 배열 처리: 트랙 필터링 후 priority 정렬
-  const processedQuestions: ApplyQuestion[] = questionsData?.data
-    ? sortQuestionsByPriority(filterQuestionsByTrack(questionsData.data, selectedTrack))
-    : [];
-
-  // Answer 배열로 변환 (processedQuestions에 해당하는 질문만 포함)
-  const transformAnswers = (): Answer[] => {
-    return processedQuestions.map((question) => {
-      const answerValue = answers[question.questionId];
-      if (question.type === "ESSAY") {
-        return {
-          questionId: question.questionId,
-          content: answerValue as string,
-        };
-      } else if (question.type === "CHOICE") {
-        return {
-          questionId: question.questionId,
-          choiceId: answerValue as number[],
-        };
+  const handleAnswerChange = (
+    questionId: number,
+    value: string | number[],
+    questionType: "ESSAY" | "CHOICE"
+  ) => {
+    setAnswers(prev => {
+      const prevAnswer = prev[questionId] || { content: "", choiceId: [] };
+      if (questionType === "ESSAY") {
+        return { ...prev, [questionId]: { ...prevAnswer, content: value as string } };
       } else {
-        throw new Error(`지원서 변환 에러: 처리되지 않은 질문 타입 (${question.type})`);
+        return { ...prev, [questionId]: { ...prevAnswer, choiceId: value as number[] } };
       }
     });
   };
 
+  // 화면에 보여줄 질문은 선택한 트랙에 해당하는 질문만 표시
+  const processedQuestions: ApplyQuestion[] = questionsData?.data
+    ? sortQuestionsByPriority(filterQuestionsByTrack(questionsData.data, selectedTrack))
+    : [];
+
+  // state에 보관된 모든 답변(항상 content, choiceId가 존재)을 전송
+  const transformAnswers = (): Answer[] => {
+    return Object.entries(answers).map(([questionId, answer]) => ({
+      questionId: Number(questionId),
+      content: answer.content,
+      choiceId: answer.choiceId,
+    }));
+  };
+
   useEffect(() => {
-    if (studentNumber && password) { 
+    if (studentNumber && password) {
       loadApply({ studentNumber, password })
         .then((res) => {
           if (res.data) {
             setLoadedData(res.data);
             const answerMap: AnswerMap = {};
-            // 답변 데이터도 타입에 맞게 보관
             res.data.answers.forEach((ans) => {
-              answerMap[ans.questionId] =
-                "choiceId" in ans ? (ans.choiceId ?? []) : (ans.content ?? "");
+              answerMap[ans.questionId] = {
+                content: ans.content ?? "",
+                choiceId: ans.choiceId ?? [],
+              };
             });
             setAnswers(answerMap);
             setSelectedTrack(res.data.track);
@@ -87,7 +85,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
           console.error("지원서 로드 에러:", err);
         });
     }
-  // 여기에 loadApply 넣지 마세요... 무한 반복됩니다 ㅠㅠ
+  // loadApply 넣으면 무한 호출됨
   }, [studentNumber, password]);
 
   const buildApplyData = (): ApplyAnswer => {
@@ -172,23 +170,19 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
           {question.type === "ESSAY" ? (
             <textarea
               maxLength={question.maxLength}
-              value={
-                typeof answers[question.questionId] === "string"
-                  ? (answers[question.questionId] as string)
-                  : ""
+              value={answers[question.questionId]?.content ?? ""}
+              onChange={(e) =>
+                handleAnswerChange(question.questionId, e.target.value, "ESSAY")
               }
-              onChange={(e) => handleAnswerChange(question.questionId, e.target.value)}
               style={{ width: "100%", minHeight: "80px" }}
             />
           ) : question.type === "CHOICE" && question.choices ? (
             <ChoiceSelector
               question={question}
-              value={
-                Array.isArray(answers[question.questionId])
-                  ? (answers[question.questionId] as number[])
-                  : []
+              value={answers[question.questionId]?.choiceId ?? []}
+              onChange={(newValue) =>
+                handleAnswerChange(question.questionId, newValue, "CHOICE")
               }
-              onChange={(newValue) => handleAnswerChange(question.questionId, newValue)}
             />
           ) : null}
         </div>
