@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer<{ $isMobile: boolean}>`
     width: 100%;
-    height: ${({ $isMobile }) => ($isMobile ? "15vh" : "13vh")};
+    height: ${({ $isMobile }) => ($isMobile ? "20vh" : "15vh")};
     background-color: var(--FarmSystem_LightGrey);
 `;
 

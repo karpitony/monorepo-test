@@ -69,7 +69,7 @@ const Intro = () => {
           <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }} 
+                      transition={{ duration: 0.8, delay: 3, ease: "easeOut" }} 
                       viewport={{ once: true }}>
             <S.IntroDescription>
             Farm System은 SW/AI 분야에 관심있는<br/>
