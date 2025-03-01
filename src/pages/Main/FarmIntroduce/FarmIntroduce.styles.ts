@@ -189,7 +189,7 @@ export const ProfessorItem = styled.div<{
   export const DetailLabels = styled.div<{
     $isMobile: boolean;
   }>`
-    width: ${({ $isMobile }) => ($isMobile ? "97px" : "117px")};
+    width: ${({ $isMobile }) => ($isMobile ? "97px" : "127px")};
     display: flex;
     flex-direction: column;
     gap: ${({ $isMobile }) => ($isMobile ? "6px" : "15px")};
