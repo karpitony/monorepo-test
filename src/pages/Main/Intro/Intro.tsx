@@ -1,4 +1,5 @@
 import * as S from './Intro.styled';
+import { useNavigate } from 'react-router';
 import logo from '../../../assets/Icons/FarmLogo1.png';
 import { useState } from 'react';
 import Popup from '@/components/Popup/Popup';
@@ -9,6 +10,7 @@ import IntroLogo from '../../../assets/Icons/IntroLogo.svg';
 const Intro = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const { isApp, isMobile, isTablet } = useMediaQueries();
+  const navigate = useNavigate();
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -111,7 +113,7 @@ const Intro = () => {
             transition={{ duration: 0.8, delay: 3.5, ease: "easeOut" }} 
             viewport={{ once: true }}
           >
-            <S.AppApplyButton onClick={() => setPopupOpen(true)}>
+            <S.AppApplyButton onClick={() => navigate('/Apply')}>
               지원하기
             </S.AppApplyButton>
           </motion.div>
@@ -147,7 +149,7 @@ const Intro = () => {
       5가지 신기술 트랙을 제공하여 학습 경험을 통해 SW/AI 역량을 배양합니다.
       </S.TrackList>
       <S.Apply>
-        <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => setPopupOpen(true)}> 지원하기 </S.ApplyButton>
+        <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => navigate('/Apply')}> 지원하기 </S.ApplyButton>
         <S.ApplyDescription $isMobile={isMobile}>2025년 3월 4일 모집 예정</S.ApplyDescription>
       </S.Apply>
 
