@@ -67,10 +67,10 @@ export default function Step2({ setStep }: { setStep: (step: number) => void }) 
       </S.InfoContainer>
 
       {/* 버튼 */}
-      <S.Button green>지원서 작성하러 가기</S.Button>
+      <S.Button green onClick={() => setStep(3)}>지원서 작성하러 가기</S.Button>
       <S.BackTextContainer $isMobile={isMobile} onClick={() => setStep(1)}>
         <S.Arrow src={LeftArrow} alt="RightArrow" />
-        <S.BackText onClick={() => setStep(1)}>지원하기 첫 페이지로 돌아가기</S.BackText>
+        <S.BackText>지원하기 첫 페이지로 돌아가기</S.BackText>
       </S.BackTextContainer>
     </S.Container>
   );
