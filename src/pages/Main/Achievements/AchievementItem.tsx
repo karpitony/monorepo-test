@@ -14,8 +14,8 @@ const AchievementItem: React.FC<AchievementItemProps> = ({ title, description, i
     <S.ItemContainer $isMobile={isMobile} $isTablet={isTablet}>
       <S.Image src={imageUrl} alt={title} $isMobile={isMobile} />
       <S.Content $isMobile={isMobile}>
-        <S.Title $isMobile={isMobile}>{title}</S.Title>
-        <S.Description $isMobile={isMobile}>{description}</S.Description>
+        <S.Title $isMobile={isMobile} $isTablet={isTablet}>{title}</S.Title>
+        <S.Description $isMobile={isMobile} $isTablet={isTablet}>{description}</S.Description>
       </S.Content>
     </S.ItemContainer>
   );

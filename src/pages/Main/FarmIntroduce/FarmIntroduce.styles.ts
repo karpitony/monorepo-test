@@ -119,9 +119,11 @@ export const ProfessorItem = styled.div<{
     flex-direction: ${({ $isMobile }) => ($isMobile ? "row" : "row")};
     width: ${({ $isMobile, $isTablet }) => ($isMobile ? "70vw" : $isTablet ? "95%" : "735px")};
     /* 모바일에서는 높이를 자동으로 늘리고, 데스크탑에서는 이미지만큼 공간 확보 */
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     /* 간단한 여백 (디자인에 맞춰 조절 가능) */
-    padding: ${({ $isMobile }) => ($isMobile ? "0px" : "25px")};
+    padding: ${({ $isMobile }) => ($isMobile ? "13px" : "25px")};
+    /* background-color: orange; */
   `;
   
   /** ProfessorPhoto
@@ -130,17 +132,18 @@ export const ProfessorItem = styled.div<{
    *  - 반응형에서 position: absolute는 지양하고, margin으로 배치
    */
   export const ProfessorPhoto = styled.img<{
+    $isApp: boolean;
     $isMobile: boolean;
   }>`
-    width: ${({ $isMobile }) => ($isMobile ? "75px" : "200px")};
-    height: ${({ $isMobile }) => ($isMobile ? "75px" : "200px")};
+    width: ${({ $isApp, $isMobile }) => ($isApp ? "80px" : $isMobile ? "100px" : "170px")};
+    height: ${({ $isApp, $isMobile }) => ($isApp ? "80px" : $isMobile ? "100px" : "170px")};
     background: #e5e5e5;
-    border-radius: ${({ $isMobile }) => ($isMobile ? "2px" : "8px")};
+    border-radius: ${({ $isMobile }) => ($isMobile ? "6px" : "10px")};
     object-fit: cover;
   
     /* 모바일일 때 오른쪽 배치*/
     display: ${({ $isMobile }) => ($isMobile ? "flex" : "flex")};
-    ${({ $isMobile }) => ($isMobile ? "right: 22vw;" : "margin-right: 35px;")};
+    ${({ $isMobile }) => ($isMobile ? "margin-right: 15px;" : "margin-right: 35px;")};
     position: relative;
     z-index: 9999;
   `;
@@ -152,14 +155,16 @@ export const ProfessorItem = styled.div<{
    *  - 여기서는 "이름 + 상세정보"를 세로로 묶고 싶으므로 column 배치를 사용
    */
   export const ProfessorDetailsContainer = styled.div<{
+    $isApp: boolean;
     $isMobile: boolean;
   }>`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: ${({ $isMobile }) => ($isMobile ? "flex-start" : "flex-start")};
+    justify-content: center;
+    align-items: flex-start;
     /* 모바일이면 width 100%, 아니면 나머지 공간 사용 */
-    width: ${({ $isMobile }) => ($isMobile ? "100%" : "auto")};
+    width: ${({ $isApp, $isMobile }) => ($isApp ? "140px" :$isMobile ? "auto" : "auto")};
+    /* background-color: pink; */
   `;
   
   /** ProfessorName
@@ -167,51 +172,57 @@ export const ProfessorItem = styled.div<{
    *  - 데스크탑: 원하는 정렬 방식(여기서는 우측 정렬 예시로 제시)
    */
   export const ProfessorName = styled.div<{
+    $isApp: boolean;
     $isMobile: boolean;
   }>`
     display: flex;
-    width: ${({ $isMobile }) => ($isMobile ? "150px" : "450px")};
     justify-content: ${({ $isMobile }) => ($isMobile ? "flex-start" : "flex-start")};
     text-align: center;
   
-    color: #191919;
-    font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "24px")};
+    color: #404040;
+    font-size: ${({ $isApp, $isMobile }) => ($isApp ? "13px" : $isMobile ? "13px" : "22px")};
     font-weight: 700;
-    line-height: ${({ $isMobile }) => ($isMobile ? "20px" : "29px")};
+    line-height: ${({ $isMobile }) => ($isMobile ? "20px" : "27px")};
   
     /* 여백을 약간 줘서 이름과 상세정보가 겹치지 않도록 조정 */
     margin-bottom: 10px;
+    /* background-color: yellow; */
   `;
   
   /** 교수 디테일 - 라벨/값 컨테이너
    *  - 모바일/데스크탑 공통: 세로 정렬 + 좌측 기준
    */
   export const DetailLabels = styled.div<{
+    $isApp: boolean;
     $isMobile: boolean;
   }>`
-    width: ${({ $isMobile }) => ($isMobile ? "97px" : "127px")};
+    width: ${({ $isApp, $isMobile }) => ($isApp ? "50px" : $isMobile ? "70px" : "120px")};
     display: flex;
     flex-direction: column;
     gap: ${({ $isMobile }) => ($isMobile ? "6px" : "15px")};
   
-    font-size: ${({ $isMobile }) => ($isMobile ? "10px" : "20px")};
-    font-weight: 500;
-    color: var(--FarmSystem_Black);
-    line-height: 20px;
+    font-size: ${({ $isMobile }) => ($isMobile ? "11px" : "16px")};
+    font-weight: 600;
+    color: #404040;
+    line-height: ${({ $isMobile }) => ($isMobile ? "13px" : "16px")};
+    margin-top: ${({ $isMobile }) => ($isMobile ? "-4px" : "12px")};
+    /* background-color: skyblue; */
   `;
   
   export const DetailValues = styled.div<{
     $isMobile: boolean;
   }>`
-    width: ${({ $isMobile }) => ($isMobile ? "300px" : "300px")};
+    width: ${({ $isMobile }) => ($isMobile ? "130px" : "180px")};
     display: flex;
     flex-direction: column;
     gap: ${({ $isMobile }) => ($isMobile ? "6px" : "15px")};
   
-    font-size: ${({ $isMobile }) => ($isMobile ? "10px" : "20px")};
+    font-size: ${({ $isMobile }) => ($isMobile ? "11px" : "16px")};
     font-weight: 400;
-    color: var(--FarmSystem_Black);
-    line-height: 20px;
+    color: #635c55;
+    line-height: ${({ $isMobile }) => ($isMobile ? "13px" : "16px")};
+    margin-top: ${({ $isMobile }) => ($isMobile ? "-4px" : "12px")};
+    /* background-color: red; */
   `;
   
   /** 라벨/값 각각 */

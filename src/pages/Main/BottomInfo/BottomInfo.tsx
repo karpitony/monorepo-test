@@ -28,7 +28,7 @@ const BottomInfo = () => {
         </S.RequirementItem>
         <S.RequirementItem>
           <S.RequirementTitle $isApp={isApp} $isMobile={isMobile}>언제 모집하나요?</S.RequirementTitle>
-          <S.RequirementText $isApp={isApp} $isMobile={isMobile}>2025년 2월 말부터 Farm System 4기를 공개 모집할 예정이에요! 조금만 기다려 주세요 😉</S.RequirementText>
+          <S.RequirementText $isApp={isApp} $isMobile={isMobile}>2025년 3월 4일부터 Farm System 4기를 공개 모집할 예정이에요! 조금만 기다려 주세요 😉</S.RequirementText>
         </S.RequirementItem>
         <S.ButtonContainer $isApp={isApp} $isMobile={isMobile}>
           <S.ApplyButton $isApp={isApp} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>지원하기</S.ApplyButton>
