@@ -77,21 +77,32 @@ export const PhaseTitle = styled.h3<{ $isMobile: boolean }>`
   font-style: normal;
 `;
 
+export const PhaseContentInner = styled.ul<{ $isMobile: boolean }>`
+  display: inline-block; 
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  /* background-color: orange; */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+`;
+
 export const PhaseContent = styled.ul<{ $isMobile: boolean }>`
   display: flex;
   width: 100%;
-  height: ${({ $isMobile }) => ($isMobile ? "150px" : "170px")};
+  height: ${({ $isMobile }) => ($isMobile ? "180px" : "200px")};
   flex-direction: column;
   justify-content: left;
+  align-items: center;
   text-align: left;
   font-size: ${({ $isMobile }) => ($isMobile ? "14px" : "18px")};
   color: var(--FarmSystem_Black, #191919);
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 150% */
-
-  padding-left: 20px;
-
+  /* padding-left: 20px; */
+  /* background-color: pink; */
 `;
 
 export const Li = styled.li<{ $isMobile: boolean }>`

@@ -104,21 +104,23 @@ const ProjectList: React.FC = () => {
           )}
         </S.FilterWrapper>
       </S.TableContainer>
-
+      
       {/* 프로젝트 카드 리스트 */}
       {/* 지금은 더미데이터의 갯수로 블로그가 있는지 없는지 판단합니다. 디버깅시 projectdata.length>6 이렇게 하면 아무 것도 없는 창 뜹니다.*/}
-      {(projectData.length > 6) ? (
-      <S.ListContainer $isTablet={isTablet} $isBig={isBig}>
-        {projectData.map((item, index) => (
-          <ProjectItem key={index} {...item} />
-        ))}
-      </S.ListContainer>) : (
+      <S.Wrapper>
+        {(projectData.length > 6) ? (
+          <S.ListContainer $isTablet={isTablet} $isBig={isBig}>
+            {projectData.map((item, index) => (
+              <ProjectItem key={index} {...item} />
+            ))}
+          </S.ListContainer>
+        ) : (
           <S.TextContainer $isMobile={isMobile}>
             아직 등록된 글이 없어요.
             <a>파밍로그를 통해 글을 작성해보세요!</a>
           </S.TextContainer>
-      )
-      }
+        )}
+      </S.Wrapper>
     </S.Container>
   );
 };

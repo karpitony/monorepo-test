@@ -47,7 +47,7 @@ export const Icon = styled.img<{ $isMobile: boolean}>`
 
 export const RequirementsBox = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: ${({ $isMobile, $isTablet }) => ($isMobile ? "90%" : $isTablet ? "80%" : "900px")};
-  background-color: #e5e5e5;
+  background-color: var(--FarmSystem_LightGrey);
   border-radius: 10px;
   padding: ${({ $isMobile }) => ($isMobile ? "30px" : "50px")};
   margin: 0 auto;

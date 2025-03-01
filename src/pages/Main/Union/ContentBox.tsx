@@ -14,15 +14,15 @@ export default function ContentBox() {
         <S.Content $isMobile={isMobile}>
           <S.ContentInfoTextBox $isMobile={isMobile}>
           {isMobile ? (
-              <p><S.HighlightOrange $isMobile={isMobile}>Union</S.HighlightOrange>은 SW/AI 기초 역량을 다지기 위한 과정으로, 트랙 구분 없이 다섯 가지 트랙의 다양한 주제에 대한 SW 기본 역량을 다집니다. 각 트랙의 멘토가 제공하는 프로젝트와 스터디에 멘티로서 참여하게 됩니다.</p>
+              <p><S.HighlightOrange $isMobile={isMobile}>Union</S.HighlightOrange>은 <S.Bold>SW/AI 기초 역량</S.Bold>을 다지기 위한 과정으로, <S.Bold>트랙 구분 없이</S.Bold> 다섯 가지 트랙의 다양한 주제에 대한 <S.Bold>SW 기본 역량</S.Bold>을 다집니다. 각 트랙의 멘토가 제공하는 프로젝트와 스터디에 멘티로서 참여하게 됩니다.</p>
             ) : (
               <>
                 <p>
                   <S.HighlightOrange $isMobile={isMobile}>Union</S.HighlightOrange>은
                 </p>
-                <p>SW/AI 기초 역량을 다지기 위한 과정으로,</p>
-                <p>트랙 구분 없이 다섯 가지 트랙의 다양한 주제에 대한</p>
-                <p>SW 기본 역량을 다집니다.</p>
+                <p><S.Bold>SW/AI 기초 역량</S.Bold>을 다지기 위한 과정으로,</p>
+                <p><S.Bold>트랙 구분 없이</S.Bold> 다섯 가지 트랙의 다양한 주제에 대한</p>
+                <p><S.Bold>SW 기본 역량</S.Bold>을 다집니다.</p>
                 <p>각 트랙의 멘토가 제공하는 프로젝트와 스터디에</p>
                 <p>멘티로서 참여하게 됩니다.</p>
               </>
