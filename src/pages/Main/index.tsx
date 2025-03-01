@@ -9,9 +9,9 @@ import * as S from "./index.styled";
 import useMediaQueries from "@/hooks/useMediaQueries";
 
 export default function Main() {
-  const { isMobile } = useMediaQueries();
+  const { isApp, isMobile } = useMediaQueries();
   return (
-      <S.MainContainer $isMobile={isMobile} > {/* 배경 그라데이션 적용 */}
+      <S.MainContainer $isApp={isApp} $isMobile={isMobile} > 
       <Intro />
       <FarmIntroduce />
       <Tracks />

@@ -79,10 +79,7 @@ export const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     align-items: flex-start;
     justify-content: center;
     min-height: ${({ $isMobile, $isTablet }) => ($isMobile ? "600px" : $isTablet ? "700px" : "800px")};
-    background: ${({ $isMobile }) => (
-        $isMobile ? "linear-gradient(90deg, #28723F, #75e298)" 
-        : "linear-gradient(90deg, #28723F, #A2E9B8)"
-    )};
+    background: linear-gradient(90deg, var(--FarmSystem_Green01), #194326);
     padding: ${({ $isMobile }) => ($isMobile ? "0px" : "50px")};
     padding-top: 120px;
     padding-top: 100px;

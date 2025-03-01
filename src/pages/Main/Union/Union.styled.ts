@@ -31,8 +31,7 @@ export const UnionTextContainer = styled.div<{ $isMobile: boolean; $isApp: boole
     props.$isMobile ? "1fr 2fr 1fr" : "1fr 1fr 1fr 1fr"};
   justify-items: center;
   align-items: start;
-
-  width: ${(props) => (props.$isMobile ? "220px" : "300px")};
+  width: ${(props) => (props.$isMobile ? "250px" : "300px")};
   margin-bottom: ${(props) =>
     props.$isApp ? "30px" : props.$isMobile ? "0px" : "50px"};
 `;
