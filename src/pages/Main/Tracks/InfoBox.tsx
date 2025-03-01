@@ -10,7 +10,7 @@ interface InfoBoxProps {
 }
 
 export default function InfoBox({ selectedTrack }: InfoBoxProps) {
-  const { isMobile, isDesktop, isTablet } = useMediaQueries();
+  const { isApp, isMobile, isDesktop, isTablet } = useMediaQueries();
   const phaseLabels = ["1학기", "여름방학", "2학기"];
 
   return (
@@ -23,9 +23,9 @@ export default function InfoBox({ selectedTrack }: InfoBoxProps) {
       <S.TrackDescription $isMobile={isMobile}>{selectedTrack.description}</S.TrackDescription>
       
       {/* 트랙 학기별 커리큘럼 */}
-           <S.PhasesContainer $isMobile={isMobile}>
+           <S.PhasesContainer $isApp={isApp} $isMobile={isMobile}>
               {Object.entries(selectedTrack.phases || {}).map(([phaseKey, phaseItems], index) => (
-                <S.PhaseCard key={phaseKey} $isDesktop={isDesktop}>
+                <S.PhaseCard key={phaseKey} $isApp $isMobile={isMobile} $isDesktop={isDesktop}>
                   <S.PhaseTitle $isMobile={isMobile}>{phaseLabels[index]}</S.PhaseTitle>
                   <S.PhaseContent $isMobile={isMobile}>
                     <S.PhaseContentInner $isMobile={isMobile}>
@@ -34,10 +34,10 @@ export default function InfoBox({ selectedTrack }: InfoBoxProps) {
                     ))}
                     </S.PhaseContentInner>
               
-            </S.PhaseContent>
-          </S.PhaseCard>
-        ))}
-      </S.PhasesContainer>
+                </S.PhaseContent>
+              </S.PhaseCard>
+            ))}
+          </S.PhasesContainer>
 
    {/* "담당 교수" 제목 */}
   <S.ProfessorNameContainer $isMobile={isMobile}>

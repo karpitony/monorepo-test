@@ -45,8 +45,8 @@ export const TrackDescription = styled.p<{ $isMobile: boolean }>`
   line-height: ${({ $isMobile }) => ($isMobile ? "25px" : "35px")}; /* 150% */
 `;
 
-export const PhasesContainer = styled.div<{ $isMobile: boolean }>`
-  width: 100%;
+export const PhasesContainer = styled.div<{ $isApp: boolean, $isMobile: boolean }>`
+  width: ${({ $isApp }) => ($isApp ? "100%" : "100%")};
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -54,9 +54,10 @@ export const PhasesContainer = styled.div<{ $isMobile: boolean }>`
   flex-wrap: wrap;
 `;
 
-export const PhaseCard = styled.div<{ $isDesktop: boolean }>`
+export const PhaseCard = styled.div<{ $isApp: boolean, $isMobile: boolean, $isDesktop: boolean }>`
   display: flex;
-  width: ${({ $isDesktop }) => ($isDesktop ? "300px" : "100%")};
+  width: ${({ $isDesktop, $isMobile, $isApp }) => ($isDesktop ? "300px" : $isMobile ? ($isApp ? "85%" :"70%") : "70%")};
+  min-height: ${({ $isApp }) => ($isApp ? "200px" : "auto")};
   padding: 20px;
   flex-direction: column;
   justify-content: center;
@@ -91,7 +92,7 @@ export const PhaseContentInner = styled.ul<{ $isMobile: boolean }>`
 export const PhaseContent = styled.ul<{ $isMobile: boolean }>`
   display: flex;
   width: 100%;
-  height: ${({ $isMobile }) => ($isMobile ? "180px" : "200px")};
+  min-height: ${({ $isMobile }) => ($isMobile ? "130px" : "200px")};
   flex-direction: column;
   justify-content: left;
   align-items: center;

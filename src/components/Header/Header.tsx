@@ -19,7 +19,7 @@ export default function Header() {
   };
 
   return (
-    <S.HeaderContainer>
+    <S.HeaderContainer $isMobile={isMobile}>
       {isMobile ? (
         <S.MobileHeader>
           <S.Logo onClick={() => navigate('/')}>Farm System</S.Logo>

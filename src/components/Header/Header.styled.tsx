@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<{ $isMobile: boolean }>`
   position: fixed;
   width: 100%;
-  height: 70px;
+  height: ${({ $isMobile }) => ($isMobile ? "55px" : "70px")}; 
   background-color: rgb(245, 245, 245); 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: ${({ $isMobile }) => ($isMobile ? "0 20px" : "0 25px")}; 
   z-index: 1000;
-
 `;
+
 
 export const MobileHeader = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ export const Nav = styled.nav`
 
 export const NavItem = styled.a<{ $isMobile: boolean; $isTablet: boolean; isActive: boolean }>`
   text-decoration: none;
-  font-size: ${({$isTablet}) => ($isTablet ? "15px": "18px")};
+  font-size: ${({$isMobile, $isTablet}) => ($isMobile ? "15px" : $isTablet ? "15px": "18px")};
   font-weight: 500;
   color: ${({ isActive }) => (isActive ? "#28723f" : "#102C19")};
   cursor: pointer;
@@ -115,8 +115,8 @@ export const MobileNavWrapper = styled.div<{ $isMenuOpen: boolean }>`
 
 export const CloseButton = styled.img`
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 19px;
+  right: 20px;
   cursor: pointer;
   width: 26px;  
   height: 26px;
