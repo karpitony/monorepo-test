@@ -22,8 +22,8 @@ const TrackKorean = {
   UNION: "유니온",
   GAMING_VIDEO: "게임/영상",
   AI: "인공지능",
-  WEB: "보안/웹",
-  IOT: "사물인터넷",
+  SECURITY_WEB: "보안/웹",
+  IOT_ROBOTICS: "사물인터넷/로봇",
   BIGDATA: "빅데이터",
 } as const;
 
