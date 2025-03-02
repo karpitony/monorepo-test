@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Step1 from "./Step1/Step1";
 import Step2 from "./Step2/Step2";
-import Application from "./Application/Application"; // 추가
+import Application from "./Application/Application";
 
 export default function Apply() {
   const [step, setStep] = useState(1);

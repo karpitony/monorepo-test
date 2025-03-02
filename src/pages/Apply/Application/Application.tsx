@@ -1,10 +1,23 @@
 import { useState } from "react";
 import * as S from "./Application.styles";
 import useMediaQueries from "@/hooks/useMediaQueries";
+import IoTTrack from "./IoTTrack";
+import GameTrack from "./GameTrack";
+import BigDataTrack from "./BigDataTrack";
+import SecureWebTrack from "./SecureWebTrack";
+import AITrack from "./AITrack";
 
 export default function PersonalInfo() {
+  const [selectedTrack, setSelectedTrack] = useState<string>("사물인터넷/로봇");
   const { isMobile } = useMediaQueries();
-  // ✅ 개인 정보 저장
+  const options = ["유니온", "게임/영상", "사물인터넷/로봇", "빅데이터", "보안/웹", "인공지능"];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleSelect = (option: string) => {
+    setSelectedTrack(option);
+    setIsOpen(false);
+  };
+  
   const [personalInfo, setPersonalInfo] = useState({
     name: "",
     phone: "",
@@ -13,20 +26,50 @@ export default function PersonalInfo() {
     stdNumber: "",
   });
 
-  // ✅ 질문 목록 저장
-  const [questions, setQuestions] = useState({
+  const [iotQuestions, setIotQuestions] = useState({
     selectedFields: [] as string[],
     reason: "",
     projectIdea: "",
     goals: "",
     portfolioLink: "",
   });
+  
+  const [gameQuestions, setGameQuestions] = useState({
+    selectedFields1: [] as string[],
+    selectedFields2: [] as string[],
+    experience: "",
+    cooperation: "",
+    media: "",
+    portfolioLink: "",
+  });
 
-  // ✅ 개인정보 동의 체크박스 상태
+  const [BigDataQuestions, setBigDataQuestions] = useState({
+    skills: "",
+    experience: "",
+    project: "",
+    portfolioLink: "",
+  });
+
+  const [SecureWebQuestions, setSecureWebQuestions] = useState({
+    selectedFields: [] as string[],
+    project: "",
+    experience: "",
+    secureIdea: "",
+    portfolioLink: "",
+  });
+
+  const [AIQuestions, setAIQuestions] = useState({
+    experience: "",
+    cooperation: "",
+    portfolioLink: "",
+  });
+  
+
+  // 개인정보 동의 체크박스 상태
   const [agree1, setAgree1] = useState(false);
   const [agree2, setAgree2] = useState(false);
 
-  // ✅ 개인 정보 오류 상태
+  // 개인 정보 오류 상태
   const [personalErrors, setPersonalErrors] = useState({
     name: false,
     phone: false,
@@ -35,14 +78,32 @@ export default function PersonalInfo() {
     stdNumber: false,
   });
 
-  // ✅ 질문 목록 오류 상태
-  const [questionErrors, setQuestionErrors] = useState({
+  // 질문 목록 오류 상태
+  const [IoTquestionErrors, setIoTQuestionErrors] = useState({
     reason: false,
     projectIdea: false,
     goals: false,
   });
+  const [GamequestionErrors, setGameQuestionErrors] = useState({
+    experience: false,
+    cooperation: false,
+    media: false,
+  });
+  const [BigDataquestionErrors, setBigDataQuestionErrors] = useState({
+    skills: false,
+    experience: false,
+  });
+  const [SecureWebquestionErrors, setSecureWebQuestionErrors] = useState({
+    project: false,
+    experience: false,
+    secureIdea: false,
+  });
+  const [AIquestionErrors, setAIQuestionErrors] = useState({
+    experience: false,
+    cooperation: false,
+  });
 
-  // ✅ 개인 정보 입력 처리
+  // 개인 정보 입력 처리
   const handlePersonalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     let formattedValue = value;
@@ -59,26 +120,25 @@ export default function PersonalInfo() {
     setPersonalErrors((prev) => ({ ...prev, [name]: value.trim() === "" }));
   };
 
-  // ✅ 질문 목록 입력 처리
-  const handleQuestionChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target as HTMLInputElement;
-    const checked = (e.target as HTMLInputElement).checked;
+  const handlePersonalBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+  
+    setPersonalErrors((prev) => ({
+      ...prev,
+      [name]: value.trim() === "",
+    }));
+  };  
 
-    if (type === "checkbox") {
-      setQuestions((prev) => ({
-        ...prev,
-        selectedFields: checked
-          ? [...prev.selectedFields, value]
-          : prev.selectedFields.filter((field) => field !== value),
-      }));
-    } else {
-      setQuestions((prev) => ({ ...prev, [name]: value }));
-    }
 
-    setQuestionErrors((prev) => ({ ...prev, [name]: value.trim() === "" }));
-  };
+  // 트랙 선택 처리(아직 필요 없음)
+//   const handleTrackChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+//     setSelectedTrack(e.target.value);
+  
+    
+//   };
+  
 
-  // ✅ 개인정보 동의 체크박스 처리
+  // 개인정보 동의 체크박스 처리
   const handleAgreeChange1 = () => setAgree1((prev) => !prev);
   const handleAgreeChange2 = () => setAgree2((prev) => !prev);  
 
@@ -86,7 +146,7 @@ export default function PersonalInfo() {
     <S.Container>
       <S.Title $isMobile={isMobile}>개인 정보</S.Title>
 
-      {/* ✅ 개인 정보 입력 */}
+      {/* 개인 정보 입력 */}
       {Object.keys(personalInfo).map((key) => (
         <S.InfoContainer $isMobile={isMobile} key={key}>
           <S.Label $isMobile={isMobile}>
@@ -105,7 +165,7 @@ export default function PersonalInfo() {
               key === "name"
                 ? "이름을 입력해주세요"
                 : key === "phone"
-                ? "010-1234-5678"
+                ? "ex) 010-1234-5678"
                 : key === "email"
                 ? "이메일을 입력해주세요"
                 : key === "affiliation"
@@ -113,6 +173,7 @@ export default function PersonalInfo() {
                 : "학번을 입력해주세요. ex) 2025123456"
             }
             value={personalInfo[key as keyof typeof personalInfo]}
+            onBlur={handlePersonalBlur} 
             onChange={handlePersonalChange}
             $error={personalErrors[key as keyof typeof personalErrors]}
           />
@@ -123,119 +184,72 @@ export default function PersonalInfo() {
           )}
         </S.InfoContainer>
       ))}
+      <S.Title $isMobile={isMobile}>지원하는 트랙</S.Title>
 
+      <S.Label $isMobile={isMobile}>지원하는 트랙을 선택해주세요.</S.Label>
+
+      <S.SelectContainer $isMobile={isMobile}>
+      <S.SelectButton onClick={() => setIsOpen(!isOpen)}>
+        {selectedTrack || "트랙을 선택해주세요"}
+      </S.SelectButton>
+      {isOpen && (
+        <S.Dropdown>
+          {options.map((option) => (
+            <S.Option key={option} onClick={() => handleSelect(option)}>
+              {option}
+            </S.Option>
+          ))}
+        </S.Dropdown>
+      )}
+    </S.SelectContainer>
+      
       <S.Title $isMobile={isMobile}>질문 목록</S.Title>
 
-      {/* ✅ 1. 사물인터넷/로봇 트랙에서 희망하는 분야 선택 */}
-      <S.Label $isMobile={isMobile}>
-        1. 사물인터넷/로봇 트랙에서 학습을 희망하는 분야를 모두 선택해주세요.
-        <S.Required>*</S.Required>
-      </S.Label>
-      <S.SubLabel $isMobile={isMobile}>(중복 선택 가능)</S.SubLabel>
-      <S.CheckboxContainer $isMobile={isMobile}>
-        <S.CheckboxLabel $isMobile={isMobile}>
-          <S.Checkbox
-            type="checkbox"
-            name="selectedFields"
-            value="라즈베리파이/임베디드시스템"
-            checked={questions.selectedFields.includes("라즈베리파이/임베디드시스템")}
-            onChange={handleQuestionChange}
-          />
-          라즈베리파이/임베디드시스템
-        </S.CheckboxLabel>
-        <S.CheckboxLabel $isMobile={isMobile}>
-          <S.Checkbox
-            type="checkbox"
-            name="selectedFields"
-            value="ROS2"
-            checked={questions.selectedFields.includes("ROS2")}
-            onChange={handleQuestionChange}
-          />
-          ROS2
-        </S.CheckboxLabel>
-      </S.CheckboxContainer>
-      <S.Box />
-
-      {/* ✅ 2. 해당 분야를 선택한 이유 */}
-      <S.Label $isMobile={isMobile}>
-        2. 위의 문항에서 해당 분야를 선택한 이유를 구체적으로 작성해주세요.
-        <S.Required>*</S.Required>
-      </S.Label>
-      <S.SubLabel $isMobile={isMobile}>(500자 이내)</S.SubLabel>
-      <S.Textarea
-        $isMobile={isMobile}
-        name="reason"
-        placeholder="내용을 입력해주세요."
-        value={questions.reason}
-        onChange={handleQuestionChange}
-        onBlur={(e) => setQuestionErrors((prev) => ({ ...prev, reason: e.target.value.trim() === "" }))}
-        $error={questionErrors.reason} 
-        maxLength={500}
+      {selectedTrack === "사물인터넷/로봇" ? (
+        <IoTTrack
+            questions={iotQuestions}
+            setQuestions={setIotQuestions}
+            questionErrors={IoTquestionErrors}
+            setQuestionErrors={setIoTQuestionErrors}
+            isMobile={isMobile}
         />
-
-      {questionErrors.reason ? (
-        <S.ErrorMessage $isMobile={isMobile}>필수로 입력해야 하는 항목입니다.</S.ErrorMessage>
-      ) : (
-        <S.Box />
-      )}
-
-      {/* ✅ 3. 희망하는 기업 연계 및 프로젝트 주제 */}
-      <S.Label $isMobile={isMobile}>
-        3. 사물인터넷/로봇 트랙의 기업 연계 및 자율 프로젝트에서 진행하고 싶은 프로젝트 주제와 그 이유를 작성해주세요.
-        <S.Required>*</S.Required>
-      </S.Label>
-      <S.SubLabel $isMobile={isMobile}>(500자 이내)</S.SubLabel>
-      <S.Textarea
-        $isMobile={isMobile}
-        name="pfojectIdea"
-        placeholder="내용을 입력해주세요."
-        value={questions.projectIdea}
-        onChange={handleQuestionChange}
-        onBlur={(e) => setQuestionErrors((prev) => ({ ...prev, projectIdea: e.target.value.trim() === "" }))}
-        $error={questionErrors.projectIdea}
-        maxLength={500}
+        ) : selectedTrack === "게임/영상" ? (
+        <GameTrack
+            questions={gameQuestions}
+            setQuestions={setGameQuestions}
+            questionErrors={GamequestionErrors}
+            setQuestionErrors={setGameQuestionErrors}
+            isMobile={isMobile}
         />
-
-      {questionErrors.projectIdea ? (
-        <S.ErrorMessage $isMobile={isMobile}>필수로 입력해야 하는 항목입니다.</S.ErrorMessage>
-      ) : (
-        <S.Box />
-      )}
-    {/* ✅ 4. Farm System 활동 목표 및 기대 */}
-    <S.Label $isMobile={isMobile}>
-        4. Farm System 4기 사물인터넷/로봇 트랙의 활동을 통해서 이루고자 하는 목표 및 기대하는 바에 대해서 작성해주세요.
-        <S.Required>*</S.Required>
-      </S.Label>
-      <S.SubLabel $isMobile={isMobile}>(500자 이내)</S.SubLabel>
-      <S.Textarea
-        $isMobile={isMobile}
-        name="goals"
-        placeholder="내용을 입력해주세요."
-        value={questions.goals}
-        onChange={handleQuestionChange}
-        onBlur={(e) => setQuestionErrors((prev) => ({ ...prev, goals: e.target.value.trim() === "" }))}
-        $error={questionErrors.goals} 
-        maxLength={500}
+        ) : selectedTrack === "빅데이터" ? (
+        <BigDataTrack
+            questions={BigDataQuestions}
+            setQuestions={setBigDataQuestions}
+            questionErrors={BigDataquestionErrors}
+            setQuestionErrors={setBigDataQuestionErrors}
+            isMobile={isMobile}
         />
-      {questionErrors.goals ? (
-        <S.ErrorMessage $isMobile={isMobile}>필수로 입력해야 하는 항목입니다.</S.ErrorMessage>
-      ) : (
-        <S.Box />
-      )}
+        ) : selectedTrack === "보안/웹" ? (
+        <SecureWebTrack
+            questions={SecureWebQuestions}
+            setQuestions={setSecureWebQuestions}
+            questionErrors={SecureWebquestionErrors}
+            setQuestionErrors={setSecureWebQuestionErrors}
+            isMobile={isMobile}
+        />
+        ) : selectedTrack === "인공지능" ? (
+            <AITrack
+            questions={AIQuestions}
+            setQuestions={setAIQuestions}
+            questionErrors={AIquestionErrors}
+            setQuestionErrors={setAIQuestionErrors}
+            isMobile={isMobile}
+        />
+        ) : null}
 
-      {/* ✅ 5. 포트폴리오 / Github 등 링크 제출 */}
-      <S.Label $isMobile={isMobile}>5. 나를 표현할 수 있는 주소가 있다면 첨부해주세요.</S.Label>
-      <S.SubLabel $isMobile={isMobile}>Github, LinkedIn, 개인 블로그, 포트폴리오 등</S.SubLabel>
-      <S.Textarea
-        $isMobile={isMobile}
-        name="portfolioLink"
-        placeholder="내용을 입력해주세요."
-        value={questions.portfolioLink}
-        onChange={handleQuestionChange}
-      />
-      <S.Box />
 
-      {/* ✅ 개인정보 동의 체크박스 */}
+
+      {/* 개인정보 동의 체크박스 */}
       <S.AgreeContainer $isMobile={isMobile}>
         <S.Checkbox type="checkbox" checked={agree1} onChange={handleAgreeChange1} />
         <S.AgreeText>개인정보 수집 및 이용에 동의합니다.</S.AgreeText>
@@ -246,10 +260,10 @@ export default function PersonalInfo() {
         <S.AgreeText>지원서 제출 후, 수정 및 추가 제출이 불가능합니다.</S.AgreeText>
       </S.AgreeContainer>
 
-      {/* ✅ 임시 저장 & 제출 버튼 */}
+      {/* 임시 저장 & 제출 버튼 */}
       <S.ButtonContainer $isMobile={isMobile}>
-        <S.Button gray>임시저장하기</S.Button>
-        <S.Button green disabled={!(agree1 && agree2)}>제출하기</S.Button>
+        <S.Button $isMobile={isMobile} gray disabled={!agree1}>임시저장하기</S.Button>
+        <S.Button $isMobile={isMobile} green disabled={!(agree1 && agree2)}>제출하기</S.Button>
       </S.ButtonContainer>
     </S.Container>
   );

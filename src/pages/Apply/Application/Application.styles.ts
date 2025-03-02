@@ -17,6 +17,7 @@ export const Title = styled.h2<{ $isMobile: boolean; }>`
   text-align: left;
   font-size: 22px;
   font-weight: bold;
+  margin-top: 40px;
   margin-bottom: 10px;
 `;
 
@@ -139,11 +140,12 @@ export const Textarea = styled.textarea<{ $isMobile: boolean; $error?: boolean }
 `;
 
 export const Box = styled.div`
-  height: 10px;
+  height: 20px;
 `;
 
 export const ErrorMessage = styled.p<{ $isMobile: boolean }>`
   width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
+  height: 20px;
   font-size: 12px;
   color: red;
 `;
@@ -166,18 +168,19 @@ export const ButtonContainer = styled.div<{ $isMobile: boolean }>`
   width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
   max-width: 500px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 20px;
+  /* gap: -10px; */
 `;
 
-export const Button = styled.button<{ gray?: boolean; green?: boolean }>`
-  width: 48%;
+export const Button = styled.button<{ $isMobile: boolean; gray?: boolean; green?: boolean }>`
+  width: ${({ $isMobile }) => ($isMobile ? "100px" : "150px")};
   padding: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  color: ${({ green }) => (green ? "white" : "#333")};
-  background-color: ${({ green, gray }) => (green ? "#006811" : gray ? "#E0E0E0" : "#FFF")};
-  border-radius: 8px;
+  font-size: ${({ $isMobile }) => ($isMobile ? "13px" : "16px")};
+  font-weight: 600;
+  color: ${({ green }) => (green ? "white" : "#006811")};
+  background-color: ${({ green, gray }) => (green ? "#006811" : gray ? "#C1ECC1" : "#FFF")};
+  border-radius: 12px;
   border: none;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
@@ -186,4 +189,53 @@ export const Button = styled.button<{ gray?: boolean; green?: boolean }>`
   &:hover {
     transform: ${({ disabled }) => (disabled ? "none" : "scale(1.05)")};
   }
+`;
+
+export const SelectContainer = styled.div<{ $isMobile: boolean }>`
+  width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
+  position: relative;
+`;
+
+export const SelectButton = styled.div`
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #4CAF50;
+  }
+`;
+
+export const Dropdown = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+`;
+
+export const Option = styled.div`
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #4CAF50; 
+    color: white;
+  }
+`;
+
+
+export const QuestionContainer = styled.div`
+  width: 100%;
+  margin-bottom: 15px;
 `;
