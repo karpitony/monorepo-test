@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router';
 import Layout from '@/pages/Layout';
 import Main from '@/pages/Main';
-import Apply from '@/pages/Apply';
+import Recruit from '@/pages/Recruit';
 import Blog from '@/pages/Blog';
 import NotFound from '@/pages/NotFound';
 import News from '@/pages/News';
@@ -21,7 +21,7 @@ export default function Router() {
       element: <Layout />,
       children: [
         { path: '/', element: <Main /> },
-        { path: '/apply', element: <Apply /> },
+        { path: '/recruit', element: <Recruit /> },
         { path: '/blog', element: <Blog /> },
         { path: '/news', element: <News /> },
         { path: '/FAQ', element: <FAQ /> },
