@@ -31,7 +31,14 @@ const BottomInfo = () => {
           <S.RequirementText $isApp={isApp} $isMobile={isMobile}>2025년 3월 4일부터 Farm System 4기를 공개 모집할 예정이에요! 조금만 기다려 주세요 😉</S.RequirementText>
         </S.RequirementItem>
         <S.ButtonContainer $isApp={isApp} $isMobile={isMobile}>
-          <S.ApplyButton $isApp={isApp} $isMobile={isMobile} onClick={() => setPopupOpen(true)}>지원하기</S.ApplyButton>
+          <S.ApplyButton 
+            $isApp={isApp}
+            $isMobile={isMobile}
+            // 지원하기 url은 '/recruit'입니다!
+            onClick={() => setPopupOpen(true)}
+          >
+            지원하기
+          </S.ApplyButton>
         </S.ButtonContainer>
         <S.NotificationContainer $isMobile={isMobile} $isTablet={isTablet}>
           <S.NotificationLink $isMobile={isMobile} $isTablet={isTablet} href={googleFormLink} target="_blank" rel="noopener noreferrer">

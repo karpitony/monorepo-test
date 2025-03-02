@@ -17,6 +17,7 @@ import {
   ApplySubmitPOSTRequest,
   ApplySubmitPOSTResponse,
 } from "@/models/apply";
+import { handleApiError } from "@/utils/handleApiError";
 
 /** 질문 불러오기 */
 export const useApplyQuestions = () => {
@@ -27,7 +28,7 @@ export const useApplyQuestions = () => {
   useEffect(() => {
     getApplyQuestions()
       .then(setData)
-      .catch(setError)
+      .catch((err) => setError(handleApiError(err)))
       .finally(() => setLoading(false));
   }, []);
 
@@ -51,8 +52,9 @@ export const useCreateApply = () => {
       }
       throw new Error("응답에 applyId가 없습니다.");
     } catch (err) {
-      setError(err as Error);
-      throw err;
+      const errorObj = handleApiError(err);
+      setError(errorObj);
+      throw errorObj;
     } finally {
       setLoading(false);
     }
@@ -73,8 +75,9 @@ export const useSaveApply = () => {
     try {
       return await postApplySave(payload);
     } catch (err) {
-      setError(err as Error);
-      throw err;
+      const errorObj = handleApiError(err);
+      setError(errorObj);
+      throw errorObj;
     } finally {
       setLoading(false);
     }
@@ -95,8 +98,9 @@ export const useLoadApply = () => {
     try {
       return await postApplyLoad(data);
     } catch (err) {
-      setError(err as Error);
-      throw err;
+      const errorObj = handleApiError(err);
+      setError(errorObj);
+      throw errorObj;
     } finally {
       setLoading(false);
     }
@@ -117,8 +121,9 @@ export const useSubmitApply = () => {
     try {
       return await postApplySubmit(payload);
     } catch (err) {
-      setError(err as Error);
-      throw err;
+      const errorObj = handleApiError(err);
+      setError(errorObj);
+      throw errorObj;
     } finally {
       setLoading(false);
     }

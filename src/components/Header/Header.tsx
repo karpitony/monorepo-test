@@ -64,7 +64,7 @@ export default function Header() {
               </S.NavItem>
             </S.Nav>
           </S.NavWrapper>
-          <S.FarmingLogButton onClick={() => navigate('/Apply')} >지원하기</S.FarmingLogButton>
+          <S.FarmingLogButton onClick={() => navigate('/recruit')} >지원하기</S.FarmingLogButton>
         </>
       )}
 
@@ -111,7 +111,7 @@ export default function Header() {
               <S.NavItem 
                 $isTablet={isTablet} 
                 $isMobile={isMobile} 
-                onClick={() => handleNavItemClick('/Apply')}
+                onClick={() => handleNavItemClick('/recruit')}
                 isActive={false}
               >
                 지원하기

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import styled from 'styled-components';
-import { useCreateApply } from '@/hooks/useApply';
+import { useCreateApply, useLoadApply } from '@/hooks/useApply';
 
 interface ApplyLoginProps {
   isFirst: boolean;
@@ -11,7 +11,12 @@ export default function ApplyLogin({ isFirst, onSubmit }: ApplyLoginProps) {
   const [studentNumber, setStudentNumber] = useState("");
   const [passwordDigits, setPasswordDigits] = useState(Array(6).fill(""));
 
-  const { createApply, loading, error } = useCreateApply();
+  const { createApply, loading: createLoading, error: createError } = useCreateApply();
+  const { loadApply, loading: loadLoading, error: loadError } = useLoadApply();
+
+  // isFirst 여부에 따라 로딩과 에러 상태를 분리합니다.
+  const loading = isFirst ? createLoading : loadLoading;
+  const error = isFirst ? createError : loadError;
 
   // 각 비밀번호 input에 대한 ref (포커스 이동용)
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
@@ -34,7 +39,7 @@ export default function ApplyLogin({ isFirst, onSubmit }: ApplyLoginProps) {
   const handleSubmit = () => {
     const password = passwordDigits.join("");
     if (isFirst) {
-      // 계정 생성(최초 지원서 작성)인 경우 서버에 createApply 요청
+      // 최초 지원서 작성: 계정 생성 요청
       createApply({ studentNumber, password })
         .then((applyId) => {
           console.log("계정 생성 성공, applyId:", applyId);
@@ -44,7 +49,15 @@ export default function ApplyLogin({ isFirst, onSubmit }: ApplyLoginProps) {
           console.error("계정 생성 에러:", err);
         });
     } else {
-      onSubmit(studentNumber, password);
+      // 기존 계정: 로그인 요청 (loadApply 사용)
+      loadApply({ studentNumber, password })
+        .then((applyData) => {
+          console.log("로그인 성공:", applyData);
+          onSubmit(studentNumber, password);
+        })
+        .catch((err) => {
+          console.error("로그인 에러:", err);
+        });
     }
   };
 
@@ -79,7 +92,7 @@ export default function ApplyLogin({ isFirst, onSubmit }: ApplyLoginProps) {
         {isFirst ? "계정 생성" : "로그인"}
       </SubmitButton>
       {loading && <div>처리중...</div>}
-      {error && <div style={{ color: "red" }}>에러: {error.message}</div>}
+      {error && <div style={{ color: "red" }}>{error.message}</div>}
     </LoginContainer>
   );
 }
