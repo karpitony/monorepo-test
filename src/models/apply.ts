@@ -6,14 +6,12 @@ enum ApiErrorMessages {
   OPTION_NOT_FOUND = "선택지를 찾을 수 없습니다.",
 }
 
-// 이거 아직 다 작성 안된거임!! 
-// swagger 보고 enum 채울 예정
 export enum Track {
   UNION = "UNION",
   GAMING_VIDEO = "GAMING_VIDEO",
   AI = "AI",
-  WEB = "WEB",
-  IOT = "IOT",
+  SECURITY_WEB = "SECURITY_WEB",
+  IOT_ROBOTICS = "IOT_ROBOTICS",
   BIGDATA = "BIGDATA",
 }
 
