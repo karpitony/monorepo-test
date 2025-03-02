@@ -64,12 +64,7 @@ export default function Header() {
               </S.NavItem>
             </S.Nav>
           </S.NavWrapper>
-          <S.FarmingLogButton 
-            // 지원하기 url은 '/recruit'입니다!
-            onClick={() => setPopupOpen(true)}
-          >
-            지원하기
-          </S.FarmingLogButton>
+          <S.FarmingLogButton onClick={() => navigate('/recruit')} >지원하기</S.FarmingLogButton>
         </>
       )}
 
@@ -116,8 +111,7 @@ export default function Header() {
               <S.NavItem 
                 $isTablet={isTablet} 
                 $isMobile={isMobile} 
-                // 지원하기 url은 '/recruit'입니다!
-                onClick={() => setPopupOpen(true)} 
+                onClick={() => handleNavItemClick('/recruit')}
                 isActive={false}
               >
                 지원하기
