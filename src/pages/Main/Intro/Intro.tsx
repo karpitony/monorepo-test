@@ -111,7 +111,10 @@ const Intro = () => {
             transition={{ duration: 0.8, delay: 3.5, ease: "easeOut" }} 
             viewport={{ once: true }}
           >
-            <S.AppApplyButton onClick={() => setPopupOpen(true)}>
+            <S.AppApplyButton 
+              // 지원하기 url은 '/recruit'입니다!
+              onClick={() => setPopupOpen(true)}
+            >
               지원하기
             </S.AppApplyButton>
           </motion.div>
@@ -147,7 +150,14 @@ const Intro = () => {
       5가지 신기술 트랙을 제공하여 학습 경험을 통해 SW/AI 역량을 배양합니다.
       </S.TrackList>
       <S.Apply>
-        <S.ApplyButton $isMobile={isMobile} $isTablet={isTablet} onClick={() => setPopupOpen(true)}> 지원하기 </S.ApplyButton>
+        <S.ApplyButton 
+          $isMobile={isMobile}
+          $isTablet={isTablet} 
+          // 지원하기 url은 '/recruit'입니다!
+          onClick={() => setPopupOpen(true)}
+        >
+            지원하기 
+        </S.ApplyButton>
         <S.ApplyDescription $isMobile={isMobile}>2025년 3월 4일 모집 예정</S.ApplyDescription>
       </S.Apply>
 

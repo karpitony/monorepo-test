@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router';
 import Layout from '@/pages/Layout';
 import Main from '@/pages/Main';
-import Recruit from '@/pages/Recruit';
+import Recruit from '@/pages/Apply';
 import Blog from '@/pages/Blog';
 import NotFound from '@/pages/NotFound';
 import News from '@/pages/News';
