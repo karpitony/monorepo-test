@@ -4,6 +4,7 @@ import useMediaQueries from "@/hooks/useMediaQueries";
 import LeftArrow from '../../../assets/LeftArrow.png';
 import { useCreateApply, useLoadApply } from '@/hooks/useApply';
 import Popup from '@/components/Popup/Popup';
+import Logger from "@/utils/Logger";
 
 interface ApplyLoginProps {
     setStep: (step: number) => void;
@@ -83,18 +84,18 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
       if (isFirst) {
         // 새 지원서 작성
         const applyId = await createApply({ studentNumber: studentId, password: passwordString });
-        console.log("계정 생성 성공, applyId:", applyId);
+        Logger.log("계정 생성 성공, applyId:", applyId);
         onSubmit(studentId, passwordString);
         setStep(3);
       } else {
         // 기존 지원서 불러오기
         const applyData = await loadApply({ studentNumber: studentId, password: passwordString });
-        console.log("로그인 성공:", applyData);
+        Logger.log("로그인 성공:", applyData);
         onSubmit(studentId, passwordString);
         setStep(3);
       }
     } catch (error) {
-      console.error("에러 발생:", error);
+      Logger.error("에러 발생:", error);
       if (error instanceof Error) {
         setErrorMessage(error.message || "알 수 없는 오류가 발생했습니다.");
       } else {

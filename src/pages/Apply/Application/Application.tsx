@@ -11,6 +11,7 @@ import {
 import { ApplyAnswer, Answer, Track } from "@/models/apply";
 import PersonalInfo from "./PersonInfo";
 import Popup from '@/components/Popup/Popup';
+import Logger from "@/utils/Logger";
 
 const defaultTrack: Track = Track.UNION;
 type AnswerMap = Record<number, { content: string; choiceId: number[] }>;
@@ -51,8 +52,8 @@ export default function Application({ setStep, propStudentNumber, propPassword }
   const [loadedData, setLoadedData] = useState<ApplyAnswer | null>(null);
   const [applyStatus, setApplyStatus] = useState<string>("");
 
-  console.log(studentNumber, password);
-  console.log("데이터"+ loadedData);
+  Logger.log(studentNumber, password);
+  Logger.log("데이터"+ loadedData);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -68,7 +69,7 @@ export default function Application({ setStep, propStudentNumber, propPassword }
 }, [setStep]);
 
   const buildApplyData = (): ApplyAnswer => {
-    console.log('학번'+loadedData);
+    Logger.log('학번'+loadedData);
     if (loadedData) {
       return {
         ...loadedData,
@@ -103,10 +104,10 @@ export default function Application({ setStep, propStudentNumber, propPassword }
     updateLoadedData();
     try {
       const response = await saveApply(buildApplyData());
-      console.log("임시저장 성공:", response);
+      Logger.log("임시저장 성공:", response);
       setSavePopupOpen(true); // 정상적으로 저장되었을 때 팝업
     } catch (err) {
-      console.error("임시저장 에러:", err);
+      Logger.error("임시저장 에러:", err);
   
         setSaveErrorPopupOpen(true); 
     }
@@ -171,11 +172,11 @@ export default function Application({ setStep, propStudentNumber, propPassword }
   
     try {
       const response = await submitApply(buildApplyData());
-      console.log("제출 성공:", response);
+      Logger.log("제출 성공:", response);
       setApplyStatus("SUBMITTED");
       setSuccessPopupOpen(true); 
     } catch (err) {
-      console.error("제출 에러:", err);
+      Logger.error("제출 에러:", err);
       setSubmitErrorPopupOpen(true);
     }
   };
@@ -204,11 +205,11 @@ export default function Application({ setStep, propStudentNumber, propPassword }
 
   useEffect(() => {
       if (studentNumber && password) {
-        console.log('안뇽');
+        Logger.log('안뇽');
         loadApply({ studentNumber, password })
           
           .then((res) => {
-            console.log('안뇽');
+            Logger.log('안뇽');
             if (res.data) {
               setLoadedData(res.data);
               setApplyStatus(res.data.status);
@@ -224,7 +225,7 @@ export default function Application({ setStep, propStudentNumber, propPassword }
             }
           })
           .catch((err) => {
-            console.error("지원서 로드 에러:", err);
+            Logger.error("지원서 로드 에러:", err);
           });
       }
     // loadApply 넣으면 무한 호출됨
@@ -299,7 +300,7 @@ export default function Application({ setStep, propStudentNumber, propPassword }
 
   useEffect(() => {
     if (questionsData?.data) {
-      console.log("질문 데이터:", questionsData.data);
+      Logger.log("질문 데이터:", questionsData.data);
     }
   }, [questionsData]);
 
