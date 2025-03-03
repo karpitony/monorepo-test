@@ -135,7 +135,7 @@ export const Textarea = styled.textarea<{ $isMobile: boolean; $error?: boolean }
   resize: none;
   transition: border 0.3s ease-in-out;
   margin-top: -10px;
-  margin-bottom: -10px;
+  margin-bottom: 8px;
 
   &:focus {
     border: 1px solid #248634;

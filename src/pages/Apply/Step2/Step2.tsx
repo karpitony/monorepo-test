@@ -9,7 +9,7 @@ interface ApplyLoginProps {
     setStep: (step: number) => void;
     isFirst: boolean;
     onSubmit: (studentNumber: string, password: string) => void;
-  }
+}
 
 export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {  
 
@@ -18,11 +18,12 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
 
   const { createApply } = useCreateApply();
   const { loadApply } = useLoadApply();
-//   const error = isFirst ? createError : loadError;
-  
+
   const { isMobile } = useMediaQueries();
   const [studentId, setStudentId] = useState(""); 
+  const [studentIdError, setStudentIdError] = useState(false);
   const [password, setPassword] = useState(["", "", "", "", "", ""]); 
+  const [passwordError, setPasswordError] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
@@ -36,13 +37,21 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
     return () => {
         window.removeEventListener("popstate", handlePopState);
     };
-}, [setStep]);
+  }, [setStep]);
 
+  // 학번 입력 핸들러
   const handleStudentIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "");
-    if (value.length <= 10) setStudentId(value);
+    const value = e.target.value.replace(/\D/g, ""); // 숫자만 입력
+    setStudentId(value);
+  
+    if (value.length === 10) {
+      setStudentIdError(false); // 10자리면 에러 제거
+    } else {
+      setStudentIdError(true); // 10자리가 아니면 에러 표시
+    }
   };
 
+  // 비밀번호 입력 핸들러
   const handlePasswordChange = (index: number, value: string) => {
     if (!/^\d?$/.test(value)) return;
     const newPass = [...password];
@@ -50,6 +59,13 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
     setPassword(newPass);
 
     if (value && index < 5) inputRefs.current[index + 1]?.focus(); 
+
+    // 비밀번호가 6자리인지 확인
+    if (newPass.includes("") || newPass.length < 6) {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+    }
   };
 
   const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -59,6 +75,8 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
   };
 
   const handleSubmit = async () => {
+    if (studentIdError || passwordError) return;
+
     try {
       const passwordString = password.join("");
 
@@ -66,7 +84,7 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
         // 새 지원서 작성
         const applyId = await createApply({ studentNumber: studentId, password: passwordString });
         console.log("계정 생성 성공, applyId:", applyId);
-        onSubmit(studentId, passwordString );
+        onSubmit(studentId, passwordString);
         setStep(3);
       } else {
         // 기존 지원서 불러오기
@@ -97,6 +115,9 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
         maxLength={10}
         placeholder="ex) 2025123456"
       />
+      {studentIdError && (
+        <S.ErrorMessage $isMobile={isMobile}>학번을 10자리 숫자로 입력해주세요.</S.ErrorMessage>
+      )}
 
       {/* 비밀번호 입력 */}
       <S.Label>비밀번호(숫자 6자리)</S.Label>
@@ -114,6 +135,9 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
           />
         ))}
       </S.PasswordContainer>
+      {passwordError && (
+        <S.ErrorMessage $isMobile={isMobile}>비밀번호 6자리를 모두 입력해주세요.</S.ErrorMessage>
+      )}
 
       {/* 안내 문구 */}
       <S.InfoContainer>
@@ -123,8 +147,15 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
         <S.InfoStar>* </S.InfoStar><S.InfoText>학번과 비밀번호는 수정이 불가하며, 비밀번호를 잊어버렸을 경우 <br />새로 작성해야 해요. 신중하게 입력해주세요! </S.InfoText>
       </S.InfoContainer>
 
-      {/* 버튼 */}
-      <S.Button green onClick={handleSubmit}>지원서 작성하러 가기</S.Button>
+      {/* 버튼 (비활성화 조건 추가) */}
+      <S.Button 
+        green 
+        onClick={handleSubmit} 
+        disabled={studentIdError || passwordError || studentId.length !== 10 || password.includes("")}
+      >
+        지원서 작성하러 가기
+      </S.Button>
+
       <S.BackTextContainer $isMobile={isMobile} onClick={() => setStep(1)}>
         <S.Arrow src={LeftArrow} alt="RightArrow" />
         <S.BackText>첫 페이지로 돌아가기</S.BackText>
@@ -133,8 +164,8 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
       <Popup 
         isOpen={isPopupOpen} 
         onClose={() => setPopupOpen(false)} 
-        title={"오류 발생"} 
-        content={errorMessage} 
+        title={"지원자 정보 없음"} 
+        content={"일치하는 지원자 정보가 존재하지 않습니다."} 
       />
     </S.Container>
   );
