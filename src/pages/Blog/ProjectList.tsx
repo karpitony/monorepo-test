@@ -3,6 +3,7 @@ import * as S from './ProjectList.styles';
 import BlankImg from '../../assets/Images/Blog_Project/blank_img.svg';
 import ProjectItem, { ProjectItemProps } from './ProjectItem';
 import useMediaQueries from '@/hooks/useMediaQueries';
+import Logger from '@/utils/Logger';
 
 /** 샘플용 더미 데이터 */
 const projectData: ProjectItemProps[] = [
@@ -56,7 +57,7 @@ const ProjectList: React.FC = () => {
 
   // 드롭다운에서 선택 시 동작 (필요 시 구현)
   const handleSelectOption = (option: string) => {
-    console.log('선택한 옵션:', option);
+    Logger.log('선택한 옵션:', option);
     // 선택 후 바로 닫고 싶다면:
     setOpenDropdown('');
   };
