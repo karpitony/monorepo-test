@@ -48,3 +48,25 @@ export const PopupCloseButton = styled.button<{ $isMobile: boolean; $isTablet: b
     background-color: #1f5b30;
   }
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+`;
+
+export const PopupButton = styled.button<{ $isMobile: boolean; $isTablet: boolean; confirm?: boolean }>`
+  background-color: #28723f;
+  color: #fcfcfc;
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "12px" : $isTablet ? "16px": "16px")};
+  padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "12px 24px" : $isTablet ? "12px 24px": "10px 20px")};
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px rgba(25, 25, 25, 0.2);
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "80px" : $isTablet ? "100px": "100px")};
+  margin-top: 20px;
+  &:hover {
+    background-color: #1f5b30;
+  }
+`;

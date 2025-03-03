@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ $isMobile: boolean }>`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 60px;
   /* position: absolute;
   top: 10px; */
 `;

@@ -4,8 +4,7 @@ import * as S from './Step1.styles';
 import FarmLogo_Black from '../../../assets/FarmLogo_Black.png';
 import RightArrow from '../../../assets/RightArrow.png';
 
-export default function Step1({ setStep }: { setStep: (step: number) => void }) {
-  const { isMobile } = useMediaQueries();
+export default function Step1({ setStep }: { setStep: (step: number, isFirst?: boolean) => void }) {  const { isMobile } = useMediaQueries();
 
   const fadeInUp = (delay: number) => ({
     hidden: { opacity: 0, y: -20 },
@@ -48,8 +47,8 @@ export default function Step1({ setStep }: { setStep: (step: number) => void }) 
 
       <motion.div initial="hidden" animate="visible" variants={fadeInSlow(2.3)} style={{ width: '100%' }}>
         <S.ButtonContainer $isMobile={isMobile}>
-          <S.Button $isMobile={isMobile} bgColor="#C1ECC1" textColor="#006811" onClick={() => setStep(2)}>지원서 불러오기</S.Button>
-          <S.Button $isMobile={isMobile} bgColor="#006811" textColor="#FFF" onClick={() => setStep(2)}>새로 작성하기</S.Button>
+          <S.Button $isMobile={isMobile} bgColor="#C1ECC1" textColor="#006811" onClick={() => setStep(2, false)}>지원서 불러오기</S.Button>
+          <S.Button $isMobile={isMobile} bgColor="#006811" textColor="#FFF" onClick={() => setStep(2, true)}>새로 작성하기</S.Button>
         </S.ButtonContainer>
       </motion.div>
 

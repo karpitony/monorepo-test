@@ -7,9 +7,10 @@ interface PopupProps {
   onClose: () => void;
   title: string;
   content: string;
+  onConfirm?: () => void;
 }
 
-const Popup: React.FC<PopupProps> = ({ isOpen, onClose, title, content }) => {
+const Popup: React.FC<PopupProps> = ({ isOpen, onClose, title, content, onConfirm }) => {
   if (!isOpen) return null;
   const { isMobile,isTablet } = useMediaQueries();
 
@@ -18,7 +19,20 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, title, content }) => {
       <S.PopupBox onClick={(e) => e.stopPropagation()} $isMobile={isMobile} $isTablet={isTablet}>
         <S.PopupTitle $isMobile={isMobile} $isTablet={isTablet}>{title}</S.PopupTitle>
         <S.PopupText $isMobile={isMobile} $isTablet={isTablet}>{content}</S.PopupText>
-        <S.PopupCloseButton onClick={onClose} $isMobile={isMobile} $isTablet={isTablet}>확인</S.PopupCloseButton>
+        <S.ButtonContainer>
+          {onConfirm ? (
+            <>
+              <S.PopupButton onClick={onClose} $isMobile={isMobile} $isTablet={isTablet}>취소</S.PopupButton>
+              <S.PopupButton onClick={() => { onConfirm(); onClose(); }} $isMobile={isMobile} $isTablet={isTablet} confirm>
+                제출
+              </S.PopupButton>
+            </>
+          ) : (
+            <S.PopupCloseButton onClick={onClose} $isMobile={isMobile} $isTablet={isTablet}>
+              확인
+            </S.PopupCloseButton>
+          )}
+        </S.ButtonContainer>
       </S.PopupBox>
     </S.PopupOverlay>
   );
