@@ -57,6 +57,10 @@ export const Input = styled.input<{ $isMobile: boolean, $error?: boolean }>`
     outline: none;
     background-color: white;
   }
+  &::placeholder {
+    color: #B0B0B0; 
+    opacity: 1; 
+  }
 `;
 
 export const InfoContainer = styled.label<{ $isMobile: boolean }>`
@@ -71,7 +75,8 @@ export const SubLabel = styled.p<{ $isMobile: boolean }>`
   font-size: 13px;
   color: #666;
   /* background-color: pink; */
-  margin-top: -12px;
+  margin-top: 5px;
+  margin-bottom: 12px;
   margin-left: 7px;
 `;
 
@@ -121,7 +126,7 @@ export const Checkbox = styled.input`
 
 export const Textarea = styled.textarea<{ $isMobile: boolean; $error?: boolean }>`
   width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
-  height: 120px;
+  min-height: 120px;
   padding: 12px;
   font-size: 14px;
   border-radius: 8px;
@@ -136,6 +141,11 @@ export const Textarea = styled.textarea<{ $isMobile: boolean; $error?: boolean }
     border: 1px solid #248634;
     outline: none;
     background-color: white;
+  }
+
+  &::placeholder {
+    color: #B0B0B0; 
+    opacity: 1; 
   }
 `;
 

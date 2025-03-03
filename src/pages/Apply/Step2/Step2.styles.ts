@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding-top: 70px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,6 +113,7 @@ export const BackTextContainer = styled.div<{ $isMobile: boolean }>`
   align-items: center;
   width: 300px;
   transition: transform 0.2s ease;
+  /* background-color: orange; */
 
   &:hover {
     transform: scale(1.05);
@@ -128,6 +129,5 @@ export const BackText = styled.div`
   font-size: 15px;
   color: #757575;
   font-weight: 500;
-  /* width: 300px; */
-  margin-top: 5px;
+  margin-top: 2px;
 `;

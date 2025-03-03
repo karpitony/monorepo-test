@@ -1,13 +1,42 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as S from "./Step2.styles"; 
 import useMediaQueries from "@/hooks/useMediaQueries";
 import LeftArrow from '../../../assets/LeftArrow.png';
+import { useCreateApply, useLoadApply } from '@/hooks/useApply';
+import Popup from '@/components/Popup/Popup';
 
-export default function Step2({ setStep }: { setStep: (step: number) => void }) {
+interface ApplyLoginProps {
+    setStep: (step: number) => void;
+    isFirst: boolean;
+    onSubmit: (studentNumber: string, password: string) => void;
+  }
+
+export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {  
+
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const { createApply } = useCreateApply();
+  const { loadApply } = useLoadApply();
+//   const error = isFirst ? createError : loadError;
+  
   const { isMobile } = useMediaQueries();
   const [studentId, setStudentId] = useState(""); 
   const [password, setPassword] = useState(["", "", "", "", "", ""]); 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+        setStep(1); // Step1으로 이동
+    };
+
+    window.history.pushState(null, "", window.location.href);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+        window.removeEventListener("popstate", handlePopState);
+    };
+}, [setStep]);
 
   const handleStudentIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -26,6 +55,34 @@ export default function Step2({ setStep }: { setStep: (step: number) => void }) 
   const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace" && !password[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const passwordString = password.join("");
+
+      if (isFirst) {
+        // 새 지원서 작성
+        const applyId = await createApply({ studentNumber: studentId, password: passwordString });
+        console.log("계정 생성 성공, applyId:", applyId);
+        onSubmit(studentId, passwordString );
+        setStep(3);
+      } else {
+        // 기존 지원서 불러오기
+        const applyData = await loadApply({ studentNumber: studentId, password: passwordString });
+        console.log("로그인 성공:", applyData);
+        onSubmit(studentId, passwordString);
+        setStep(3);
+      }
+    } catch (error) {
+      console.error("에러 발생:", error);
+      if (error instanceof Error) {
+        setErrorMessage(error.message || "알 수 없는 오류가 발생했습니다.");
+      } else {
+        setErrorMessage("알 수 없는 오류가 발생했습니다.");
+      }
+      setPopupOpen(true);
     }
   };
 
@@ -67,11 +124,18 @@ export default function Step2({ setStep }: { setStep: (step: number) => void }) 
       </S.InfoContainer>
 
       {/* 버튼 */}
-      <S.Button green onClick={() => setStep(3)}>지원서 작성하러 가기</S.Button>
+      <S.Button green onClick={handleSubmit}>지원서 작성하러 가기</S.Button>
       <S.BackTextContainer $isMobile={isMobile} onClick={() => setStep(1)}>
         <S.Arrow src={LeftArrow} alt="RightArrow" />
-        <S.BackText>지원하기 첫 페이지로 돌아가기</S.BackText>
+        <S.BackText>첫 페이지로 돌아가기</S.BackText>
       </S.BackTextContainer>
+
+      <Popup 
+        isOpen={isPopupOpen} 
+        onClose={() => setPopupOpen(false)} 
+        title={"오류 발생"} 
+        content={errorMessage} 
+      />
     </S.Container>
   );
 }

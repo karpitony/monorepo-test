@@ -1,4 +1,4 @@
-import * as S from "./Application.styles";
+import * as S from "../Application.styles";
 
 interface QuestionsProps {
   questions: {
