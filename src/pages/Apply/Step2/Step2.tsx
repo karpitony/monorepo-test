@@ -14,7 +14,7 @@ interface ApplyLoginProps {
 export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {  
 
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+//   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { createApply } = useCreateApply();
   const { loadApply } = useLoadApply();
@@ -96,9 +96,9 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
     } catch (error) {
       console.error("에러 발생:", error);
       if (error instanceof Error) {
-        setErrorMessage(error.message || "알 수 없는 오류가 발생했습니다.");
+        // setErrorMessage(error.message || "알 수 없는 오류가 발생했습니다.");
       } else {
-        setErrorMessage("알 수 없는 오류가 발생했습니다.");
+        // setErrorMessage("알 수 없는 오류가 발생했습니다.");
       }
       setPopupOpen(true);
     }
@@ -107,6 +107,7 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
   return (
     <S.Container>
       {/* 학번 입력 */}
+
       <S.Label>학번(10자리)</S.Label>
       <S.Input
         type="text"
