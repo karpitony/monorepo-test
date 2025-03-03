@@ -415,13 +415,13 @@ useEffect(() => {
         {applyStatus !== "SUBMITTED" && (
         <>
             {/* 개인정보 동의 체크박스 */}
-            <S.AgreeContainer $isMobile={isMobile}>
-            <S.Checkbox type="checkbox" checked={agree1} onChange={() => setAgree1((prev) => !prev)} />
+            <S.AgreeContainer $isMobile={isMobile} onChange={() => setAgree1((prev) => !prev)}>
+            <S.Checkbox type="checkbox" checked={agree1} />
             <S.AgreeText>개인정보 수집 및 이용에 동의합니다.</S.AgreeText>
             </S.AgreeContainer>
 
-            <S.AgreeContainer $isMobile={isMobile}>
-            <S.Checkbox type="checkbox" checked={agree2} onChange={() => setAgree2((prev) => !prev)} />
+            <S.AgreeContainer $isMobile={isMobile} onChange={() => setAgree2((prev) => !prev)}>
+            <S.Checkbox type="checkbox" checked={agree2} />
             <S.AgreeText>지원서 제출 후, 수정 및 추가 제출이 불가능합니다.</S.AgreeText>
             </S.AgreeContainer>
 
@@ -439,13 +439,17 @@ useEffect(() => {
 
      
         <Popup 
-        isOpen={isConfirmPopupOpen} 
-        onClose={() => setConfirmPopupOpen(false)} 
-        title="제출하시겠습니까?"
-        content="한번 제출하시면 수정이 불가합니다. 또한 동일한 학번으로 재제출도 불가합니다."
-        onConfirm={handleSubmit}
+            isOpen={isConfirmPopupOpen} 
+            onClose={() => setConfirmPopupOpen(false)} 
+            title={`${selectedTrackLabel === "트랙을 선택해주세요" ? "선택된 트랙이 없습니다." : `${selectedTrackLabel} 트랙에 지원하시겠습니까?`}`}
+            content={
+                <>
+                한번 제출하시면 수정이 불가합니다. <br />
+                또한 동일한 학번으로 재제출도 불가합니다.
+                </>
+            }
+            onConfirm={handleSubmit}
         />
-
         
         <Popup 
         isOpen={isSuccessPopupOpen} 
@@ -472,14 +476,16 @@ useEffect(() => {
         isOpen={isIncompleteInfoPopupOpen} 
         onClose={() => setIncompleteInfoPopupOpen(false)} 
         title="제출 실패"
-        content="개인정보(이름, 학과, 이메일, 전화번호)를 모두 입력해야 제출이 가능합니다."
+        content={
+            <>개인정보(이름, 학과, 이메일, 전화번호)를 <br/>모두 입력해야 제출이 가능합니다.</>}
         />
 
         <Popup 
         isOpen={isIncompleteRequiredPopupOpen} 
         onClose={() => setIncompleteRequiredPopupOpen(false)} 
         title="제출 실패"
-        content="현재 선택한 트랙의 필수 질문을 모두 작성해야 제출이 가능합니다."
+        content={
+            <>현재 선택한 트랙의 필수 질문을 <br/>모두 작성해야 제출이 가능합니다.</>}
         />
 
 

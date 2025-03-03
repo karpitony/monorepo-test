@@ -114,14 +114,16 @@ export const Checkbox = styled.input`
     border-color: #006811; /* 체크된 테두리 */
   }
 
-  /* &:checked::before {
-    content: "✔";
+  &:checked::before {
+    content: "✓";
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     color: white !important;
-    font-size: 7.5px;
-  } */
+    font-weight: 700;
+    /* margin-top: -1; */
+    font-size: 10px;
+  }
 `;
 
 export const Textarea = styled.textarea<{ $isMobile: boolean; $error?: boolean }>`
