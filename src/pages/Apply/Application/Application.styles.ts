@@ -100,8 +100,8 @@ export const CheckboxLabel = styled.label<{ $isMobile: boolean }>`
 
 export const Checkbox = styled.input`
   margin-right: 8px;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
   appearance: none; 
   border: 1px solid #aaa;
@@ -167,7 +167,7 @@ export const AgreeContainer = styled.div<{ $isMobile: boolean }>`
     width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
     max-width: 500px;
     display: flex;
-    align-items: start;
+    align-items: center;
     margin-top: 10px;
 `;
 

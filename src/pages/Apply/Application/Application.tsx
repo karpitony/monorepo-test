@@ -117,6 +117,7 @@ export default function Application({ setStep, propStudentNumber, propPassword }
   const [isSuccessPopupOpen, setSuccessPopupOpen] = useState(false);
   const [isSavePopupOpen, setSavePopupOpen] = useState(false);
   const [isSaveErrorPopupOpen, setSaveErrorPopupOpen] = useState(false);
+  const [isSubmitErrorPopupOpen, setSubmitErrorPopupOpen] = useState(false);
   const [isIncompleteInfoPopupOpen, setIncompleteInfoPopupOpen] = useState(false);
   const [isIncompleteRequiredPopupOpen, setIncompleteRequiredPopupOpen] = useState(false);
 
@@ -175,7 +176,7 @@ export default function Application({ setStep, propStudentNumber, propPassword }
       setSuccessPopupOpen(true); 
     } catch (err) {
       console.error("제출 에러:", err);
-      setSaveErrorPopupOpen(true);
+      setSubmitErrorPopupOpen(true);
     }
   };
 
@@ -470,6 +471,13 @@ useEffect(() => {
         onClose={() => setSaveErrorPopupOpen(false)} 
         title="임시저장 실패"
         content="해당 학번으로 제출한 이력이 있어 저장이 불가능합니다."
+        />
+
+        <Popup 
+        isOpen={isSubmitErrorPopupOpen} 
+        onClose={() => setSubmitErrorPopupOpen(false)} 
+        title="제출 실패"
+        content="해당 학번으로 제출한 이력이 있어 제출이 불가능합니다."
         />
 
         <Popup 
