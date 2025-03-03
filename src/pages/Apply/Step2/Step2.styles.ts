@@ -94,7 +94,8 @@ export const Button = styled.button<{ green?: boolean }>`
   background-color: ${({ green }) => (green ? "#006811" : "#E0E0E0")};
   border-radius: 15px;
   border: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
   margin-top: 30px;
   transition: transform 0.2s ease;
 
@@ -130,4 +131,12 @@ export const BackText = styled.div`
   color: #757575;
   font-weight: 500;
   margin-top: 2px;
+`;
+
+export const ErrorMessage = styled.p<{ $isMobile: boolean }>`
+  width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
+  height: 18px;
+  font-size: 12px;
+  margin-top: -33px;
+  color: red;
 `;
