@@ -14,7 +14,7 @@ interface ApplyLoginProps {
 export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {  
 
   const [isPopupOpen, setPopupOpen] = useState(false);
-//   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { createApply } = useCreateApply();
   const { loadApply } = useLoadApply();
@@ -96,9 +96,9 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
     } catch (error) {
       console.error("에러 발생:", error);
       if (error instanceof Error) {
-        // setErrorMessage(error.message || "알 수 없는 오류가 발생했습니다.");
+        setErrorMessage(error.message || "알 수 없는 오류가 발생했습니다.");
       } else {
-        // setErrorMessage("알 수 없는 오류가 발생했습니다.");
+        setErrorMessage("알 수 없는 오류가 발생했습니다.");
       }
       setPopupOpen(true);
     }
@@ -154,7 +154,7 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
         onClick={handleSubmit} 
         disabled={studentIdError || passwordError || studentId.length !== 10 || password.includes("")}
       >
-        지원서 작성하러 가기
+        확인
       </S.Button>
 
       <S.BackTextContainer $isMobile={isMobile} onClick={() => setStep(1)}>
@@ -165,8 +165,8 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
       <Popup 
         isOpen={isPopupOpen} 
         onClose={() => setPopupOpen(false)} 
-        title={"지원자 정보 없음"} 
-        content={"일치하는 지원자 정보가 존재하지 않습니다."} 
+        title={"오류 발생"} 
+        content={errorMessage} 
       />
     </S.Container>
   );

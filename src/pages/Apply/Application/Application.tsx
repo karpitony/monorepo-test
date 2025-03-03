@@ -178,10 +178,19 @@ export default function Application({ setStep, propStudentNumber, propPassword }
       setSaveErrorPopupOpen(true);
     }
   };
-  
+
   const handleSuccessPopupClose = () => {
     setSuccessPopupOpen(false);
     navigate("/"); 
+    setTimeout(() => {
+      const targetElement = document.querySelector("#about");
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.getBoundingClientRect().top + window.scrollY,
+          behavior: "smooth",
+        });
+      }
+    }, 300);
   };
 
   const transformAnswers = (): Answer[] => {

@@ -86,7 +86,7 @@ export const InfoText = styled.p`
 `;
 
 export const Button = styled.button<{ green?: boolean }>`
-  width: 220px;
+  width: 160px;
   padding: 15px;
   font-size: 16px;
   font-weight: 500;
@@ -97,15 +97,18 @@ export const Button = styled.button<{ green?: boolean }>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
   margin-top: 30px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 
   &:hover {
-    opacity: 0.9;
+    ${({ disabled }) => disabled ? "" : "opacity: 0.9; transform: scale(1.05);"}
   }
-  &:hover {
-    transform: scale(1.05);
-  }
+  
+  ${({ disabled }) => disabled && `
+    background-color: #E0E0E0 !important;
+    transform: none !important;
+  `}
 `;
+
 
 export const BackTextContainer = styled.div<{ $isMobile: boolean }>`
   display: flex;
@@ -134,7 +137,7 @@ export const BackText = styled.div`
 `;
 
 export const ErrorMessage = styled.p<{ $isMobile: boolean }>`
-  width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
+  width: 300px;
   height: 18px;
   font-size: 12px;
   margin-top: -33px;
