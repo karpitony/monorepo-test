@@ -167,7 +167,7 @@ export const AgreeContainer = styled.div<{ $isMobile: boolean }>`
     width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
     max-width: 500px;
     display: flex;
-    align-items: center;
+    align-items: start;
     margin-top: 10px;
 `;
 
