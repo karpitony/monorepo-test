@@ -1,4 +1,5 @@
 import { useState, useEffect, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   useApplyQuestions, 
   useSaveApply, 
@@ -28,6 +29,7 @@ const TrackKorean = {
 } as const;
 
 export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxProps) {
+  const navigate = useNavigate();
   const { data: questionsData, loading: questionsLoading, error: questionsError } = useApplyQuestions();
   const { saveApply, loading: saveLoading, error: saveError } = useSaveApply();
   const { submitApply, loading: submitLoading, error: submitError } = useSubmitApply();
@@ -114,6 +116,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
     try {
       const response = await saveApply(buildApplyData());
       console.log("임시저장 성공:", response);
+      navigate('/recruit'); // 임시저장 후 recruit 첫 화면으로 이동
     } catch (err) {
       console.error("임시저장 에러:", err);
     }
