@@ -28,7 +28,7 @@ export const PopupTitle = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
 
 export const PopupText = styled.p<{ $isMobile: boolean; $isTablet: boolean }>`
   font-size: 18px;
-  font-size: ${({ $isMobile, $isTablet }) => ( $isMobile ? "14px" : $isTablet ? "16px" : "18px")};
+  font-size: ${({ $isMobile, $isTablet }) => ( $isMobile ? "13px" : $isTablet ? "15px" : "17px")};
   color: black;
   margin-bottom: ${({ $isMobile }) => ($isMobile ? "14px" : "20px")};
 `;
@@ -46,5 +46,27 @@ export const PopupCloseButton = styled.button<{ $isMobile: boolean; $isTablet: b
   margin-top: 20px;
   &:hover {
     background-color: #1f5b30;
+  }
+`;
+
+export const ButtonContainer = styled.div<{ $isMobile: boolean }>`
+  display: flex;
+  justify-content: space-around;
+  padding-inline: ${({ $isMobile }) => ($isMobile ? "10px" : "40px")};
+`;
+
+export const PopupButton = styled.button<{ $isMobile: boolean; $isTablet: boolean; confirm?: boolean }>`
+  background-color: #28723f;
+  color: #fcfcfc;
+  font-size: ${({ $isMobile, $isTablet }) => ($isMobile ? "12px" : $isTablet ? "16px": "16px")};
+  padding: ${({ $isMobile, $isTablet }) => ($isMobile ? "12px 24px" : $isTablet ? "12px 24px": "10px 20px")};
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  /* box-shadow: 0px 2px 10px rgba(25, 25, 25, 0.2); */
+  width: ${({ $isMobile, $isTablet }) => ($isMobile ? "80px" : $isTablet ? "100px": "100px")};
+  margin-top: 20px;
+  &:hover {
+    opacity: 0.8
   }
 `;
