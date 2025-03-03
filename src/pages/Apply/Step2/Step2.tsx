@@ -126,13 +126,15 @@ export default function Step2({ setStep, isFirst, onSubmit }: ApplyLoginProps) {
         {password.map((num, index) => (
           <S.PasswordInput
             key={index}
-            type="text"
+            type="number"
             value={num}
             onChange={(e) => handlePasswordChange(index, e.target.value)}
             onKeyDown={(e) => handleKeyDown(index, e)}
             ref={(el) => (inputRefs.current[index] = el)}
             maxLength={1}
             placeholder="_"
+            pattern="[0-9]*"
+            inputMode="numeric"
           />
         ))}
       </S.PasswordContainer>
