@@ -416,23 +416,23 @@ useEffect(() => {
         <>
             {/* 개인정보 동의 체크박스 */}
             <S.AgreeContainer $isMobile={isMobile} onChange={() => setAgree1((prev) => !prev)}>
-            <S.Checkbox type="checkbox" checked={agree1} />
-            <S.AgreeText>개인정보 수집 및 이용에 동의합니다.</S.AgreeText>
+              <S.Checkbox type="checkbox" checked={agree1} style={agree1 ?  {} : {borderColor: '#FF1E1E'}} />
+              <S.AgreeText>개인정보 수집 및 이용에 동의합니다.</S.AgreeText>
             </S.AgreeContainer>
 
             <S.AgreeContainer $isMobile={isMobile} onChange={() => setAgree2((prev) => !prev)}>
-            <S.Checkbox type="checkbox" checked={agree2} />
-            <S.AgreeText>지원서 제출 후, 수정 및 추가 제출이 불가능합니다.</S.AgreeText>
+              <S.Checkbox type="checkbox" checked={agree2} />
+              <S.AgreeText>지원서 제출 후, 수정 및 추가 제출이 불가능합니다.</S.AgreeText>
             </S.AgreeContainer>
 
             {/* 임시 저장 & 제출 버튼 */}
             <S.ButtonContainer $isMobile={isMobile}>
-            <S.Button $isMobile={isMobile} gray disabled={!agree1} onClick={handleSave}>
-                임시저장하기
-            </S.Button>
-            <S.Button $isMobile={isMobile} green disabled={!(agree1 && agree2)} onClick={handleConfirmSubmit}>
-                제출하기
-            </S.Button>
+              <S.Button $isMobile={isMobile} gray disabled={!agree1} onClick={handleSave}>
+                  임시저장하기
+              </S.Button>
+              <S.Button $isMobile={isMobile} green disabled={!(agree1 && agree2)} onClick={handleConfirmSubmit}>
+                  제출하기
+              </S.Button>
             </S.ButtonContainer>
         </>
         )}

@@ -100,11 +100,11 @@ export const CheckboxLabel = styled.label<{ $isMobile: boolean }>`
 
 export const Checkbox = styled.input`
   margin-right: 8px;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   appearance: none; 
-  border: 2px solid #aaa;
+  border: 1px solid #aaa;
   border-radius: 4px;
   background-color: white;
   transition: all 0.2s ease-in-out;
@@ -122,7 +122,7 @@ export const Checkbox = styled.input`
     color: white !important;
     font-weight: 700;
     /* margin-top: -1; */
-    font-size: 10px;
+    font-size: 13px;
   }
 `;
 
@@ -167,7 +167,7 @@ export const AgreeContainer = styled.div<{ $isMobile: boolean }>`
     width: ${({ $isMobile }) => ($isMobile ? "300px" : "550px")};
     max-width: 500px;
     display: flex;
-    align-items: center;
+    align-items: start;
     margin-top: 10px;
 `;
 
