@@ -116,7 +116,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
     try {
       const response = await saveApply(buildApplyData());
       console.log("임시저장 성공:", response);
-      navigate('/recruit'); // 임시저장 후 recruit 첫 화면으로 이동
+      navigate('/'); 
     } catch (err) {
       console.error("임시저장 에러:", err);
     }
@@ -133,6 +133,7 @@ export default function ApplyBox({ propStudentNumber, propPassword }: ApplyBoxPr
       const response = await submitApply(submissionData);
       console.log("제출 성공:", response);
       setApplyStatus("SUBMITTED");
+      navigate('/'); 
     } catch (err) {
       console.error("제출 에러:", err);
     }
